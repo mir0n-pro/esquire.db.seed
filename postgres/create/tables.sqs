@@ -1,0 +1,37 @@
+-----------------------------------
+-- project:	Esquire
+-- version:	1.0
+-- Copyright (c) Miron 2000, 2001, 2025
+--
+-- file :	create/tables.sqs
+-- desc:	Sequences
+--
+-----------------------------------
+
+\echo -n Creating Sequence 'ESQ_ENTITY_SEQ\n'
+CREATE SEQUENCE ESQ_ENTITY_SEQ
+ INCREMENT BY 1 
+ START WITH 100 
+ MINVALUE 100
+ MAXVALUE 9999999999999999
+ NO CYCLE
+ CACHE 1;
+
+\echo -n Creating Sequence 'ESQ_REF_SEQ\n'
+CREATE SEQUENCE ESQ_REF_SEQ
+ INCREMENT BY 1 
+ START WITH 1
+ MINVALUE 1
+ MAXVALUE 9999999999999999
+ NO CYCLE
+ CACHE 1;
+
+\echo -n Creating Sequence 'ESQ_ATR_SEQ\n'
+CREATE SEQUENCE ESQ_ATR_SEQ
+ INCREMENT BY 1 
+ START WITH 1
+ MINVALUE 1
+ MAXVALUE 9999999999999999
+ NO CYCLE
+ CACHE 1;
+ 

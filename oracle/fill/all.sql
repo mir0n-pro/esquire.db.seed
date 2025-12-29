@@ -14,6 +14,9 @@
 
 SPOOL fill.list
 -----------------------------------
+PROMPT Delete Types
+@@delete.sql
+-----------------------------------
 PROMPT Entity Types
 @@esq_entity_type.sql
 -----------------------------------

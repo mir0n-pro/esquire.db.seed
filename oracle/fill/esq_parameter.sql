@@ -67,15 +67,15 @@ DELETE FROM ESQ_PARAMETER;
 COMMIT;
 BEGIN
 
-    --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite, aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat
-    temp_parameter( 'DB_NAME',    'Database name',   0,           'string',  'DB Name',   1,     1,       1,       'Database name'
-                                                                                                                                  , NULL,         'N',      NULL,        NULL,        NULL);
-    temp_parameter( 'DB_VERSION', 'Database version',0,           'string',  'DB Version',1,     1,       2,       'Database version'
+    --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite,  aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat
+    temp_parameter( 'DB_NAME',    'Database name',   0,           'string',  'DB Name',   1,           2,       1,       'Database name'
+                                                                                                                                 , NULL,         'N',      NULL,        NULL,        NULL);
+    temp_parameter( 'DB_VERSION', 'Database version',0,           'string',  'DB Version',1,           2,       2,       'Database version'
                                                                                                                                   , NULL,         'N',      NULL,        NULL,        NULL);
     temp_parameter( 'Example', 'Custom organization parameter example'
-                                                    ,10,           'string', 'Example',   3,     1,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL);
+                                                    ,10,           'string', 'Example',   3,           2,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL);
     temp_parameter( 'Example', 'Custom client parameter example'
-                                                    ,12,           'string', 'Example',   3,     1,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL);
+                                                    ,12,           'string', 'Example',   3,           2,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL);
 
 END;
 /
