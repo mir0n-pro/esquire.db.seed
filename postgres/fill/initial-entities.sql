@@ -21,9 +21,9 @@ END $$;
 DO $$
 BEGIN
 	INSERT INTO esq_user (usr_pk, usr_et_pk, usr_name, usr_path, usr_login_id, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc) 
-       VALUES(4, 16, 'Supervizor', '1','SUPERVIZOR', 'na', 1, 'N', NULL);
+       VALUES(4, 16, 'Supervizor', '1','mainadmin', 'na', 1, 'N', NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method) 
-       VALUES(4, 'N', 'N');
+       VALUES(4, 'Y', 'N');
 	-- INSERT INTO esq_usr_prm (upm_usr_pk, upm_prm_pk, upm_allowed_flg) 
   --     VALUES(4, 1, 'Y');
 	INSERT INTO esq_usr_prm (upm_usr_pk, upm_prm_pk, upm_allowed_flg) 
@@ -36,25 +36,52 @@ END $$;
 DO $$
 BEGIN
 	INSERT INTO esq_user (usr_pk, usr_et_pk, usr_name, usr_path, usr_login_id, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc) 
-       VALUES(5, 16, 'Support', '1.2','SUPPORT', 'na', 2, 'N', NULL);
+       VALUES(5, 16, 'Support', '1.2','support', 'na', 2, 'N', NULL);
   INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method) 
-       VALUES(5, 'N', 'N');
+       VALUES(5, 'Y', 'N');
 	INSERT INTO esq_usr_prm (upm_usr_pk, upm_prm_pk, upm_allowed_flg) 
        SELECT 5, prm_pk, 'N' FROM esq_permission WHERE prm_et_pk_usr = 16;
 	UPDATE esq_usr_prm SET upm_allowed_flg = 'Y' WHERE upm_usr_pk = 5 AND upm_prm_pk = 23;
 	COMMIT;
 END $$;
 
+\echo -n 'Office Manager\n'
+\qecho -n 'Office Manager\n'
+DO $$
+BEGIN
+	INSERT INTO esq_user (usr_pk, usr_et_pk, usr_name, usr_path, usr_login_id, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc) 
+       VALUES(6, 16, 'Office Manager', '1.2','officeadmin', 'na', 2, 'N', NULL);
+  INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method) 
+       VALUES(6, 'Y', 'N');
+	INSERT INTO esq_usr_prm (upm_usr_pk, upm_prm_pk, upm_allowed_flg) 
+       SELECT 6, prm_pk, 'N' FROM esq_permission WHERE prm_et_pk_usr = 16;
+	UPDATE esq_usr_prm SET upm_allowed_flg = 'Y' WHERE upm_usr_pk = 6 AND upm_prm_pk = 23;
+	COMMIT;
+END $$;
+
+
 \echo -n 'Merchant\n'
 \qecho -n 'Merchant\n'
 DO $$
 BEGIN
 	INSERT INTO esq_user (usr_pk, usr_et_pk, usr_name, usr_path, usr_login_id, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc) 
-       VALUES(6, 14, 'Merchant', '1.2','MERCHANT', 'na', 2, 'N', NULL);
+       VALUES(7, 14, 'Merchant', '1.2','merchant', 'na', 2, 'N', NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method) 
-       VALUES(6, 'N', 'N');
+       VALUES(7, 'Y', 'N');
+	COMMIT;
+END $$;
+
+\echo -n 'Department Manager\n'
+\qecho -n 'Department Manager\n'
+DO $$
+BEGIN
+	INSERT INTO esq_user (usr_pk, usr_et_pk, usr_name, usr_path, usr_login_id, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc) 
+       VALUES(8, 16, 'Department Manager', '1.2.3','departmentadmin', 'na', 3, 'N', NULL);
+	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method) 
+       VALUES(8, 'Y', 'N');
 	INSERT INTO esq_usr_prm (upm_usr_pk, upm_prm_pk, upm_allowed_flg) 
-       SELECT 6, prm_pk, 'N' FROM esq_permission WHERE prm_et_pk_usr = 14;
+       SELECT 8, prm_pk, 'N' FROM esq_permission WHERE prm_et_pk_usr = 16;
+	UPDATE esq_usr_prm SET upm_allowed_flg = 'Y' WHERE upm_usr_pk = 8 AND upm_prm_pk = 23;
 	COMMIT;
 END $$;
 
@@ -63,13 +90,13 @@ END $$;
 DO $$
 BEGIN
 	INSERT INTO esq_user (usr_pk, usr_et_pk, usr_name, usr_path, usr_login_id, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc) 
-       VALUES(7, 12, 'Client', '1.2.3','CLIENT', 'na', 3, 'N', NULL);
+       VALUES(9, 12, 'Client', '1.2.3','client', 'na', 3, 'N', NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method) 
-       VALUES(7, 'N', 'N');
+       VALUES(9, 'N', 'N');
 	INSERT INTO esq_usr_prm (upm_usr_pk, upm_prm_pk, upm_allowed_flg) 
-       SELECT 7, prm_pk, 'N' FROM esq_permission WHERE prm_et_pk_usr = 12;
+       SELECT 9, prm_pk, 'N' FROM esq_permission WHERE prm_et_pk_usr = 12;
 	INSERT INTO esq_usr_par (upr_usr_pk, upr_par_name, upr_par_et_pk, upr_value) 
-       VALUES           (7,         'Example',     12,            'Example for Esquire');
+       VALUES           (9,         'Example',     12,            'Example for Esquire');
 	COMMIT;
 END $$;
 
@@ -78,9 +105,9 @@ END $$;
 DO $$
 BEGIN
 	INSERT INTO esq_account (acc_pk, acc_et_pk, acc_path, acc_id, acc_balance, acc_ccy, acc_status, acc_usr_pk, acc_desc) 
-       VALUES(8, 20, '1.2.6', '10008', 0.00, 'EUR', 'O', 6, 'Merchant account');
+       VALUES(10, 20, '1.2.7', '10008', 0.00, 'EUR', 'O', 7, 'Merchant account');
 	INSERT INTO esq_account (acc_pk, acc_et_pk, acc_path, acc_id, acc_balance, acc_ccy, acc_status, acc_usr_pk, acc_desc) 
-       VALUES(9, 18, '1.2.3.7', '10009', 0.00, 'USD', 'O', 7, 'Client account');
+       VALUES(11, 18, '1.2.3.9', '10009', 0.00, 'USD', 'O', 9, 'Client account');
 	COMMIT;
 END $$;
 

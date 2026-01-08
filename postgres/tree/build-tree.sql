@@ -121,7 +121,8 @@ WITH RECURSIVE tree_hierarchy AS (
         tree_name,
         1 AS level, 
         tree_level,
-        tree_path
+        tree_path,
+        tree_path || '/' || tree_pk pp
     FROM esq_tree
     WHERE tree_tree_pk_parent IS NULL
     UNION ALL
@@ -130,16 +131,19 @@ WITH RECURSIVE tree_hierarchy AS (
         child.tree_name,
         parent.level + 1, 
         child.tree_level,
-        child.tree_path
+        child.tree_path,
+        child.tree_path || '/' || child.tree_pk
     FROM esq_tree child
     JOIN tree_hierarchy parent ON child.tree_tree_pk_parent = parent.tree_pk
 ) SELECT 
     tree_pk, 
     LEFT(REPEAT('|', level - 1) || '-' || tree_name, 50)::varchar(50) AS name, 
     level, 
-    tree_level, 
-    tree_path::varchar(50) AS path
+    tree_path, 
+    pp
 FROM tree_hierarchy
+ORDER BY pp;
+
 ORDER BY level;
 
 \set QUIET 0
