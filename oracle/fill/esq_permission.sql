@@ -42,7 +42,7 @@ BEGIN
 
 
 --                  aID, aType, aEntityType, aUserType,        aName,                          aDesc)
-    temp_permission (  1,    1,          0,         1,         'System',                       'Update system parameters');
+    temp_permission (  1,    1,          0,         16,         'System',                       'Update system parameters');
     temp_permission (  2,    2,          10,        16,        'Orgranization.Creation',       'Creates a new orgnanization unit');
     temp_permission (  3,    3,          10,        16,        'Organization.Deletion',        'Deletes an orgnanization unit');
     temp_permission (  4,    4,          10,        16,        'Organization.Maintenance',     'Edits an orgnanization unit');

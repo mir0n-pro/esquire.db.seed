@@ -32,6 +32,7 @@ CREATE TABLE esq_tree(
  ,tree_level          INTEGER
  ,tree_path           VARCHAR(2000)
  ,tree_entity_pk      INTEGER
+ ,TREE_ENTITY_PATH    VARCHAR(2000)
 );
 
 COMMENT ON TABLE  ESQ_TREE IS 'Business tree';
@@ -47,7 +48,7 @@ COMMENT ON COLUMN ESQ_TREE.TREE_ORG_PK IS 'Reference to organization unit  ((ESQ
 COMMENT ON COLUMN ESQ_TREE.TREE_ENTITY_PK IS 'Entity PK represenging by node';
 COMMENT ON COLUMN ESQ_TREE.TREE_ORG_PK IS 'location of the node as a path of parent';
 COMMENT ON COLUMN ESQ_TREE.TREE_LEVEL IS 'Level node on tree starting with 0';
-
+COMMENT ON COLUMN ESQ_TREE.TREE_ENTITY_PATH IS 'Entity Path represenging by node';
 
 \echo -n 'Creating Primary Key on ESQ_TREE\n'
 \qecho -n 'Creating Primary Key on ESQ_TREE\n'
