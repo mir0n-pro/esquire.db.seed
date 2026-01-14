@@ -24,7 +24,8 @@ CREATE OR REPLACE PROCEDURE temp_parameter  (
     aNullable IN VARCHAR2,
     aValidation IN VARCHAR2,
     aListvalues IN VARCHAR2,
-    aFormat IN VARCHAR2) IS
+    aFormat IN VARCHAR2, 
+    aPersonal IN VARCHAR2) IS
 BEGIN
 
     INSERT INTO ESQ_PARAMETER   (
@@ -42,6 +43,7 @@ BEGIN
         ,PAR_VALIDATION
         ,PAR_LISTVALUES
         ,PAR_FORMAT
+        ,PAR_PERSONAL_FLG
     ) VALUES (
          aEntityType
         ,aName
@@ -57,6 +59,7 @@ BEGIN
         ,aValidation
         ,aListvalues
         ,aFormat
+        ,aPersonal
     );
     COMMIT;
 END;
@@ -67,15 +70,15 @@ DELETE FROM ESQ_PARAMETER;
 COMMIT;
 BEGIN
 
-    --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite,  aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat
+    --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite,  aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat,  aPersonal
     temp_parameter( 'DB_NAME',    'Database name',   0,           'string',  'DB Name',   1,           2,       1,       'Database name'
-                                                                                                                                 , NULL,         'N',      NULL,        NULL,        NULL);
+                                                                                                                                        , NULL,         'N',      NULL,        NULL,        NULL,   NULL);
     temp_parameter( 'DB_VERSION', 'Database version',0,           'string',  'DB Version',1,           2,       2,       'Database version'
-                                                                                                                                  , NULL,         'N',      NULL,        NULL,        NULL);
+                                                                                                                                        , NULL,         'N',      NULL,        NULL,        NULL,   NULL);
     temp_parameter( 'Example', 'Custom organization parameter example'
-                                                    ,10,           'string', 'Example',   3,           2,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL);
+                                                    ,10,           'string', 'Example',   3,           2,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL,   NULL);
     temp_parameter( 'Example', 'Custom client parameter example'
-                                                    ,12,           'string', 'Example',   3,           2,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL);
+                                                    ,12,           'string', 'Example',   3,           2,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL,    'Y');
 
 END;
 /

@@ -6,6 +6,7 @@
 -- file :	create/tables.cc
 -- desc:	Check constraints
 --
+-- 01/14/2026 mir0n ESQ_USR_PRM table removed
 -----------------------------------
 
 
@@ -44,11 +45,6 @@ ALTER TABLE ESQ_ENTITY_TYPE
 /
 ALTER TABLE ESQ_ENTITY_TYPE
  ADD (CONSTRAINT ESQ_ET_LINK_FLG_CC CHECK (ET_LINK_FLG IN ('Y','N')))
-/
-
-PROMPT Creating Check Constraint on 'ESQ_USR_PRM'
-ALTER TABLE ESQ_USR_PRM
- ADD (CONSTRAINT ESQ_UPM_ALLOWED_FLG_CC CHECK (UPM_ALLOWED_FLG IN ('Y','N')))
 /
 
 PROMPT Creating Check Constraint on 'ESQ_PARAMETER'

@@ -1,0 +1,26 @@
+
+
+01/14/2026 Renew permission Structure: ESQ_ROLE added
+  Statements:
+  Role entity (ESQ_ROLE) is a key entity to define user permissions
+  Role has 3 many-to-many refrences
+     1: with user (ESQ_USER) : one user can have few roles assigned, a role can be assinged to many users
+     2: with user kind (ESQ_ENTITY_TYPE): same role can assigmened to different kind of users, every user kind have a list of available roles
+     3: with permissions (ESQ_PERMISSION): role have a list of applicable permissions, one permission can available for different roles
+       the refrence has an attribute: allowed flags (RP_ALLOWED_FLGS), a comma-separated list of Y/N flags, for generic permisssions only one Y/N flag: meaning Enabled/Disabled 
+       for admin permissions there is would be a flag list for allowance of create, update, delete, security, accounting functions, in this specific order.
+  Permissions type (ESQ_PERMISSION_TYPE) defines a permission groups : 0: Admin, 1: Tools, 2: Application as for now
+  Permissions entity (ESQ_PERMISSION) 
+       defines a list of user permissions and their codes (PRM_PK)
+       Admin permission codes are the same as entity type (ET_PK)
+       Tools codes are from 100 to 199
+       App codes are from 200 to 299
+  Missed permission in a role definition means : not allowed       
+    login id and email on user are unique
+ Personal fields: you can modifiy your own profile, the admin permission flags doesnt work in this case
+   fields are separated on 2 parts office and personal. You can modify values of fields those
+   annoced in dicitionary as personal.
+
+    
+  
+  

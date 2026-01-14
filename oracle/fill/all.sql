@@ -11,6 +11,7 @@
 --  
 -- 01.08.2000			Created
 -- 06.20.2000			Reviewed
+-- 01/14/2026 mir0n Roles added
 
 SPOOL fill.list
 -----------------------------------
@@ -31,6 +32,9 @@ PROMPT Permissions
 -----------------------------------
 PROMPT Activity types
 @@esq_activity_type.sql
+-----------------------------------
+PROMPT Roles
+@@esq_role.sql
 -----------------------------------
 PROMPT Root
 @@root.sql

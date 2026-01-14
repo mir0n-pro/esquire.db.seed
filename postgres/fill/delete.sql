@@ -6,14 +6,17 @@ DROP TABLE IF EXISTS esq_tree;
 \qecho -n 'Delete all data\n'
 DO $$
 BEGIN
-  DELETE FROM esq_usr_prm;
   DELETE FROM esq_usr_par;
   DELETE FROM esq_org_par;
-  DELETE FROM esq_permission;
+  DELETE FROM esq_usr_role;
   DELETE FROM esq_auth;
   DELETE FROM esq_account;
   DELETE FROM esq_user;
   DELETE FROM esq_org;
+  DELETE FROM esq_role_et;
+  DELETE FROM esq_role_prm;
+  DELETE FROM esq_role;
+  DELETE FROM esq_permission;
   DELETE FROM esq_permission_type;
   DELETE FROM esq_parameter;
   DELETE FROM esq_entity_type;

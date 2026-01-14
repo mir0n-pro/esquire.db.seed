@@ -9,6 +9,8 @@
 -----------------------------------
 -- History:
 --  
+-- 01.08.2000			Created
+-- 03.03.2001			Removes all objects
 
 
 --\set QUIET 1

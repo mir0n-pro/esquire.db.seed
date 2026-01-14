@@ -1,0 +1,29 @@
+oracle seed changes
+
+01/14/2026 Permissions refatoring: role based
+create\tables.cc
+   - ESQ_USR_PRM table removed
+create\tables.pfi
+   - ESQ_USR_PRM table removed
+   - ESQ_USER.USR_EMAIL unique index added
+   - ESQ_PERMISSION.PRM_ET_USR_FK field removed
+   - ESQ_ROLE table added with many-to-many references
+create\tables.tab
+   - ESQ_USR_PRM table removed
+   - ESQ_USER.USR_EMAIL unique index added
+   - ESQ_PERMISSION.PRM_ET_USR_FK field removed
+   - ESQ_ROLE table added with 3 many-to-many references
+   - ESQ_AUTH table simplified
+   - ESQ_PARAMETER.PAR_PERSONAL_FLG added   
+fill\all.sql
+  - Roles added
+fill\esq_permission.sql
+  - ESQ_PERMISSION.PRM_ET_PK_USR removed
+  - generalized format of permission id   
+fill\esq_permission_type.sql
+  - generalized format of permission type
+added fill\role.sql  
+fill\initial-entities.sql
+  - follow up to ERD modifications
+
+   

@@ -11,6 +11,7 @@
 --  
 -- 01.08.2000			Created
 -- 06.20.2000			Reviewed
+-- 01/14/2026 mir0n Roles added
 
 --\set QUIET 1
 --\set VERBOSITY terse
@@ -39,6 +40,10 @@
 \echo -n '----- Activity types -----\n'
 \qecho -n '----- Activity types -----\n'
 \i esq_activity_type.sql
+-----------------------------------
+\echo -n '----- Roles -----\n'
+\qecho -n '----- Roles -----\n'
+\i esq_role.sql
 -----------------------------------
 \echo -n '----- Root -----\n'
 \qecho -n '----- Root -----\n'

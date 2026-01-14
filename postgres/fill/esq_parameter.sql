@@ -24,7 +24,8 @@ CREATE OR REPLACE PROCEDURE temp_parameter  (
     aNullable varchar,
     aValidation varchar,
     aListvalues varchar,
-    aFormat varchar
+    aFormat varchar, 
+    aPersonal IN varchar
 ) LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -44,6 +45,7 @@ BEGIN
         ,par_validation
         ,par_listvalues
         ,par_format
+        ,par_personal_flg        
     ) VALUES (
          aEntityType
         ,aName
@@ -59,6 +61,7 @@ BEGIN
         ,aValidation
         ,aListvalues
         ,aFormat
+        ,aPersonal
     );
 
 END $$;
@@ -66,15 +69,15 @@ END $$;
 DO $$
 BEGIN
 		DELETE FROM esq_parameter;
-    --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite, aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat
+    --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite, aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat, aPersonal
     CALL temp_parameter( 'DB_NAME',    'Database name',   0,           'string',  'DB Name',   1,     2,       1,       'Database name'
-                                                                                                                                    , NULL,      'N',      NULL,        NULL,        NULL);
+                                                                                                                                     , NULL,     'N',      NULL,        NULL,        NULL,        NULL);
     CALL temp_parameter( 'DB_VERSION', 'Database version',0,           'string',  'DB Version',1,     2,       2,       'Database version'
-                                                                                                                                     , NULL,     'N',      NULL,        NULL,        NULL);
+                                                                                                                                     , NULL,     'N',      NULL,        NULL,        NULL,        NULL);
     CALL temp_parameter( 'Example', 'Custom organization parameter example'
-                                                         ,10,           'string', 'Example',   3,     2,       1,       'An example' , NULL,     'Y',      NULL,        NULL,        NULL);
+                                                         ,10,           'string', 'Example',   3,     2,       1,       'An example' , NULL,     'Y',      NULL,        NULL,        NULL,        NULL);
     CALL temp_parameter( 'Example', 'Custom client parameter example'
-                                                    ,12,                'string', 'Example',   3,     2,      1,       'An example'      , NULL,      'Y',      NULL,        NULL,        NULL);
+                                                    ,12,                'string', 'Example',   3,     2,      1,       'An example'  , NULL,     'Y',      NULL,        NULL,        NULL,         'Y');
 		COMMIT;
 END $$;
 

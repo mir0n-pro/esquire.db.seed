@@ -8,7 +8,7 @@
 --
 -----------------------------------
 -- History:
---  
+-- 01/14/2026 mir0n generalized format of permission type
 
 CREATE OR REPLACE PROCEDURE temp_permission_type (
     aID     IN integer,
@@ -33,15 +33,11 @@ END $$;
 DO $$
 BEGIN
 	DELETE FROM esq_permission_type;
-	CALL temp_permission_type ( 0,      'Other', 'General permissions');
-	CALL temp_permission_type ( 1, 'Supervizor', 'System level functions');
-	CALL temp_permission_type ( 2,   'Creation', 'Creates a new system object');
-	CALL temp_permission_type ( 3,   'Deletion', 'Deletes a system object');
-	CALL temp_permission_type ( 4,'Maintenance', 'Edit properties of object');
-	CALL temp_permission_type ( 5,'Permissions', 'Edit logon information and permissions');
-	CALL temp_permission_type ( 6,       'Tool', 'Runs a tool');
---	temp_permission_type ( 7,	     'Report', 'Creates a report');
---	temp_permission_type ( 8,  'Accounting', 'Makes account operations');
+
+    CALL temp_permission_type ( 0,      'Admin', 'Entity functions');
+    CALL temp_permission_type ( 1,     'Tools',  'Tools avialable'); 
+    CALL temp_permission_type ( 2,      'Apps', 'Applications permitted');
+--	CALL temp_permission_type ( 3,	'Reports',  'Report avialable');
 	COMMIT;
 END $$;
 

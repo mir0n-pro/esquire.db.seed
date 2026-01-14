@@ -9,12 +9,13 @@
 -----------------------------------
 -- History:
 --
+-- 01/14/2026 mir0n ESQ_PERMISSION.PRM_ET_PK_USR removed
+--                  generalized format of permission id
 
 CREATE OR REPLACE PROCEDURE temp_permission (
 		aID 				IN integer,
     aType       IN integer,
     aEntityType IN integer,
-    aUserType   IN integer,
     aName       IN varchar,
     aDesc       IN varchar
 ) LANGUAGE plpgsql
@@ -25,53 +26,31 @@ BEGIN
         prm_name,
         prm_desc,
         prm_pt_pk,
-        prm_et_pk,
-        prm_et_pk_usr
+        prm_et_pk
     ) VALUES (
         aID,
         aName,
         aDesc,
         aType,
-        aEntityType,
-        aUserType
+        aEntityType
     );
 END $$;
 
 DO $$
 BEGIN
-		DELETE FROM esq_permission;
---                         aID, aType, aEntityType, aUserType,        aName,                          aDesc)
-    CALL temp_permission (  1,    1,          0,         16,        'System',                       'Update system parameters');
-    CALL temp_permission (  2,    2,          10,        16,        'Orgranization.Creation',       'Creates a new orgnanization unit');
-    CALL temp_permission (  3,    3,          10,        16,        'Organization.Deletion',        'Deletes an orgnanization unit');
-    CALL temp_permission (  4,    4,          10,        16,        'Organization.Maintenance',     'Edits an orgnanization unit');
- 
-    CALL temp_permission (  5,    2,          12,        16,        'Client.Creation',              'Creates a client profile');
-    CALL temp_permission (  6,    3,          12,        16,        'Client.Deletion',              'Deletes a client profile');
-    CALL temp_permission (  7,    4,          12,        16,        'Client.Maintenance',           'Edits a client profile');
+    DELETE FROM esq_permission;
+--                       aID, aType, aEntityType,  aName,                          aDesc)
+    CALL temp_permission (   0,   0,           0,  'System',                       'Admin: System functions');
+    CALL temp_permission (  10,   0,          10,  'Orgranization',                'Admin: Organization unit functions');
+    CALL temp_permission (  12,   0,          12,  'Client',                       'Admin: Client functions');
+    CALL temp_permission (  14,   0,          14,  'Merchant',                     'Admin: Merchant functions');
+    CALL temp_permission (  16,   0,          16,  'Admin',                        'Admin: Admin functions');
+    CALL temp_permission (  18,   0,          18,  'Client Account',               'Admin: Client Account functions');
+    CALL temp_permission (  20,   0,          20,  'Merchant Account',             'Admin: Merchant Account functions');
+    CALL temp_permission ( 100,   1,        NULL,  'Esquire Tree',                  'Runs Esquire tree interface');
 
-    CALL temp_permission (  8,    2,          14,        16,        'Merchant.Creation',            'Creates a salesman profile');
-    CALL temp_permission (  9,    3,          14,        16,        'Merchant.Deletion',            'Deletes a salesman profile');
-    CALL temp_permission ( 10,    4,          14,        16,        'Merchant.Maintenance',         'Edits a salesman profile');
-
-    CALL temp_permission ( 11,    2,          16,        16,        'Admin.Creation',               'Creates an administrator profile');
-    CALL temp_permission ( 12,    3,          16,        16,        'Admin.Deletion',               'Deletes an administrator profile');
-    CALL temp_permission ( 13,    4,          16,        16,        'Admin.Maintenance',            'Edits an administrator profile');
-
-    CALL temp_permission ( 14,    2,          18,        16,        'Client Account.Creation',     'Creates a client account');
-    CALL temp_permission ( 15,    3,          18,        16,        'Client Account.Deletion',     'Deletes a client account');
-    CALL temp_permission ( 16,    4,          18,        16,        'Client Account.Maintenance',  'Edits a client account');
-
-    CALL temp_permission ( 17,    2,          20,        16,        'Merchant Account.Creation',     'Creates a Merchant account');
-    CALL temp_permission ( 18,    3,          20,        16,        'Merchant Account.Deletion',     'Deletes a Merchant account');
-    CALL temp_permission ( 19,    4,          20,        16,        'Merchant Account.Maintenance',  'Edits a Merchant account');
     
-    CALL temp_permission ( 20,    5,          16,        16,        'Admin.Permissions',              'Setups an admin logon parameters and permissions');
-    CALL temp_permission ( 21,    5,          18,        16,        'Client.Permissions',             'Setups a client logon parameters and permissions');
-    CALL temp_permission ( 22,    5,          20,        16,        'Merchant.Permissions',           'Setups a merchant logon parameters and permissions');
-
-    CALL temp_permission ( 23,    6,         NULL,       16,        'Business explorer',              'Runs business explorer window');
-    CALL temp_permission ( 24,    6,         NULL,       16,        'Security explorer',              'Runs security explorer window');
+    
 	COMMIT;
 END $$;
 
