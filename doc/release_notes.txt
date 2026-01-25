@@ -1,4 +1,9 @@
 
+01/25/2026 Preparing for keySmith
+  - all authentication parameters are in ESQ_AUTH
+  - "pending" flag for TFA added
+  - Paper Client Account type added
+
 
 01/14/2026 Renew permission Structure: ESQ_ROLE added
   Statements:

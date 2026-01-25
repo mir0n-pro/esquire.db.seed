@@ -71,6 +71,8 @@ BEGIN
   CALL temp_entity_type ( 19,   'N', 'N',  'N',  'Y',     'b',  'Client Account',  'Shortcut to client account');
   CALL temp_entity_type ( 20,   'Y', 'N',  'N',  'N',     'b', 'Merchant Account', 'Merchant Account');
   CALL temp_entity_type ( 21,   'N', 'N',  'N',  'Y',     'b', 'Merchant Account', 'Shortcut to merchant account');
+  CALL temp_entity_type ( 22,   'Y', 'N',  'N',  'N',     'b', 'Paper Client Account', 'Paper Client Account');
+  CALL temp_entity_type ( 23,   'N', 'N',  'N',  'Y',     'b', 'Paper Client Account', 'Shortcut to Paper Client Account');
   COMMIT;
 END $$;
 

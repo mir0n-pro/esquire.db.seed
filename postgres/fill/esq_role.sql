@@ -44,6 +44,9 @@ BEGIN
     -- Merchant Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         1,        20, 'Y,Y,Y,N,Y,');
+    -- Paper Clinet Account
+    INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+           VALUES            (         1,        22, 'Y,Y,Y,N,Y,');
     COMMIT;
 END $$;
 
@@ -76,6 +79,9 @@ BEGIN
     -- Merchant Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         2,        20, 'Y,Y,Y,N,Y,');
+    -- Paper Clinet Account
+    INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+           VALUES            (         2,        22, 'Y,Y,Y,N,Y,');
     COMMIT;
 END $$;
 
@@ -108,6 +114,9 @@ BEGIN
     -- Merchant Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         3,        20, 'Y,N,N,N,Y,');
+    -- Paper Clinet Account
+    INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+           VALUES            (         3,        22, 'Y,Y,Y,N,Y,');
     COMMIT;
 END $$;
 
@@ -140,6 +149,9 @@ BEGIN
     -- Merchant Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         4,        20, 'Y,N,N,N,N,');
+    -- Paper Clinet Account
+    INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+           VALUES            (         4,        22, 'Y,Y,Y,N,Y,');
     COMMIT;
 END $$;
 
@@ -155,6 +167,9 @@ BEGIN
            VALUES           (         5,        12);
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         5,        14);
+    -- Paper Clinet Account
+    INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+           VALUES           (         5,        22, 'N,N,N,N,Y,');
     COMMIT;
 END $$;
 

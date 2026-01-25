@@ -47,6 +47,7 @@ BEGIN
     CALL temp_permission (  16,   0,          16,  'Admin',                        'Admin: Admin functions');
     CALL temp_permission (  18,   0,          18,  'Client Account',               'Admin: Client Account functions');
     CALL temp_permission (  20,   0,          20,  'Merchant Account',             'Admin: Merchant Account functions');
+    CALL temp_permission (  22,   0,          22,  'Paper Client Account',         'Admin: Paper Client Account functions');
     CALL temp_permission ( 100,   1,        NULL,  'Esquire Tree',                  'Runs Esquire tree interface');
 
     

@@ -48,6 +48,10 @@ INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs)
 INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
        VALUES            (         1,        20, 'Y,Y,Y,N,Y,')
 /
+-- Paper Client Account
+INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+       VALUES            (         1,        22, 'Y,Y,Y,N,Y,')
+/
 COMMIT
 /
 
@@ -86,6 +90,10 @@ INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs)
 INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
        VALUES            (         2,        20, 'Y,Y,Y,N,Y,')
 /
+-- Paper Client Account
+INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+       VALUES            (         2,        22, 'Y,Y,Y,N,Y,')
+/
 COMMIT
 /
 
@@ -122,6 +130,10 @@ INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs)
 -- Merchant Account
 INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
        VALUES            (         3,        20, 'Y,N,N,N,Y,')
+/
+-- Paper Client Account
+INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+       VALUES            (         3,        22, 'Y,Y,Y,N,Y,')
 /
 COMMIT
 /
@@ -160,6 +172,10 @@ INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs)
 INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
        VALUES            (         4,        20, 'Y,N,N,N,N,')
 /
+-- Paper Client Account
+INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+       VALUES            (         4,        22, 'Y,Y,Y,N,Y,')
+/
 COMMIT
 /
 
@@ -174,6 +190,10 @@ INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk)
 /
 INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
        VALUES           (         5,        14)
+/
+-- Paper Client Account
+INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
+       VALUES            (         5,        22, 'N,N,N,N,Y,')
 /
 COMMIT
 /
