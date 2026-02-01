@@ -1,4 +1,7 @@
 
+02/01/2026 Permissions corrected
+  Permissions corrected: Create,Update,Delete,Auth,Acct 
+
 01/25/2026 Preparing for keySmith
   - all authentication parameters are in ESQ_AUTH
   - "pending" flag for TFA added

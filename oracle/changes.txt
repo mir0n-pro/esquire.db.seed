@@ -1,5 +1,8 @@
 oracle seed changes
 
+02/01/2026 Permissions corrected
+  Permissions corrected: Create,Update,Delete,Auth,Acct 
+
 01/14/2026 Permissions refatoring: role based
 create\tables.cc
    - ESQ_USR_PRM table removed

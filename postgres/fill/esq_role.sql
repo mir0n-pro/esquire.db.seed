@@ -25,7 +25,7 @@ BEGIN
     -- update, create, delete, security,accounting
     -- System
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         1,         0, 'Y,');
+           VALUES            (         1,         0, 'N,Y,');
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         1,        10, 'Y,Y,Y,');
@@ -101,19 +101,19 @@ BEGIN
            VALUES            (         3,        10, 'N,N,N,');
     -- Client
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         3,        12, 'Y,N,N,N,');
+           VALUES            (         3,        12, 'N,Y,N,N,');
     -- Merchant
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         3,        14, 'Y,N,N,N,');
+           VALUES            (         3,        14, 'N,Y,N,N,');
     -- Admin
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         3,        16, 'N,N,N,N,');
     -- Client Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         3,        18, 'Y,N,N,N,Y,');
+           VALUES            (         3,        18, 'N,Y,N,N,Y,');
     -- Merchant Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         3,        20, 'Y,N,N,N,Y,');
+           VALUES            (         3,        20, 'N,Y,N,N,Y,');
     -- Paper Clinet Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         3,        22, 'Y,Y,Y,N,Y,');
@@ -136,19 +136,19 @@ BEGIN
            VALUES            (         4,        10, 'N,N,N,');
     -- Client
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         4,        12, 'Y,N,N,Y,');
+           VALUES            (         4,        12, 'N,Y,N,Y,');
     -- Merchant
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         4,        14, 'Y,N,N,Y,');
+           VALUES            (         4,        14, 'N,Y,N,Y,');
     -- Admin
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         4,        16, 'N,N,N,N,');
     -- Client Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         4,        18, 'Y,N,N,N,N,');
+           VALUES            (         4,        18, 'N,Y,N,N,N,');
     -- Merchant Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
-           VALUES            (         4,        20, 'Y,N,N,N,N,');
+           VALUES            (         4,        20, 'N,Y,N,N,N,');
     -- Paper Clinet Account
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         4,        22, 'Y,Y,Y,N,Y,');
