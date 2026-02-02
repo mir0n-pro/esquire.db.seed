@@ -26,19 +26,23 @@ BEGIN
          INSERT INTO esq_tree (tree_pk, tree_et_pk,  tree_name,  tree_desc,  tree_tree_pk_parent, tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path )
          VALUES              (o.org_pk, o.org_et_pk, o.org_name, o.org_desc, o.org_org_pk,        NULL,              NULL,        NULL,        o.org_pk,    o.org_pk,       o.org_path);
          IF o.org_et_pk > 1 THEN
+            -- all admin-s
+            INSERT INTO esq_tree (tree_pk,          tree_et_pk, tree_name,     tree_desc,        tree_tree_pk_parent, tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path  )
+            VALUES               (o.org_pk || '~4', 4,          'All admin-s', 'Admin-s folder', o.org_pk,            NULL,              NULL,        NULL,        NULL,        NULL,           o.org_path);
             -- all accounts
             INSERT INTO esq_tree (tree_pk,          tree_et_pk, tree_name,     tree_desc,        tree_tree_pk_parent, tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path)
-            VALUES               (o.org_pk || '~2', 2,         'All accounts', 'Accounts folder', o.org_pk,           NULL,              NULL,        NULL,        NULL,        NULL ,          o.org_path);
+            VALUES               (o.org_pk || '~6', 6,         'All accounts', 'Accounts folder', o.org_pk,           NULL,              NULL,        NULL,        NULL,        NULL ,          o.org_path);
             -- all clients
             INSERT INTO esq_tree (tree_pk,          tree_et_pk, tree_name,     tree_desc,        tree_tree_pk_parent, tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path)
-            VALUES               (o.org_pk || '~6', 6,          'All clients', 'Clients folder', o.org_pk,            NULL,              NULL,        NULL,        NULL,        NULL,           o.org_path);
+            VALUES               (o.org_pk || '~8', 8,          'All clients', 'Clients folder', o.org_pk,            NULL,              NULL,        NULL,        NULL,        NULL,           o.org_path);
             -- all merchants
             INSERT INTO esq_tree (tree_pk,          tree_et_pk, tree_name,       tree_desc,         tree_tree_pk_parent, tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path )
-            VALUES               (o.org_pk || '~8', 8,          'All merchants', 'Merchants folder', o.org_pk,           NULL,              NULL,        NULL,        NULL,        NULL,           o.org_path);
+            VALUES               (o.org_pk || '~10', 10,        'All merchants', 'Merchants folder', o.org_pk,           NULL,              NULL,        NULL,        NULL,        NULL,           o.org_path);
+         ELSE   
+            -- sys admin-s
+            INSERT INTO esq_tree (tree_pk,          tree_et_pk, tree_name,     tree_desc,        tree_tree_pk_parent, tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path  )
+        VALUES               (o.org_pk || '~2', 2,          'Sys admin-s', 'Sys Admin-s folder', o.org_pk,            NULL,              NULL,        NULL,        NULL,        NULL,           o.org_path);
          END IF;
-        -- all admin-s
-        INSERT INTO esq_tree (tree_pk,          tree_et_pk, tree_name,     tree_desc,        tree_tree_pk_parent, tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path  )
-        VALUES               (o.org_pk || '~4', 4,          'All admin-s', 'Admin-s folder', o.org_pk,            NULL,              NULL,        NULL,        NULL,        NULL,           o.org_path);
     END LOOP;
 
     -- add users
@@ -48,13 +52,16 @@ BEGIN
         --INSERT INTO esq_tree (tree_pk,tree_et_pk,tree_name,tree_desc,tree_tree_pk_parent,tree_tree_pk_link,tree_acc_pk,tree_usr_pk,tree_org_pk )
         -- VALUES(u.usr_pk * 100, u.usr_et_pk, u.usr_name, u.usr_desc, u.usr_org_pk * 100, NULL, NULL, u.usr_pk, NULL);
         -- shorcut in user folder
-        IF u.usr_et_pk = 12 THEN -- client
-            folder_type := 6;
-        ELSIF u.usr_et_pk = 14 THEN -- merchant
+        IF u.usr_org_pk = 1 THEN -- system level users
+            folder_type := 2;
+        ELSIF u.usr_et_pk = 34 THEN -- client
             folder_type := 8;
-        ELSE -- IF u.usr_et_pk = 16 THEN -- admin
+        ELSIF u.usr_et_pk = 36 THEN -- merchant
+            folder_type := 10;
+        ELSE -- IF u.usr_et_pk = 32 THEN -- admin
             folder_type := 4;
         END IF;    
+
 
         INSERT INTO esq_tree (tree_pk,  tree_et_pk,  tree_name,  tree_desc,  tree_tree_pk_parent,            tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path )
         VALUES               (u.usr_pk, u.usr_et_pk, u.usr_name, u.usr_desc, u.usr_org_pk|| '~'||folder_type, NULL,             NULL,        u.usr_pk,    NULL,         u.usr_pk,      u.usr_path);
@@ -69,7 +76,7 @@ BEGIN
         INSERT INTO esq_tree (tree_pk,  tree_et_pk,  tree_name, tree_desc,  tree_tree_pk_parent, tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path   )
         VALUES               (a.acc_pk, a.acc_et_pk, a.acc_id,  a.acc_desc, a.acc_usr_pk,        NULL,              a.acc_pk,    NULL,        NULL,        a.acc_pk,       a.acc_path);
         -- shorcut in acct folder
-        folder_type := 2;
+        folder_type := 6;
         INSERT INTO esq_tree (tree_pk,                     tree_et_pk,      tree_name, tree_desc,  tree_tree_pk_parent,            tree_tree_pk_link, tree_acc_pk, tree_usr_pk, tree_org_pk, tree_entity_pk, tree_entity_path )
         VALUES               (a.usr_org_pk||'~'||a.acc_pk, a.acc_et_pk + 1, a.acc_id,  a.acc_desc, a.usr_org_pk||'~'||folder_type, a.acc_pk,          a.acc_pk,    NULL,        NULL,        a.acc_pk,       a.acc_path);
 

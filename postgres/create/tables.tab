@@ -399,12 +399,14 @@ COMMENT ON COLUMN ESQ_ORG_PAR.OPR_VALUE IS 'Parameter value';
 CREATE TABLE ESQ_ROLE
  (ROLE_PK INT NOT NULL
  ,ROLE_NAME VARCHAR(32) NOT NULL
+ ,ROLE_ADMIN_FLG VARCHAR(1) NOT NULL
  ,ROLE_DESC VARCHAR(100)
  );
 
 COMMENT ON TABLE ESQ_ROLE IS 'User roles';
 COMMENT ON COLUMN ESQ_ROLE.ROLE_PK IS 'Role primary key';
 COMMENT ON COLUMN ESQ_ROLE.ROLE_NAME IS 'Unique role name in upper case';
+COMMENT ON COLUMN ESQ_ROLE.ROLE_ADMIN_FLG IS 'Y/N flag, indicates set of admin permissions, only one admin role can be assigned to user';
 COMMENT ON COLUMN ESQ_ROLE.ROLE_DESC IS 'Role description';
 
 

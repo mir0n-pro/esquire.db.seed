@@ -41,14 +41,15 @@ BEGIN
     DELETE FROM esq_permission;
 --                       aID, aType, aEntityType,  aName,                          aDesc)
     CALL temp_permission (   0,   0,           0,  'System',                       'Admin: System functions');
-    CALL temp_permission (  10,   0,          10,  'Orgranization',                'Admin: Organization unit functions');
-    CALL temp_permission (  12,   0,          12,  'Client',                       'Admin: Client functions');
-    CALL temp_permission (  14,   0,          14,  'Merchant',                     'Admin: Merchant functions');
-    CALL temp_permission (  16,   0,          16,  'Admin',                        'Admin: Admin functions');
-    CALL temp_permission (  18,   0,          18,  'Client Account',               'Admin: Client Account functions');
-    CALL temp_permission (  20,   0,          20,  'Merchant Account',             'Admin: Merchant Account functions');
-    CALL temp_permission (  22,   0,          22,  'Paper Client Account',         'Admin: Paper Client Account functions');
-    CALL temp_permission ( 100,   1,        NULL,  'Esquire Tree',                  'Runs Esquire tree interface');
+    CALL temp_permission (  20,   0,          20,  'Orgranization',                'Admin: Organization unit functions');
+    CALL temp_permission (  30,   0,          30,  'SysAdmin',                     'SysAdmin: Admin functions');
+    CALL temp_permission (  32,   0,          32,  'Admin',                        'Admin: Admin functions');
+    CALL temp_permission (  34,   0,          34,  'Client',                       'Admin: Client functions');
+    CALL temp_permission (  36,   0,          36,  'Merchant',                     'Admin: Merchant functions');
+    CALL temp_permission (  50,   0,          50,  'Client Account',               'Admin: Client Account functions');
+    CALL temp_permission (  52,   0,          52,  'Merchant Account',             'Admin: Merchant Account functions');
+    CALL temp_permission (  54,   0,          54,  'Paper Client Account',         'Admin: Paper Client Account functions');
+    CALL temp_permission ( 100,   1,        NULL,  'Esquire Tree',                 'Runs Esquire tree interface');
 
     
     

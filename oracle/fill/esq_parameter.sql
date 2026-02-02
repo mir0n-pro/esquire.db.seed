@@ -71,14 +71,15 @@ COMMIT;
 BEGIN
 
     --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite,  aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat,  aPersonal
-    temp_parameter( 'DB_NAME',    'Database name',   0,           'string',  'DB Name',   1,           2,       1,       'Database name'
-                                                                                                                                        , NULL,         'N',      NULL,        NULL,        NULL,   NULL);
-    temp_parameter( 'DB_VERSION', 'Database version',0,           'string',  'DB Version',1,           2,       2,       'Database version'
-                                                                                                                                        , NULL,         'N',      NULL,        NULL,        NULL,   NULL);
+    --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite, aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat, aPersonal
+    temp_parameter( 'DB_NAME',    'Database name',   0,           'string',  'DB Name',   1,     2,       1,       'Database name'
+                                                                                                                                     , NULL,     'N',      NULL,        NULL,        NULL,        NULL);
+    temp_parameter( 'DB_VERSION', 'Database version',0,           'string',  'DB Version',1,     2,       2,       'Database version'
+                                                                                                                                     , NULL,     'N',      NULL,        NULL,        NULL,        NULL);
     temp_parameter( 'Example', 'Custom organization parameter example'
-                                                    ,10,           'string', 'Example',   3,           2,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL,   NULL);
+                                                         ,20,           'string', 'Example',   3,     2,       1,       'An example' , NULL,     'Y',      NULL,        NULL,        NULL,        NULL);
     temp_parameter( 'Example', 'Custom client parameter example'
-                                                    ,12,           'string', 'Example',   3,           2,       1,       'An example'   , NULL,         'Y',      NULL,        NULL,        NULL,    'Y');
+                                                         ,34,           'string', 'Example',   3,     2,      1,       'An example'  , NULL,     'Y',      NULL,        NULL,        NULL,         'Y');
 
 END;
 /

@@ -568,6 +568,7 @@ PROMPT Creating Table 'ESQ_ROLE'
 CREATE TABLE ESQ_ROLE
  (ROLE_PK NUMBER(5,0) NOT NULL
  ,ROLE_NAME VARCHAR2(32) NOT NULL
+ ,ROLE_ADMIN_FLG VARCHAR2(1) NOT NULL
  ,ROLE_DESC VARCHAR2(100)
  )
 /
@@ -576,6 +577,8 @@ COMMENT ON TABLE ESQ_ROLE IS 'User roles'
 COMMENT ON COLUMN ESQ_ROLE.ROLE_PK IS 'Role primary key'
 /
 COMMENT ON COLUMN ESQ_ROLE.ROLE_NAME IS 'Unique role name in upper case'
+/
+COMMENT ON COLUMN ESQ_ROLE.ROLE_ADMIN_FLG IS 'Y/N flag, indicates set of admin permissions, only one admin role can be assigned to user'
 /
 COMMENT ON COLUMN ESQ_ROLE.ROLE_DESC IS 'Role description'
 /

@@ -1,4 +1,10 @@
 
+02/02/2026 Refactoring: added sysadmin
+   - added sysadmin, Sys admins
+   - reserved places in entity type enumeration for easy expanding
+   - added ESQ_ROLE.ROLE_ADMIN_FLG: to help Access Profile dialog with user roles management
+   - ERD doc updated
+
 02/01/2026 Permissions corrected
   Permissions corrected: Create,Update,Delete,Auth,Acct 
 
