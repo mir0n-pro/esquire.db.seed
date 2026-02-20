@@ -1,4 +1,13 @@
-oracle seed changes
+postgres seed changes
+
+02/19/2026 Audit columns and schema refactoring
+create\tables.tab
+   - ESQ_ADDRESS: AD_EMAIL, AD_PHONE, AD_PHONE2 moved to ESQ_PERSON
+   - ESQ_PERSON: PE_EMAIL, PE_PHONE, PE_PHONE2 added (moved from ESQ_ADDRESS)
+   - Audit columns (*_CRL_ID, *_REQ_ID, *_UID) added to:
+       ESQ_ADDRESS, ESQ_BANK_INFO, ESQ_PERSON, ESQ_USER, ESQ_AUTH,
+       ESQ_ORG, ESQ_ACCOUNT, ESQ_USR_PAR, ESQ_ORG_PAR
+
 
 02/02/2026 Refactoring
    - added sysadmin, Sys admins
