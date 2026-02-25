@@ -1,4 +1,8 @@
 
+02/24/2026 Audit log tables and triggers
+   - Applies to both Oracle and Postgres branches
+   - ERD doc updated
+
 02/19/2026 Audit columns and schema refactoring
    - Audit columns (*_CRL_ID, *_REQ_ID, *_UID) added to all major tables
      to support correlation/request tracking on every write operation

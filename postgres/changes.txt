@@ -1,5 +1,24 @@
 postgres seed changes
 
+02/24/2026 Audit log tables and BRIUD triggers added
+create\tables.tab
+   - ESQ_USER: USR_REG_OPTION made nullable
+   - Audit log tables added: ESQ_USER_LOG, ESQ_ADDRESS_LOG, ESQ_BANK_INFO_LOG,
+       ESQ_PERSON_LOG, ESQ_AUTH_LOG, ESQ_ORG_LOG, ESQ_ACCOUNT_LOG,
+       ESQ_USR_PAR_LOG, ESQ_ORG_PAR_LOG
+create\all.sql
+   - Triggers creation section added
+added triggers\all.sql
+added triggers\esq_user_briud.sql
+added triggers\esq_address_briud.sql
+added triggers\esq_bank_info_briud.sql
+added triggers\esq_person_briud.sql
+added triggers\esq_auth_briud.sql
+added triggers\esq_org_briud.sql
+added triggers\esq_account_briud.sql
+added triggers\esq_usr_par_briud.sql
+added triggers\esq_org_par_briud.sql
+
 02/19/2026 Audit columns and schema refactoring
 create\tables.tab
    - ESQ_ADDRESS: AD_EMAIL, AD_PHONE, AD_PHONE2 moved to ESQ_PERSON

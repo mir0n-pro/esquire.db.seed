@@ -8,7 +8,7 @@
 --
 -----------------------------------
 -- History:
---  
+-- 02/24/2026 mir0n Triggers creation section added
 
 \set QUIET 1
 \set VERBOSITY terse
@@ -38,6 +38,10 @@ SET client_min_messages = 'info';
 \echo -n '----- Sequencies creation ----- \n'
 \qecho -n '----- Sequencies creation ----- \n'
 \i tables.sqs
+
+\echo -n '----- Triggers creation ----- \n'
+\qecho -n '----- Triggers creation ----- \n'
+\i ../triggers/all.sql
 
 --\w buffer.list
 \o
