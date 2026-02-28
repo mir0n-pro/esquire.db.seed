@@ -7,6 +7,8 @@
 -- desc:	Check constraints
 --
 -- 01/14/2026 mir0n ESQ_USR_PRM table removed
+-- 02/28/2026 mir0n ESQ_PE_KIND_CC check constraint on ESQ_PERSON commented out
+--                  (PE_KIND changed to numeric type)
 -----------------------------------
 
 
@@ -24,9 +26,9 @@ ALTER TABLE ESQ_AUTH
 ALTER TABLE ESQ_ACCOUNT
  ADD CONSTRAINT ESQ_ACC_STATUS_CC CHECK (ACC_STATUS IN ('O','L','C'));
  
-\echo -n Creating Check Constraint on 'ESQ_PERSON\n'
-ALTER TABLE ESQ_PERSON
- ADD CONSTRAINT ESQ_PE_KIND_CC CHECK (PE_KIND IN ('P','S','J'));
+-- echo -n Creating Check Constraint on 'ESQ_PERSON\n'
+-- ALTER TABLE ESQ_PERSON
+-- ADD CONSTRAINT ESQ_PE_KIND_CC CHECK (PE_KIND IN ('P','S','J'));
  
 \echo -n Creating Check Constraint on 'ESQ_ENTITY_TYPE\n'
 ALTER TABLE ESQ_ENTITY_TYPE

@@ -1,4 +1,4 @@
-|![Alt text](./favicon.ico)|Esquire Frameworks™ 2.0|
+|![Alt text](./favicon.ico)|Esquire Frameworks(tm) 2.0|
 |:-|:-|
 
 The frameworks to organize business entities in a tree, any kind of business or activity. 

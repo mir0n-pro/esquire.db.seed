@@ -1,4 +1,10 @@
 
+02/28/2026 ESQ_PERSON.PE_KIND numeric type; address and person seed data
+   - ESQ_PERSON.PE_KIND changed from character ('P','S','J') to numeric (992, 994, 996)
+   - ESQ_ADDRESS and ESQ_PERSON seed data added for all initial users
+   - Applies to both Oracle and Postgres branches
+   - ERD doc updated
+
 02/24/2026 Audit log tables and triggers
    - Applies to both Oracle and Postgres branches
    - ERD doc updated

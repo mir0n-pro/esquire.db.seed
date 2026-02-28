@@ -1,5 +1,17 @@
 postgres seed changes
 
+02/28/2026 ESQ_PERSON.PE_KIND numeric type + address/person seed data
+create\tables.tab
+   - ESQ_PERSON.PE_KIND: VARCHAR(1) DEFAULT 'P' -> INT DEFAULT 992
+   - ESQ_PERSON_LOG.PEL_KIND: VARCHAR(1) -> INT
+create\tables.cc
+   - ESQ_PE_KIND_CC check constraint on ESQ_PERSON commented out
+fill\delete.sql
+   - esq_address and esq_person deletes added
+fill\initial-entities.sql
+   - esq_person inserts added for all seed users
+   - esq_address inserts added for merchant and client
+
 02/24/2026 Audit log tables and BRIUD triggers added
 create\tables.tab
    - ESQ_USER: USR_REG_OPTION made nullable

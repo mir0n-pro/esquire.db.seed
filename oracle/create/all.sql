@@ -8,7 +8,7 @@
 --
 -----------------------------------
 -- History:
---  
+-- 02/28/2026 mir0n Triggers creation section added
 
 SPOOL create.list
 -- Deletion
@@ -23,5 +23,7 @@ SPOOL create.list
 @@tables.sqs
 -- Views creation
 -- @@views.sql
+-- Triggers creation
+@@../triggers/all.sql
 
 SPOOL OFF

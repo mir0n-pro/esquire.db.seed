@@ -1,8 +1,21 @@
+-----------------------------------
+-- project:	Esquire
+-- version:	2.0
+-- Copyright (c) Miron 2000, 2001, 2025
+--
+-- file :	fill/delete.sql
+-- desc:	Delete fill data
+--
+-- History:
+-- 02/28/2026 mir0n esq_address and esq_person deletes added
+-----------------------------------
   DROP TABLE ESQ_TREE;
   DELETE FROM esq_account;
   DELETE FROM esq_usr_par;
   DELETE FROM esq_usr_role;
   DELETE FROM esq_auth;
+  DELETE FROM esq_address;
+  DELETE FROM esq_person;
   DELETE FROM esq_user;
   DELETE FROM esq_org_par;
   DELETE FROM esq_org;
