@@ -9,6 +9,7 @@
 -- 01/14/2026 mir0n ESQ_USR_PRM table removed
 -- 02/28/2026 mir0n ESQ_PE_KIND_CC check constraint on ESQ_PERSON commented out
 --                  (PE_KIND changed to numeric type)
+-- 03/03/2026 mir0n ESQ_PAR_TYPE_CC: 'integer' removed; 'text', 'date' added
 -----------------------------------
 
 
@@ -54,7 +55,7 @@ ALTER TABLE ESQ_PARAMETER
  ADD (CONSTRAINT ESQ_PAR_READWRITE_CC CHECK (PAR_READWRITE IN (0,1,3)))
 /
 ALTER TABLE ESQ_PARAMETER
- ADD (CONSTRAINT ESQ_PAR_TYPE_CC CHECK (PAR_TYPE IN ('string','flag','integer','number','datetime', 'tablist', 'tabstring', 'href', 'image' )))
+ ADD (CONSTRAINT ESQ_PAR_TYPE_CC CHECK (PAR_TYPE IN ('string','text','flag','number','date', 'datetime', 'tablist', 'tabstring', 'href', 'image' )))
 /
 ALTER TABLE ESQ_PARAMETER
  ADD (CONSTRAINT PAR_NULLABLE_FLG_CC CHECK (PAR_NULLABLE_FLG IN ('Y','N')))

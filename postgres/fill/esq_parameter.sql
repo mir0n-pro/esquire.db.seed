@@ -8,7 +8,7 @@
 --
 -----------------------------------
 -- History:
---
+-- 03/03/2026 mir0n PAR_LAYER corrected for entity type 34 (Client example param: 2->3)
 
 CREATE OR REPLACE PROCEDURE temp_parameter  (
     aName  varchar,
@@ -68,7 +68,7 @@ END $$;
 
 DO $$
 BEGIN
-		DELETE FROM esq_parameter;
+    DELETE FROM esq_parameter;
     --              aName,        aDesc,             aEntityType,  aType,    aLabel,      aReadwrite, aLayer, aSort, aTolltip,    aNullmeaning, aNullable, aValidation, aListvalues, aFormat, aPersonal
     CALL temp_parameter( 'DB_NAME',    'Database name',   0,           'string',  'DB Name',   1,     2,       1,       'Database name'
                                                                                                                                      , NULL,     'N',      NULL,        NULL,        NULL,        NULL);
@@ -77,7 +77,7 @@ BEGIN
     CALL temp_parameter( 'Example', 'Custom organization parameter example'
                                                          ,20,           'string', 'Example',   3,     2,       1,       'An example' , NULL,     'Y',      NULL,        NULL,        NULL,        NULL);
     CALL temp_parameter( 'Example', 'Custom client parameter example'
-                                                    ,34,                'string', 'Example',   3,     2,      1,       'An example'  , NULL,     'Y',      NULL,        NULL,        NULL,         'Y');
+                                                    ,34,                'string', 'Example',   3,     3,      1,       'An example'  , NULL,     'Y',      NULL,        NULL,        NULL,         'Y');
 		COMMIT;
 END $$;
 

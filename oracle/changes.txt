@@ -1,5 +1,21 @@
 oracle seed changes
 
+03/03/2026 ESQ_ROLE.ROLE_ADMIN_FLG replaced by ROLE_PT_PK; permission type IDs aligned
+create\tables.tab
+   - ESQ_ROLE: ROLE_ADMIN_FLG VARCHAR2(1) replaced by ROLE_PT_PK NUMBER NOT NULL
+     (FK reference to ESQ_PERMISSION_TYPE; 980: Admin, 982: Tools)
+create\tables.cc
+   - ESQ_PAR_TYPE_CC: 'integer' removed; 'text', 'date' added
+create\tables.pfi
+   - ESQ_ROLE_PT_FK added (ROLE_PT_PK -> ESQ_PERMISSION_TYPE)
+   - ESQ_ROLE_PT_FK_I index added
+fill\esq_role.sql
+   - role_admin_flg -> role_pt_pk (980: Admin, 982: Tools)
+fill\esq_permission_type.sql
+   - IDs aligned with esq-object-kinds: 0->980 (Admin), 1->982 (Tools)
+fill\esq_permission.sql
+   - permission type refs updated: 0->980 (Admin), 1->982 (Tools)
+
 02/28/2026 ESQ_PERSON.PE_KIND numeric type + address/person seed data
 create\all.sql
    - Triggers creation section added

@@ -10,6 +10,8 @@
 --                  ESQ_USER.USR_EMAIL unique index added
 --                  ESQ_PERMISSION.PRM_ET_USR_FK field removed
 --                  ESQ_ROLE table added with many-to-many references
+-- 03/03/2026 mir0n ESQ_ROLE_PT_FK added (ROLE_PT_PK -> ESQ_PERMISSION_TYPE)
+--                  ESQ_ROLE_PT_FK_I index added
 -----------------------------------
   
 PROMPT Creating Primary Key on 'ESQ_ADDRESS'
@@ -318,6 +320,16 @@ CREATE INDEX ESQ_PRM_PT_FK_I ON ESQ_PERMISSION
   (PRM_PT_PK)
 /
 
+PROMPT Creating Foreign Keys on 'ESQ_ROLE_PT'
+ALTER TABLE ESQ_ROLE ADD CONSTRAINT
+ ESQ_ROLE_PT_FK FOREIGN KEY 
+  (ROLE_PT_PK) REFERENCES ESQ_PERMISSION_TYPE
+  (PT_PK)
+/  
+PROMPT Creating Index 'ESQ_ROLE_PT_FK_I'
+CREATE INDEX ESQ_ROLE_PT_FK_I ON ESQ_ROLE
+  (ROLE_PT_PK)
+/  
 
 PROMPT Creating Primary Key on 'ESQ_ROLE'
 ALTER TABLE ESQ_ROLE

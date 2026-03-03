@@ -11,6 +11,7 @@
 --
 -- 01/14/2026 mir0n ESQ_PERMISSION.PRM_ET_PK_USR removed
 --                  generalized format of permission id
+-- 03/03/2026 mir0n permission type refs updated: 0->980 (Admin), 1->982 (Tools)
 
 CREATE OR REPLACE PROCEDURE temp_permission (aID IN NUMBER,
     aType       IN NUMBER,
@@ -41,16 +42,16 @@ BEGIN
 
 
 --                  aID, aType, aEntityType,  aName,                          aDesc)
-  temp_permission (   0,   0,           0,  'System',                       'Admin: System functions');
-  temp_permission (  20,   0,          20,  'Orgranization',                'Admin: Organization unit functions');
-  temp_permission (  30,   0,          30,  'SysAdmin',                     'SysAdmin: Admin functions');
-  temp_permission (  32,   0,          32,  'Admin',                        'Admin: Admin functions');
-  temp_permission (  34,   0,          34,  'Client',                       'Admin: Client functions');
-  temp_permission (  36,   0,          36,  'Merchant',                     'Admin: Merchant functions');
-  temp_permission (  50,   0,          50,  'Client Account',               'Admin: Client Account functions');
-  temp_permission (  52,   0,          52,  'Merchant Account',             'Admin: Merchant Account functions');
-  temp_permission (  54,   0,          54,  'Paper Client Account',         'Admin: Paper Client Account functions');
-  temp_permission ( 100,   1,        NULL,  'Esquire Tree',                 'Runs Esquire tree interface');
+  temp_permission (   0,   980,           0,  'System',                       'Admin: System functions');
+  temp_permission (  20,   980,          20,  'Orgranization',                'Admin: Organization unit functions');
+  temp_permission (  30,   980,          30,  'SysAdmin',                     'SysAdmin: Admin functions');
+  temp_permission (  32,   980,          32,  'Admin',                        'Admin: Admin functions');
+  temp_permission (  34,   980,          34,  'Client',                       'Admin: Client functions');
+  temp_permission (  36,   980,          36,  'Merchant',                     'Admin: Merchant functions');
+  temp_permission (  50,   980,          50,  'Client Account',               'Admin: Client Account functions');
+  temp_permission (  52,   980,          52,  'Merchant Account',             'Admin: Merchant Account functions');
+  temp_permission (  54,   980,          54,  'Paper Client Account',         'Admin: Paper Client Account functions');
+  temp_permission ( 100,   982,        NULL,  'Esquire Tree',                 'Runs Esquire tree interface');
 
 
 END;

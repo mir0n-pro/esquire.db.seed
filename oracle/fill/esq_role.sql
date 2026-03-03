@@ -8,13 +8,13 @@
 --
 -----------------------------------
 -- History:
---
+-- 03/03/2026 mir0n role_admin_flg -> role_pt_pk (980: Admin, 982: Tools)
 
 -----------------------------------
 PROMPT SYSADMIN
 -----------------------------------
-    INSERT INTO esq_role (role_pk,    role_name, role_admin_flg, role_desc) 
-           VALUES       (      1,  'SYSADMIN', 'Y', 'System administrator role');
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
+           VALUES       (      1,  'SYSADMIN', 980, 'System administrator role');
            
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         1,        30);
@@ -55,8 +55,8 @@ PROMPT SYSADMIN
 -----------------------------------
 PROMPT SUPERVIZOR 
 -----------------------------------
-    INSERT INTO esq_role (role_pk,    role_name, role_admin_flg, role_desc) 
-           VALUES       (      2,  'SUPERVIZOR', 'Y', 'Supervizor role');
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
+           VALUES       (      2,  'SUPERVIZOR', 980, 'Supervizor role');
            
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         2,        32);
@@ -91,8 +91,8 @@ PROMPT SUPERVIZOR
 -----------------------------------
 PROMPT MANAGER
 -----------------------------------
-    INSERT INTO esq_role (role_pk,    role_name, role_admin_flg, role_desc) 
-           VALUES        (      3,    'MANAGER', 'Y', 'Office manager role');
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
+           VALUES        (      3,    'MANAGER', 980, 'Office manager role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         3,        32);
     -- update, create, delete, security,accounting
@@ -122,8 +122,8 @@ PROMPT MANAGER
 -----------------------------------
 PROMPT OPERATOR
 -----------------------------------
-    INSERT INTO esq_role (role_pk,    role_name, role_admin_flg, role_desc) 
-           VALUES        (      4,    'OPERATOR', 'Y', 'Office operator role');
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
+           VALUES        (      4,    'OPERATOR', 980, 'Office operator role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         4,        32);
     -- update, create, delete, security,accounting
@@ -153,8 +153,8 @@ PROMPT OPERATOR
 -----------------------------------
 PROMPT SUPPORT
 -----------------------------------
-    INSERT INTO esq_role (role_pk,    role_name, role_admin_flg, role_desc) 
-           VALUES       (      5,     'SUPPORT', 'Y', 'Customer support role');
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
+           VALUES       (      5,     'SUPPORT', 980, 'Customer support role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         5,        32);
     -- update, create, delete, security,accounting
@@ -184,8 +184,8 @@ PROMPT SUPPORT
 -----------------------------------
 PROMPT CLIENT
 -----------------------------------
-    INSERT INTO esq_role (role_pk,    role_name, role_admin_flg, role_desc) 
-           VALUES       (      6,     'CLIENT', 'Y', 'Client role');
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
+           VALUES       (      6,     'CLIENT', 980, 'Client role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         6,        34);
     -- Paper Clinet Account
@@ -196,8 +196,8 @@ PROMPT CLIENT
 -----------------------------------
 PROMPT MERCHANT
 -----------------------------------
-    INSERT INTO esq_role (role_pk,    role_name, role_admin_flg, role_desc) 
-           VALUES       (      7,     'MERCHANT', 'Y', 'Merchant role');
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
+           VALUES       (      7,     'MERCHANT', 980, 'Merchant role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         7,        36);
     -- Paper Account
@@ -208,8 +208,8 @@ PROMPT MERCHANT
 -----------------------------------
 PROMPT TREE
 -----------------------------------
-    INSERT INTO esq_role (role_pk,    role_name, role_admin_flg, role_desc) 
-           VALUES       (      8,        'TREE', 'N', 'Use of Esquire api');
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
+           VALUES       (      8,        'TREE', 982, 'Use of Esquire explorer api');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         8,        30);
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 

@@ -9,6 +9,7 @@
 -----------------------------------
 -- History:
 -- 01/14/2026 mir0n generalized format of permission type
+-- 03/03/2026 mir0n IDs aligned with esq-object-kinds: 0->980 (Admin), 1->982 (Tools)
 
 CREATE OR REPLACE PROCEDURE temp_permission_type (
     aID     IN integer,
@@ -34,10 +35,10 @@ DO $$
 BEGIN
 	DELETE FROM esq_permission_type;
 
-    CALL temp_permission_type ( 0,      'Admin', 'Entity functions');
-    CALL temp_permission_type ( 1,     'Tools',  'Tools avialable'); 
-    CALL temp_permission_type ( 2,      'Apps', 'Applications permitted');
---	CALL temp_permission_type ( 3,	'Reports',  'Report avialable');
+    CALL temp_permission_type ( 980,      'Admin', 'Entity functions');
+    CALL temp_permission_type ( 982,     'Tools',  'Tools avialable'); 
+--  CALL temp_permission_type ( 984,      'Apps', 'Applications permitted');
+--	CALL temp_permission_type ( 986,	'Reports',  'Report avialable');
 	COMMIT;
 END $$;
 
