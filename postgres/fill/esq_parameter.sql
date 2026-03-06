@@ -9,6 +9,7 @@
 -----------------------------------
 -- History:
 -- 03/03/2026 mir0n PAR_LAYER corrected for entity type 34 (Client example param: 2->3)
+-- 03/06/2026 mir0n Example param (entity kind 34): PAR_NULLABLE 'Y' -> 'N' (field is required)
 
 CREATE OR REPLACE PROCEDURE temp_parameter  (
     aName  varchar,
@@ -77,7 +78,7 @@ BEGIN
     CALL temp_parameter( 'Example', 'Custom organization parameter example'
                                                          ,20,           'string', 'Example',   3,     2,       1,       'An example' , NULL,     'Y',      NULL,        NULL,        NULL,        NULL);
     CALL temp_parameter( 'Example', 'Custom client parameter example'
-                                                    ,34,                'string', 'Example',   3,     3,      1,       'An example'  , NULL,     'Y',      NULL,        NULL,        NULL,         'Y');
+                                                    ,34,                'string', 'Example',   3,     3,      1,       'An example'  , NULL,     'N',      NULL,        NULL,        NULL,         'Y');
 		COMMIT;
 END $$;
 

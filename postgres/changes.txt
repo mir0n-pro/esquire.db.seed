@@ -1,5 +1,12 @@
 postgres seed changes
 
+03/06/2026 Balance precision fix; Example custom field made required
+create\tables.tab
+   - ESQ_ACCOUNT.ACC_BALANCE: NUMERIC(3) -> NUMERIC(16,3)
+   - ESQ_ACCOUNT_LOG.ACCL_BALANCE: NUMERIC(3) -> NUMERIC(16,3)
+fill\esq_parameter.sql
+   - Example custom field (entity kind 34): PAR_NULLABLE 'Y' -> 'N' (field is required)
+
 03/03/2026 ESQ_ROLE.ROLE_ADMIN_FLG replaced by ROLE_PT_PK; permission type IDs aligned
 create\tables.tab
    - ESQ_ROLE: ROLE_ADMIN_FLG VARCHAR(1) replaced by ROLE_PT_PK INT NOT NULL
