@@ -25,5 +25,7 @@ SPOOL create.list
 -- @@views.sql
 -- Triggers creation
 @@../triggers/all.sql
+-- Word index
+@@word_index.sql
 
 SPOOL OFF

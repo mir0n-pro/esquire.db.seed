@@ -43,6 +43,10 @@ SET client_min_messages = 'info';
 \qecho -n '----- Triggers creation ----- \n'
 \i ../triggers/all.sql
 
+\echo -n '----- Word index ----- \n'
+\qecho -n '----- Word index ----- \n'
+\i word_index.sql
+
 --\w buffer.list
 \o
 \set QUIET 0

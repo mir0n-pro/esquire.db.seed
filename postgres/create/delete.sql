@@ -40,5 +40,11 @@ BEGIN
         EXECUTE 'DROP SEQUENCE IF EXISTS ' || quote_ident(r.sequencename) ;
     END LOOP;
 END $$;
+
+\echo -n 'Drop word-index functions\n'
+\qecho -n 'Drop word-index functions\n'
+DROP FUNCTION IF EXISTS esq_word_index_fn() CASCADE;
+DROP FUNCTION IF EXISTS esq_word_index_attach_triggers() CASCADE;
+DROP FUNCTION IF EXISTS esq_word_search(VARCHAR) CASCADE;
 --\set QUIET 0
  
