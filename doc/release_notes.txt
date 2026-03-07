@@ -1,4 +1,12 @@
 
+03/07/2026 Word index system for full-text search
+   - ESQ_WORD_INDEX: unique word dictionary table
+   - ESQ_WORD_INDEX_REF: links words to source rows with entity type context
+     (WIR_ID_NAME, WIR_ID_PK, WIR_ET_NAME, WIR_ET_PK)
+   - Auto-attach triggers only to tables with *_ET_PK column (ESQ_USER, ESQ_ORG, ESQ_ACCOUNT, ESQ_PARAMETER)
+   - esq_word_search: prefix search helper function
+   - Applies to both Oracle and Postgres branches
+
 03/06/2026 Account balance precision fix; custom field validation
 
 03/03/2026 ESQ_ROLE: ROLE_ADMIN_FLG replaced by ROLE_PT_PK; permission type IDs aligned
