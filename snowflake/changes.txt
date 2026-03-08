@@ -1,0 +1,19 @@
+snowflake seed changes
+
+03/08/2026 Snowflake version created from PostgreSQL source
+   - Initial Snowflake DB setup based on PostgreSQL schema
+   - Data types mapped: BIGINT -> NUMBER(16,0), INT -> NUMBER(10,0),
+       SMALLINT -> NUMBER(5,0), TIMESTAMP -> TIMESTAMP_NTZ,
+       UUID -> VARCHAR(36) with UUID_STRING()
+   - PostgreSQL triggers replaced by Snowflake Streams + Tasks for CDC audit logging
+   - Word index: PL/pgSQL trigger functions replaced by stored procedure
+       ESQ_WORD_INDEX_REINDEX() (call manually or schedule via Task)
+   - Word search: esq_word_search() implemented as Snowflake SQL UDF
+       Usage: SELECT * FROM TABLE(ESQ_WORD_SEARCH('prefix'))
+   - Foreign keys are informational only in Snowflake (not enforced)
+   - Check constraints created for documentation (not enforced by Snowflake)
+   - Indexes not created (Snowflake uses automatic micro-partitioning)
+   - SnowSQL script format: !source for includes, SELECT for status messages
+   - Tree build procedure uses Snowflake Scripting (SQL) with cursors and recursive CTEs
+   - precreate/user.sql: Creates warehouse, database, schema, role, and user
+   - streams/resume_tasks.sql: Helper script to activate all audit log tasks

@@ -1,0 +1,25 @@
+-----------------------------------
+-- project:	Esquire
+-- version:	1.0
+-- Copyright (c) Miron 2000, 2001, 2025
+--
+-- file :	create/tables.sqs
+-- desc:	Sequences (Snowflake)
+--
+-- 03/08/2026 Snowflake version created
+-----------------------------------
+
+SELECT 'Creating Sequence ESQ_ENTITY_SEQ' AS status;
+CREATE SEQUENCE ESQ_ENTITY_SEQ
+ INCREMENT BY 1
+ START WITH 100;
+
+SELECT 'Creating Sequence ESQ_REF_SEQ' AS status;
+CREATE SEQUENCE ESQ_REF_SEQ
+ INCREMENT BY 1
+ START WITH 1;
+
+SELECT 'Creating Sequence ESQ_ATR_SEQ' AS status;
+CREATE SEQUENCE ESQ_ATR_SEQ
+ INCREMENT BY 1
+ START WITH 1;
