@@ -1,5 +1,7 @@
 postgres seed changes
 
+03/08/2026 personal custom parameter test case
+
 03/06/2026 Balance precision fix; Example custom field made required
 create\tables.tab
    - ESQ_ACCOUNT.ACC_BALANCE: NUMERIC(3) -> NUMERIC(16,3)

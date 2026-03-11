@@ -1,5 +1,7 @@
 oracle seed changes
 
+03/08/2026 personal custom parameter test case
+
 03/03/2026 ESQ_ROLE.ROLE_ADMIN_FLG replaced by ROLE_PT_PK; permission type IDs aligned
 create\tables.tab
    - ESQ_ROLE: ROLE_ADMIN_FLG VARCHAR2(1) replaced by ROLE_PT_PK NUMBER NOT NULL

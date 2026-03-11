@@ -9,6 +9,7 @@
 -----------------------------------
 -- History:
 -- 02/28/2026 mir0n PAR_LAYER corrected for entity type 34 'Example' parameter
+-- 03/08/2026 mir0n personal custom parameter test case
 
 CREATE OR REPLACE PROCEDURE temp_parameter  (
     aName  IN VARCHAR2,
@@ -79,7 +80,9 @@ BEGIN
     temp_parameter( 'Example', 'Custom organization parameter example'
                                                          ,20,           'string', 'Example',   3,     2,       1,       'An example' , NULL,     'Y',      NULL,        NULL,        NULL,        NULL);
     temp_parameter( 'Example', 'Custom client parameter example'
-                                                         ,34,           'string', 'Example',   3,     3,      1,       'An example'  , NULL,     'Y',      NULL,        NULL,        NULL,         'Y');
+                                                    ,34,                'string', 'Example',   3,     3,      1,       'An example'  , NULL,     'N',      NULL,        NULL,        NULL,         'N');
+    temp_parameter( 'P_Example', 'Custom personal client parameter example'
+                                                    ,34,                'string', 'Example(P)',   3,     3,      2,       'A personal example'  , NULL,     'N',      NULL,        NULL,        NULL,         'Y');
 
 END;
 /

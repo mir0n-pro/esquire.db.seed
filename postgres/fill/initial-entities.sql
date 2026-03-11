@@ -11,6 +11,7 @@
 -- 01/14/2026 mir0n follow up to ERD modifications
 -- 02/28/2026 mir0n esq_person inserts added for all seed users
 --                  esq_address inserts added for merchant and client
+-- 03/08/2026 mir0n personal custom parameter test case
 
 \echo -n 'Inital organizations\n'
 \qecho -n 'Inital organizations\n'
@@ -160,7 +161,9 @@ BEGIN
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email) 
        VALUES(10, 'N', 'N',        'client', 'mir0n.the.programmer.10@gmail.com');
 	INSERT INTO esq_usr_par (upr_usr_pk, upr_par_name, upr_par_et_pk, upr_value) 
-       VALUES           (10,         'Example',     34,           'Example for Esquire');
+       VALUES           (10,         'Example',     34,           'Non-personal example');
+	INSERT INTO esq_usr_par (upr_usr_pk, upr_par_name, upr_par_et_pk, upr_value) 
+       VALUES           (10,         'P_Example',     34,           'Personal example');
        
 	INSERT INTO esq_address (ad_pk, ad_addr, ad_city, ad_country, ad_desc) 
        VALUES( 3, 'Street', 'City','Country', 'Postal address');
