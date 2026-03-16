@@ -1,4 +1,6 @@
 
+03/16/2026 TOTP pending-disable state
+
 03/06/2026 Account balance precision fix; custom field validation
 
 03/03/2026 ESQ_ROLE: ROLE_ADMIN_FLG replaced by ROLE_PT_PK; permission type IDs aligned

@@ -1,5 +1,9 @@
 oracle seed changes
 
+03/16/2026 ESQ_AU_TFA_METHOD_CC: 'n' added for TOTP pending-disable state
+create\tables.cc
+   - ESQ_AU_TFA_METHOD_CC: allowed values extended ('N','G','g') -> ('N','n','G','g')
+
 03/08/2026 personal custom parameter test case
 
 03/03/2026 ESQ_ROLE.ROLE_ADMIN_FLG replaced by ROLE_PT_PK; permission type IDs aligned
