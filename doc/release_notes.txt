@@ -1,4 +1,10 @@
 
+03/28/2026 ESQ_PARAMETER PAR_DEFAULT — default value for custom field metadata
+   - ESQ_PARAMETER: PAR_DEFAULT column added (VARCHAR2/VARCHAR 4000)
+   - esq_parameter.sql: aDefault parameter; PAR_DEFAULT in INSERT; defaults for DB_NAME, DB_VERSION, Example fields
+   - Applies to both Oracle and Postgres branches
+   - ESQ.2026.ERD.vsdx up-to-date
+
 03/28/2026 ON DELETE CASCADE on usr/org FKs; address PKs from sequence in seed data; tree removed
    - ESQ_AU_USR_FK, ESQ_PE_USR_FK, ESQ_UPR_USR_FK, UR_USR_FK: ON DELETE CASCADE
      (esq_auth, esq_person, esq_usr_par, esq_usr_role cascade on esq_user delete)

@@ -9,7 +9,7 @@
 -- History:
 -- 02/28/2026 mir0n esq_address and esq_person deletes added
 -----------------------------------
-  DROP TABLE ESQ_TREE;
+rem   DROP TABLE ESQ_TREE;
   DELETE FROM esq_account;
   DELETE FROM esq_usr_par;
   DELETE FROM esq_usr_role;

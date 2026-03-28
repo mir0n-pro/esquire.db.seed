@@ -1,5 +1,12 @@
 postgres seed changes
 
+03/28/2026 ESQ_PARAMETER PAR_DEFAULT — default value for custom field metadata
+create\tables.tab
+   - ESQ_PARAMETER: PAR_DEFAULT VARCHAR(4000) added
+fill\esq_parameter.sql
+   - aDefault parameter added; PAR_DEFAULT included in INSERT column list and VALUES
+   - default values set: DB_NAME='esquire', DB_VERSION='1.0', Example(et34)='default', P_Example(et34)='default'
+
 03/28/2026 ON DELETE CASCADE on usr/org FKs; address PKs from sequence in seed data
 create\tables.pfi
    - ON DELETE CASCADE added to ESQ_AU_USR_FK, ESQ_PE_USR_FK, ESQ_UPR_USR_FK, UR_USR_FK
