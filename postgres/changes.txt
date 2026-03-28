@@ -1,5 +1,14 @@
 postgres seed changes
 
+03/28/2026 ON DELETE CASCADE on usr/org FKs; address PKs from sequence in seed data
+create\tables.pfi
+   - ON DELETE CASCADE added to ESQ_AU_USR_FK, ESQ_PE_USR_FK, ESQ_UPR_USR_FK, UR_USR_FK
+     (esq_auth, esq_person, esq_usr_par, esq_usr_role cascade on esq_user delete)
+   - ON DELETE CASCADE added to ESQ_OPR_ORG_FK (esq_org_par cascades on esq_org delete)
+fill\initial-entities.sql
+   - address PKs use NEXTVAL('ESQ_REF_SEQ') with RETURNING INTO variable; no hardcoded IDs
+"tree" folder removed
+
 03/16/2026 AUTH permission update flags corrected in esq_role
 fill\esq_role.sql
    - AUTH update flag (position 2) corrected from 'Y' to 'N'

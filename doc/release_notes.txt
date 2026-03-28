@@ -1,4 +1,13 @@
 
+03/28/2026 ON DELETE CASCADE on usr/org FKs; address PKs from sequence in seed data; tree removed
+   - ESQ_AU_USR_FK, ESQ_PE_USR_FK, ESQ_UPR_USR_FK, UR_USR_FK: ON DELETE CASCADE
+     (esq_auth, esq_person, esq_usr_par, esq_usr_role cascade on esq_user delete)
+   - ESQ_OPR_ORG_FK: ON DELETE CASCADE (esq_org_par cascades on esq_org delete)
+   - initial-entities.sql: address PKs use sequence (ESQ_REF_SEQ) instead of hardcoded values
+   - Applies to both Oracle and Postgres branches
+   - tree removed (now biz tree exists as a in-memory cache within bizTree service)
+   - added doc/foreingKeys.md
+
 03/16/2026 TOTP pending-disable state
 
 03/06/2026 Account balance precision fix; custom field validation
