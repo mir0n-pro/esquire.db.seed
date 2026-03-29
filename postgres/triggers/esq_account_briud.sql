@@ -25,7 +25,7 @@ BEGIN
           oper
          ,OLD.acc_pk
          ,OLD.acc_et_pk
-         ,OLD.acc_path
+         ,(SELECT ep_path FROM esq_entity_path WHERE ep_pk = OLD.acc_pk)
          ,OLD.acc_id
          ,OLD.acc_balance
          ,OLD.acc_ccy
@@ -60,7 +60,7 @@ BEGIN
           oper
          ,NEW.acc_pk
          ,NEW.acc_et_pk
-         ,NEW.acc_path
+         ,(SELECT ep_path FROM esq_entity_path WHERE ep_pk = NEW.acc_pk)
          ,NEW.acc_id
          ,NEW.acc_balance
          ,NEW.acc_ccy

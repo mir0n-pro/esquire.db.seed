@@ -25,7 +25,7 @@ BEGIN
          ,OLD.usr_pk
          ,OLD.usr_et_pk
          ,OLD.usr_name
-         ,OLD.usr_path
+         ,(SELECT ep_path FROM esq_entity_path WHERE ep_pk = OLD.usr_pk)
          ,OLD.usr_reg_option
          ,OLD.usr_org_pk
          ,OLD.usr_deleted_flg
@@ -58,7 +58,7 @@ BEGIN
          ,NEW.usr_pk
          ,NEW.usr_et_pk
          ,NEW.usr_name
-         ,NEW.usr_path
+         ,(SELECT ep_path FROM esq_entity_path WHERE ep_pk = NEW.usr_pk)
          ,NEW.usr_reg_option
          ,NEW.usr_org_pk
          ,NEW.usr_deleted_flg

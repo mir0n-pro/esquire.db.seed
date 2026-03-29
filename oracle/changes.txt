@@ -1,5 +1,25 @@
 oracle seed changes
 
+03/28/2026 ESQ_ENTITY_PATH — path column extracted to satellite table
+create\tables.tab
+   - ESQ_ENTITY_PATH(EP_PK NUMBER(16,0), EP_PATH VARCHAR2(4000)) table added before ESQ_USER
+   - ESQ_ORG.ORG_PATH, ESQ_USER.USR_PATH, ESQ_ACCOUNT.ACC_PATH columns removed
+create\tables.pfi
+   - ESQ_EP_PK primary key added
+   - ESQ_ORG_EP_FK, ESQ_USR_EP_FK, ESQ_ACC_EP_FK foreign keys added (entity.PK → ESQ_ENTITY_PATH.EP_PK, RESTRICTED)
+fill\root.sql
+   - root org INSERT split: INSERT esq_entity_path(pk=1) first, then INSERT esq_org (without path column)
+fill\initial-entities.sql
+   - all entity INSERTs split: INSERT esq_entity_path first, then entity row (without path column)
+fill\delete.sql
+   - DELETE FROM esq_entity_path added after entity DELETE statements
+triggers\esq_org_briud.sql
+   - :OLD/:NEW.org_path replaced with subquery (SELECT ep_path FROM esq_entity_path WHERE ep_pk = :OLD/:NEW.org_pk)
+triggers\esq_user_briud.sql
+   - :OLD/:NEW.usr_path replaced with subquery (SELECT ep_path FROM esq_entity_path WHERE ep_pk = :OLD/:NEW.usr_pk)
+triggers\esq_account_briud.sql
+   - :OLD/:NEW.acc_path replaced with subquery (SELECT ep_path FROM esq_entity_path WHERE ep_pk = :OLD/:NEW.acc_pk)
+
 03/28/2026 ON DELETE CASCADE on usr/org FKs; address PKs from sequence in seed data
 create\tables.pfi
    - ON DELETE CASCADE added to ESQ_AU_USR_FK, ESQ_PE_USR_FK, ESQ_UPR_USR_FK, UR_USR_FK

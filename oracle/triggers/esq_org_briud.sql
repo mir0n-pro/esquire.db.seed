@@ -24,7 +24,7 @@ BEGIN
          ,:OLD.org_pk
          ,:OLD.org_et_pk
          ,:OLD.org_name
-         ,:OLD.org_path
+         ,(SELECT ep_path FROM esq_entity_path WHERE ep_pk = :OLD.org_pk)
          ,:OLD.org_full_name
          ,:OLD.org_org_pk
          ,:OLD.org_desc
@@ -55,7 +55,7 @@ BEGIN
          ,:NEW.org_pk
          ,:NEW.org_et_pk
          ,:NEW.org_name
-         ,:NEW.org_path
+         ,(SELECT ep_path FROM esq_entity_path WHERE ep_pk = :NEW.org_pk)
          ,:NEW.org_full_name
          ,:NEW.org_org_pk
          ,:NEW.org_desc

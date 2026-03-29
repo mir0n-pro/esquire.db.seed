@@ -1,5 +1,7 @@
-INSERT INTO esq_org (org_pk, org_et_pk,   org_name, org_path,     org_full_name,  org_org_pk, org_desc) 
-       VALUES            (1,         0,  'Esquire',      '1.', 'Esquire System',        NULL,     NULL)
+INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (1, '1.')
+/
+INSERT INTO esq_org (org_pk, org_et_pk,   org_name, org_full_name,  org_org_pk, org_desc)
+       VALUES            (1,         0,  'Esquire', 'Esquire System',        NULL,     NULL)
 /
 
 INSERT INTO esq_org_par (opr_org_pk, opr_par_name, opr_par_et_pk, opr_value) 

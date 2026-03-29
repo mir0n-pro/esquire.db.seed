@@ -1,4 +1,7 @@
 
+03/28/2026 ESQ_ENTITY_PATH — path columns extracted to satellite table; trigger path resolution updated
+   - Applies to both Oracle and Postgres branches
+
 03/28/2026 ESQ_PARAMETER PAR_DEFAULT — default value for custom field metadata
    - ESQ_PARAMETER: PAR_DEFAULT column added (VARCHAR2/VARCHAR 4000)
    - esq_parameter.sql: aDefault parameter; PAR_DEFAULT in INSERT; defaults for DB_NAME, DB_VERSION, Example fields

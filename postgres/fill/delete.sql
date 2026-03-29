@@ -9,9 +9,6 @@
 -- History:
 -- 02/28/2026 mir0n esq_address and esq_person deletes added
 -----------------------------------
-rem \echo -n 'DROP TABLE ESQ_TREE\n'
-rem \qecho -n 'DROP TABLE ESQ_TREE\n'
-rem DROP TABLE IF EXISTS esq_tree;
 
 \echo -n 'Delete all data\n'
 \qecho -n 'Delete all data\n'
@@ -26,6 +23,7 @@ BEGIN
   DELETE FROM esq_person;
   DELETE FROM esq_user;
   DELETE FROM esq_org;
+  DELETE FROM esq_entity_path;
   DELETE FROM esq_role_et;
   DELETE FROM esq_role_prm;
   DELETE FROM esq_role;
