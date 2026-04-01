@@ -20,10 +20,10 @@
 
 DO $$
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (2, '1.2.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (2, 20, '1.2.');
 	INSERT INTO esq_org (org_pk, org_et_pk,     org_name, org_full_name,   org_org_pk,     org_desc)
        VALUES                (2,        20,    'Company', 'Inital company',            1,         NULL);
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (3, '1.2.3.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (3, 20, '1.2.3.');
 	INSERT INTO esq_org (org_pk, org_et_pk,     org_name, org_full_name,   org_org_pk,      org_desc)
        VALUES                (3,        20, 'Department', 'Inital department',           2,          NULL);
 	INSERT INTO esq_org_par (opr_org_pk, opr_par_name, opr_par_et_pk, opr_value) 
@@ -37,7 +37,7 @@ END $$;
 \qecho -n 'Sysadmin\n'
 DO $$
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (4, '1.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (4, 30, '1.');
 	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
        VALUES                 (4,        30,        'System Administrator',           'na',          1,             'N',    NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email) 
@@ -58,7 +58,7 @@ END $$;
 \qecho -n 'Supervizor\n'
 DO $$
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (5, '1.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (5, 32, '1.');
 	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
        VALUES                 (5,        32,        'Super Vizor',           'na',          1,             'N',    NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email) 
@@ -78,7 +78,7 @@ END $$;
 \qecho -n 'Support\n'
 DO $$
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (6, '1.2.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (6, 32, '1.2.');
   INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
        VALUES                 (6,        32,           'Sup Port',           'na',         2,             'N',     NULL);
   INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email) 
@@ -98,7 +98,7 @@ END $$;
 \qecho -n 'Office Manager\n'
 DO $$
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (7, '1.2.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (7, 32, '1.2.');
   INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
        VALUES                 (7,        32,      'Office Manager',           'na',          2,             'N',     NULL);
   INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email) 
@@ -122,7 +122,7 @@ DECLARE
     v_ad1 INTEGER;
     v_ad2 INTEGER;
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (8, '1.2.8.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (8, 36, '1.2.8.');
 	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
        VALUES                 (8,        36,          'Mer Chant',           'na',          2,             'N',     NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email)
@@ -147,7 +147,7 @@ END $$;
 \qecho -n 'Department Manager\n'
 DO $$
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (9, '1.2.3.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (9, 32, '1.2.3.');
 	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
        VALUES                 (9,        32, 'Department Manager',           'na',          3,             'N',     NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email) 
@@ -170,7 +170,7 @@ DECLARE
     v_ad1 INTEGER;
     v_ad2 INTEGER;
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (10, '1.2.3.10.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (10, 34, '1.2.3.10.');
 	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
                        VALUES(10,        34,            'Cli Ent',           'na',          3,             'N',     NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email)
@@ -199,13 +199,13 @@ END $$;
 \qecho -n 'Accounts\n'
 DO $$
 BEGIN
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (11, '1.2.8.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (11, 52, '1.2.8.');
 	INSERT INTO esq_account (acc_pk, acc_et_pk,   acc_id, acc_balance, acc_ccy, acc_status, acc_usr_pk,           acc_desc)
                           VALUES(11,        52,  '10011',        0.00,   'EUR',        'O',          8, 'Merchant account');
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (12, '1.2.3.10.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (12, 50, '1.2.3.10.');
 	INSERT INTO esq_account (acc_pk, acc_et_pk,   acc_id, acc_balance, acc_ccy, acc_status, acc_usr_pk,           acc_desc)
                           VALUES(12,        50,  '10012',        0.00,   'USD',         'O',         10,   'Client account');
-	INSERT INTO esq_entity_path (ep_pk, ep_path) VALUES (13, '1.2.3.10.');
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (13, 54, '1.2.3.10.');
 	INSERT INTO esq_account (acc_pk, acc_et_pk,   acc_id, acc_balance, acc_ccy, acc_status, acc_usr_pk,           acc_desc)
                           VALUES(13,        54,  '10013',        0.00,   'USD',         'O',         10,   'Paper Client account');
 	COMMIT;

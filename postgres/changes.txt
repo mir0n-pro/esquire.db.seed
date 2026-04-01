@@ -1,5 +1,11 @@
 postgres seed changes
 
+03/31/2026 EP_ET_PK — entity kind column added to ESQ_ENTITY_PATH
+create\tables.tab
+  - ESQ_ENTITY_PATH: EP_ET_PK INT DEFAULT 0 NOT NULL added; column comment added
+fill\initial-entities.sql
+  - all esq_entity_path INSERTs: ep_et_pk value added (13 rows, kind from corresponding entity row)
+
 03/28/2026 ESQ_ENTITY_PATH — path column extracted to satellite table
 create\tables.tab
    - ESQ_ENTITY_PATH(EP_PK BIGINT, EP_PATH VARCHAR(4000)) table added before ESQ_USER

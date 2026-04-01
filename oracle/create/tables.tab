@@ -503,6 +503,7 @@ COMMENT ON COLUMN ESQ_PERSON_LOG.PEL_ACTION_TS IS 'Action timestamp'
 PROMPT Creating Table 'ESQ_ENTITY_PATH'
 CREATE TABLE ESQ_ENTITY_PATH
  (EP_PK NUMBER(16,0) NOT NULL
+ ,EP_ET_PK NUMBER(5,0) DEFAULT 0 NOT NULL
  ,EP_PATH VARCHAR2(4000) NOT NULL
 )
 /
@@ -510,6 +511,8 @@ CREATE TABLE ESQ_ENTITY_PATH
 COMMENT ON TABLE ESQ_ENTITY_PATH IS 'Entity path: shared-PK 1-1 reference from ESQ_ORG, ESQ_USER, ESQ_ACCOUNT'
 /
 COMMENT ON COLUMN ESQ_ENTITY_PATH.EP_PK IS 'Entity primary key (same value as org_pk / usr_pk / acc_pk)'
+/
+COMMENT ON COLUMN ESQ_ENTITY_PATH.EP_ET_PK IS 'Entity kind (same value as org_et_pk / usr_et_pk / acc_et_pk)'
 /
 COMMENT ON COLUMN ESQ_ENTITY_PATH.EP_PATH IS 'Entity path string'
 /

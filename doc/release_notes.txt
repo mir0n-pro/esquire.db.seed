@@ -1,4 +1,8 @@
 
+03/31/2026 ESQ_ENTITY_PATH EP_ET_PK — entity kind column added
+   - Applies to both Oracle and Postgres branches
+   - ESQ.2026.ERD.vsdx up-to-date
+
 03/28/2026 ESQ_ENTITY_PATH — path columns extracted to satellite table; trigger path resolution updated
    - Applies to both Oracle and Postgres branches
 
