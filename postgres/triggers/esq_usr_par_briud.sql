@@ -26,6 +26,7 @@ BEGIN
          ,OLD.upr_req_id
          ,OLD.upr_uid
         );
+        RETURN OLD;
     ELSE
         IF (TG_OP = 'INSERT') THEN
             oper := 'I';
@@ -51,11 +52,11 @@ BEGIN
          ,NEW.upr_req_id
          ,NEW.upr_uid
         );
+        RETURN NEW;
     END IF;
-    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER esq_usr_par_briud
-AFTER INSERT OR UPDATE OR DELETE ON ESQ_USR_PAR
+BEFORE INSERT OR UPDATE OR DELETE ON ESQ_USR_PAR
 FOR EACH ROW EXECUTE FUNCTION esq_usr_par_briud();

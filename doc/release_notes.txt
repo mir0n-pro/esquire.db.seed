@@ -1,3 +1,10 @@
+04/09/2026 ESQ_ACCOUNT — funded date and negative balance flag, more fields in ESQ_ACCT_TRANSACTION 
+   - All Postgres triggers converted to BEFORE pattern (RETURN OLD/NEW); consistent with Oracle
+   - Postgres esq_account_briud: NEW.acc_funded_dt set before log INSERT — eliminates double logging; accl_funded_dt correct in log
+   - Applies to both Oracle and Postgres branches
+   - ESQ.2026.ERD.vsdx up-to-date
+   - ESQ_ACCT_TRANSACTION — reference code and memo columns added
+   - Applies to both Oracle and Postgres branches
 
 03/31/2026 ESQ_ENTITY_PATH EP_ET_PK — entity kind column added
    - Applies to both Oracle and Postgres branches

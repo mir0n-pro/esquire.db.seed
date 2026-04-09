@@ -18,6 +18,8 @@ BEGIN
          ,accl_status
          ,accl_usr_pk
          ,accl_desc
+         ,accl_funded_dt
+         ,accl_neg_allowed_flg
          ,accl_crl_id
          ,accl_req_id
          ,accl_uid
@@ -32,6 +34,8 @@ BEGIN
          ,:OLD.acc_status
          ,:OLD.acc_usr_pk
          ,:OLD.acc_desc
+         ,:OLD.acc_funded_dt
+         ,:OLD.acct_neg_allowed_flg
          ,:OLD.acc_crl_id
          ,:OLD.acc_req_id
          ,:OLD.acc_uid
@@ -40,6 +44,10 @@ BEGIN
         oper := 'U';
         IF INSERTING THEN
             oper := 'I';
+        END IF;
+
+        IF UPDATING AND :NEW.acc_funded_dt IS NULL AND :NEW.acc_balance <> :OLD.acc_balance THEN
+            :NEW.acc_funded_dt := SYSDATE;
         END IF;
 
         INSERT INTO esq_account_log (
@@ -53,6 +61,8 @@ BEGIN
          ,accl_status
          ,accl_usr_pk
          ,accl_desc
+         ,accl_funded_dt
+         ,accl_neg_allowed_flg
          ,accl_crl_id
          ,accl_req_id
          ,accl_uid
@@ -67,6 +77,8 @@ BEGIN
          ,:NEW.acc_status
          ,:NEW.acc_usr_pk
          ,:NEW.acc_desc
+         ,:NEW.acc_funded_dt
+         ,:NEW.acct_neg_allowed_flg
          ,:NEW.acc_crl_id
          ,:NEW.acc_req_id
          ,:NEW.acc_uid

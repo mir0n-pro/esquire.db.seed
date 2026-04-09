@@ -1,5 +1,38 @@
 postgres seed changes
 
+04/09/2026 ESQ_ACCT_TRANSACTION — audit columns added
+create\tables.tab
+  - ESQ_ACCT_TRANSACTION: ATR_CRL_ID VARCHAR(64), ATR_REQ_ID VARCHAR(64), ATR_UID VARCHAR(16) nullable added; column comments added
+
+04/09/2026 ESQ_ACCT_TRANSACTION — reference code and memo columns added
+create\tables.tab
+  - ESQ_ACCT_TRANSACTION: ATR_REF_CODE, ATR_REF_CODE2, ATR_REF_CODE3, ATR_REF_CODE4, ATR_MEMO VARCHAR(512) nullable added
+  - ESQ_ACCT_TRANSACTION: ATR_CRL_ID, ATR_REQ_ID VARCHAR2(64), ATR_UID added
+
+04/09/2026 ESQ_ACCT_TRANSACTION.ATR_DT renamed to ATR_TS
+create\tables.tab
+  - ESQ_ACCT_TRANSACTION: ATR_DT → ATR_TS (column + comment)
+
+04/09/2026 all triggers converted to BEFORE pattern; ESQ_ACCOUNT - funded date and negative balance flag added
+triggers\esq_org_briud.sql
+triggers\esq_user_briud.sql
+triggers\esq_address_briud.sql
+triggers\esq_person_briud.sql
+triggers\esq_auth_briud.sql
+triggers\esq_bank_info_briud.sql
+triggers\esq_usr_par_briud.sql
+triggers\esq_org_par_briud.sql
+  - AFTER BEFORE trigger; RETURN NULL replaced with RETURN OLD (DELETE) / RETURN NEW (INSERT/UPDATE)
+
+create\tables.tab
+  - ESQ_ACCOUNT: ACC_FUNDED_DT DATE (nullable) added; ACCT_NEG_ALLOWED_FLG VARCHAR(1) DEFAULT 'N' NOT NULL added
+  - ESQ_ACCOUNT_LOG: ACCL_FUNDED_DT DATE (nullable) added; ACCL_NEG_ALLOWED_FLG VARCHAR(1) DEFAULT 'N' NOT NULL added
+  - column comments added for both tables
+triggers\esq_account_briud.sql
+  - changed from AFTER to BEFORE trigger: NEW.acc_funded_dt set directly, eliminating follow-up UPDATE and double logging
+  - UPDATE branch: NEW.acc_funded_dt := CURRENT_TIMESTAMP when NULL and acc_balance changed (before log INSERT)
+  - RETURN NEW (INSERT/UPDATE) / RETURN OLD (DELETE) replacing RETURN NULL
+
 03/31/2026 EP_ET_PK — entity kind column added to ESQ_ENTITY_PATH
 create\tables.tab
   - ESQ_ENTITY_PATH: EP_ET_PK INT DEFAULT 0 NOT NULL added; column comment added

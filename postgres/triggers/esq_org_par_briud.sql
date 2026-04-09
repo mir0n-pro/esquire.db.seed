@@ -26,6 +26,7 @@ BEGIN
          ,OLD.opr_req_id
          ,OLD.opr_uid
         );
+        RETURN OLD;
     ELSE
         IF (TG_OP = 'INSERT') THEN
             oper := 'I';
@@ -51,11 +52,11 @@ BEGIN
          ,NEW.opr_req_id
          ,NEW.opr_uid
         );
+        RETURN NEW;
     END IF;
-    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER esq_org_par_briud
-AFTER INSERT OR UPDATE OR DELETE ON ESQ_ORG_PAR
+BEFORE INSERT OR UPDATE OR DELETE ON ESQ_ORG_PAR
 FOR EACH ROW EXECUTE FUNCTION esq_org_par_briud();

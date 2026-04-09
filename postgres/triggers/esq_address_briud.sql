@@ -44,6 +44,7 @@ BEGIN
          ,OLD.ad_req_id
          ,OLD.ad_uid
         );
+        RETURN OLD;
     ELSE
         IF (TG_OP = 'INSERT') THEN
             oper := 'I';
@@ -87,11 +88,11 @@ BEGIN
          ,NEW.ad_req_id
          ,NEW.ad_uid
         );
+        RETURN NEW;
     END IF;
-    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER esq_address_briud
-AFTER INSERT OR UPDATE OR DELETE ON ESQ_ADDRESS
+BEFORE INSERT OR UPDATE OR DELETE ON ESQ_ADDRESS
 FOR EACH ROW EXECUTE FUNCTION esq_address_briud();

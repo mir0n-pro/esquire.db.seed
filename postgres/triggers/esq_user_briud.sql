@@ -34,6 +34,7 @@ BEGIN
          ,OLD.usr_req_id
          ,OLD.usr_uid
         );
+        RETURN OLD;
     ELSE
         IF (TG_OP = 'INSERT') THEN
             oper := 'I';
@@ -67,11 +68,11 @@ BEGIN
          ,NEW.usr_req_id
          ,NEW.usr_uid
         );
+        RETURN NEW;
     END IF;
-    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER esq_user_briud
-AFTER INSERT OR UPDATE OR DELETE ON ESQ_USER
+BEFORE INSERT OR UPDATE OR DELETE ON ESQ_USER
 FOR EACH ROW EXECUTE FUNCTION esq_user_briud();

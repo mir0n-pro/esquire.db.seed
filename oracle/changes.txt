@@ -1,5 +1,22 @@
 oracle seed changes
 
+04/09/2026 ESQ_ACCT_TRANSACTION — reference code and memo columns added
+create\tables.tab
+  - ESQ_ACCT_TRANSACTION: ATR_REF_CODE, ATR_REF_CODE2, ATR_REF_CODE3, ATR_REF_CODE4, ATR_MEMO VARCHAR2(512) nullable added
+  - ESQ_ACCT_TRANSACTION: ATR_CRL_ID, ATR_REQ_ID VARCHAR2(64), ATR_UID added
+
+04/09/2026 ESQ_ACCT_TRANSACTION.ATR_DT renamed to ATR_TS
+create\tables.tab
+  - ESQ_ACCT_TRANSACTION: ATR_DT → ATR_TS (column + comment)
+
+04/09/2026 ESQ_ACCOUNT — funded date and negative balance flag added
+create\tables.tab
+  - ESQ_ACCOUNT: ACC_FUNDED_DT DATE (nullable) added; ACCT_NEG_ALLOWED_FLG VARCHAR2(1) DEFAULT 'N' NOT NULL added
+  - ESQ_ACCOUNT_LOG: ACCL_FUNDED_DT DATE (nullable) added; ACCL_NEG_ALLOWED_FLG VARCHAR2(1) DEFAULT 'N' NOT NULL added
+  - column comments added for both tables
+triggers\esq_account_briud.sql
+  - UPDATE branch (BEFORE trigger): :NEW.acc_funded_dt := SYSDATE when NULL and acc_balance changed
+
 03/31/2026 EP_ET_PK — entity kind column added to ESQ_ENTITY_PATH
 create\tables.tab
   - ESQ_ENTITY_PATH: EP_ET_PK NUMBER(5,0) DEFAULT 0 NOT NULL added; column comment added

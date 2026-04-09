@@ -58,6 +58,7 @@ BEGIN
          ,OLD.pe_req_id
          ,OLD.pe_uid
         );
+        RETURN OLD;
     ELSE
         IF (TG_OP = 'INSERT') THEN
             oper := 'I';
@@ -115,11 +116,11 @@ BEGIN
          ,NEW.pe_req_id
          ,NEW.pe_uid
         );
+        RETURN NEW;
     END IF;
-    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER esq_person_briud
-AFTER INSERT OR UPDATE OR DELETE ON ESQ_PERSON
+BEFORE INSERT OR UPDATE OR DELETE ON ESQ_PERSON
 FOR EACH ROW EXECUTE FUNCTION esq_person_briud();

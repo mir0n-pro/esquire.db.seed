@@ -34,6 +34,7 @@ BEGIN
          ,OLD.au_req_id
          ,OLD.au_uid
         );
+        RETURN OLD;
     ELSE
         IF (TG_OP = 'INSERT') THEN
             oper := 'I';
@@ -67,11 +68,11 @@ BEGIN
          ,NEW.au_req_id
          ,NEW.au_uid
         );
+        RETURN NEW;
     END IF;
-    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER esq_auth_briud
-AFTER INSERT OR UPDATE OR DELETE ON ESQ_AUTH
+BEFORE INSERT OR UPDATE OR DELETE ON ESQ_AUTH
 FOR EACH ROW EXECUTE FUNCTION esq_auth_briud();

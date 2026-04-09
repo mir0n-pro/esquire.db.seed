@@ -66,6 +66,7 @@ BEGIN
          ,OLD.bi_req_id
          ,OLD.bi_uid
         );
+        RETURN OLD;
     ELSE
         IF (TG_OP = 'INSERT') THEN
             oper := 'I';
@@ -131,11 +132,11 @@ BEGIN
          ,NEW.bi_req_id
          ,NEW.bi_uid
         );
+        RETURN NEW;
     END IF;
-    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER esq_bank_info_briud
-AFTER INSERT OR UPDATE OR DELETE ON ESQ_BANK_INFO
+BEFORE INSERT OR UPDATE OR DELETE ON ESQ_BANK_INFO
 FOR EACH ROW EXECUTE FUNCTION esq_bank_info_briud();
