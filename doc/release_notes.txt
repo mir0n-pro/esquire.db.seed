@@ -1,3 +1,5 @@
+04/10/2026 Permission types and activity types are extended with reserved codes
+
 04/09/2026 ESQ_ACCOUNT — funded date and negative balance flag, more fields in ESQ_ACCT_TRANSACTION 
    - All Postgres triggers converted to BEFORE pattern (RETURN OLD/NEW); consistent with Oracle
    - Postgres esq_account_briud: NEW.acc_funded_dt set before log INSERT — eliminates double logging; accl_funded_dt correct in log

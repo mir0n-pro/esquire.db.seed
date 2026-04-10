@@ -35,11 +35,11 @@ DO $$
 BEGIN
 	DELETE FROM esq_permission_type;
 
-    CALL temp_permission_type ( 980,      'Admin', 'Entity functions');
-    CALL temp_permission_type ( 982,     'Tools',  'Tools avialable'); 
---  CALL temp_permission_type ( 984,      'Apps', 'Applications permitted');
---	CALL temp_permission_type ( 986,	'Reports',  'Report avialable');
-	COMMIT;
+    CALL temp_permission_type ( 980,    'Admin', 'Entity functions');
+    CALL temp_permission_type ( 982,    'Tools',  'Tools avialable'); 
+    CALL temp_permission_type ( 984,    'Apps', 'Applications permitted');
+    CALL temp_permission_type ( 986,	'Reports',  'Report avialable');
+    COMMIT;
 END $$;
 
 DROP PROCEDURE temp_permission_type;

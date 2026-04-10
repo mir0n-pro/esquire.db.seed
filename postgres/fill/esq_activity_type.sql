@@ -35,6 +35,8 @@ BEGIN
     CALL temp_activity_type(1, 'Deposit', 'Deposit');
     CALL temp_activity_type(2, 'Withdrawal', 'Withdrawal');
     CALL temp_activity_type(3, 'Transfer', 'Transfer funds');
+    CALL temp_activity_type(4, 'Adj', 'Balance adjustment');
+    CALL temp_activity_type(5, 'Comm', 'Commission');
 		COMMIT;
 END $$;
    

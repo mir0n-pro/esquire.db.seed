@@ -35,8 +35,8 @@ BEGIN
 
 	temp_permission_type ( 980,      'Admin', 'Entity functions');
 	temp_permission_type ( 982,     'Tools',  'Tools avialable'); 
---	temp_permission_type ( 984,      'Apps', 'Applications permitted');
---	temp_permission_type ( 986,	  'Reports',  'Report avialable');
+	temp_permission_type ( 984,      'Apps', 'Applications permitted');
+	temp_permission_type ( 986,	 'Reports',  'Report avialable');
 
 END;
 /

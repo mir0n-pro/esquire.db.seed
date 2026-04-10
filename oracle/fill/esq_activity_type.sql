@@ -30,10 +30,11 @@ show errors;
 DELETE FROM ESQ_ACTIVITY_TYPE;
 COMMIT;
 BEGIN
-
-    temp_activity_type ( 1,    'Deposit', 'Deposit');
-    temp_activity_type ( 2, 'Withdrawal', 'Withdrawal');
+    temp_activity_type ( 1,   'Deposit', 'Deposit');
+    temp_activity_type ( 2,   'Withdrawal', 'Withdrawal');
     temp_activity_type ( 3,   'Transfer', 'Transfer funds');
+    temp_activity_type ( 4,   'Adj', 'Balance adjustment');
+    temp_activity_type ( 5,   'Comm', 'Commission');
 
 END;
 /
