@@ -10,7 +10,7 @@
 -- History:
 -- 02/28/2026 mir0n Triggers creation section added
 
-SPOOL create.list
+SPOOL esq2025-create.log
 -- Deletion
 @@delete.sql
 -- Tables creation

@@ -1,5 +1,18 @@
 postgres seed changes
 
+04/20/2026 ESQ_ACCT_TRANSACTION — transfer PK and conversion rate columns; log filename updates
+create\tables.tab
+  - ESQ_ACCT_TRANSACTION: ATR_PK VARCHAR(64) (was BIGINT); string ID from generateTransId()
+  - ESQ_ACCT_TRANSACTION: ATR_PK_TX VARCHAR(64) added (links both legs of a transfer)
+  - ESQ_ACCT_TRANSACTION: ATR_AMT_INCOMING NUMERIC(16,3) (was BIGINT)
+  - ESQ_ACCT_TRANSACTION: ATR_CONV_RATE NUMERIC(12,6) (was NUMERIC(8))
+create\tables.sqs
+  - ESQ_ATR_SEQ removed (PK is now a string, no sequence needed)
+create\all.sql
+  - output filename renamed to esq2025-create.log
+fill\all.sql
+  - output filename renamed to esq2025-fill.log
+
 04/09/2026 ESQ_ACCT_TRANSACTION — audit columns added
 create\tables.tab
   - ESQ_ACCT_TRANSACTION: ATR_CRL_ID VARCHAR(64), ATR_REQ_ID VARCHAR(64), ATR_UID VARCHAR(16) nullable added; column comments added

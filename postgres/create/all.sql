@@ -17,7 +17,7 @@
 SET client_min_messages = 'info';
 -- SET log_min_messages = 'log';
 
-\o create.lst
+\o esq2025-create.log
 --\r
 \echo -n '----- Deletion -----\n'
 \qecho -n '----- Deletion -----\n'

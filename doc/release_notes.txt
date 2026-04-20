@@ -1,3 +1,7 @@
+04/20/2026 ESQ_ACCT_TRANSACTION — transfer PK and conversion rate columns; log filename updates
+   - Applies to both Oracle and Postgres branches
+   - up-to-date erd\ESQ.2026.ERD.vsdx
+
 04/10/2026 Permission types and activity types are extended with reserved codes
 
 04/09/2026 ESQ_ACCOUNT — funded date and negative balance flag, more fields in ESQ_ACCT_TRANSACTION 

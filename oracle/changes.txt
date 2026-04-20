@@ -1,5 +1,18 @@
 oracle seed changes
 
+04/20/2026 ESQ_ACCT_TRANSACTION — transfer PK and conversion rate columns; log filename updates
+create\tables.tab
+  - ESQ_ACCT_TRANSACTION: ATR_PK VARCHAR2(64) (was NUMBER(16,0)); string ID from generateTransId()
+  - ESQ_ACCT_TRANSACTION: ATR_PK_TX VARCHAR2(64) added (links both legs of a transfer)
+  - ESQ_ACCT_TRANSACTION: ATR_AMT_INCOMING NUMBER(16,3) (was NUMBER(16,0))
+  - ESQ_ACCT_TRANSACTION: ATR_CONV_RATE NUMBER(12,6) (was NUMBER)
+create\tables.sqs
+  - ESQ_ATR_SEQ removed (PK is now a string, no sequence needed)
+create\all.sql
+  - SPOOL filename renamed to esq2025-create.log
+fill\all.sql
+  - SPOOL filename renamed to esq2025-fill.log
+
 04/09/2026 ESQ_ACCT_TRANSACTION — reference code and memo columns added
 create\tables.tab
   - ESQ_ACCT_TRANSACTION: ATR_REF_CODE, ATR_REF_CODE2, ATR_REF_CODE3, ATR_REF_CODE4, ATR_MEMO VARCHAR2(512) nullable added

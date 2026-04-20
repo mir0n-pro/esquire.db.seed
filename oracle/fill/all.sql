@@ -13,7 +13,7 @@
 -- 06.20.2000			Reviewed
 -- 01/14/2026 mir0n Roles added
 
-SPOOL fill.list
+SPOOL esq2025-fill.log
 -----------------------------------
 PROMPT Delete Types
 @@delete.sql

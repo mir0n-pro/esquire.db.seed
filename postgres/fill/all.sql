@@ -15,7 +15,7 @@
 
 --\set QUIET 1
 --\set VERBOSITY terse
-\o fill.lst
+\o esq2025-fill.log
 -----------------------------------
 \echo -n '----- Delete -----\n'
 \qecho -n '----- Delete -----\n'
