@@ -1,7 +1,7 @@
-# Release Report: v1.2.1 → HEAD
+# Release Report: v1.2.1 → v1.2.2
 
 **Repo:** `esquire.db.seed/develop`  
-**Top commit:** `5ecdbab`
+**Top commit:** `d457992`
 
 ---
 
@@ -396,10 +396,10 @@ added triggers\esq_org_par_briud.sql
 
 ```
 
--- 2026-04-20 | commit: 5ecdbab | mir0n.the.programmer | v1.2.2 Finalization --
+-- 2026-04-20 | commit: d457992 | mir0n.the.programmer | v1.2.2 Finalization --
 M	README.md
 A	doc/reports/report_v1.2.2.md
- 2 files changed, 702 insertions(+), 1 deletion(-)
+ 2 files changed, 716 insertions(+), 1 deletion(-)
 
 -- 2026-04-20 | commit: 8913a5f | mir0n.the.programmer | ESQ_ACCT_TRANSACTION — transfer PK and conversion rate columns; log filename updates --
 M	doc/release_notes.txt
@@ -695,9 +695,9 @@ A	postgres/triggers/esq_org_par_briud.sql
 A	postgres/triggers/esq_person_briud.sql
 A	postgres/triggers/esq_user_briud.sql
 A	postgres/triggers/esq_usr_par_briud.sql
- 62 files changed, 4990 insertions(+), 1172 deletions(-)
+ 62 files changed, 5004 insertions(+), 1172 deletions(-)
 ```
 
 ---
 
-*From `v1.2.1` till `HEAD`*
+*From `v1.2.1` till `v1.2.2`*
