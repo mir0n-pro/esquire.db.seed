@@ -1,5 +1,13 @@
 postgres seed changes
 
+05/14/2026 v1.2.4 hauberk harness identity: Test House + three Test Drivers (one per non-browser auth pattern)
+fill\initial-entities.sql
+   - Test House org (org_pk=14, ep_path='1.14.') under root
+   - Test Driver (usr_pk=15) admin USR (kind=32) -- Plain JWT, backs esq-hauberk KC service account
+   - Test Driver S (usr_pk=16) admin USR (kind=32) -- Vanilla Token Relay, backs esq-hauberk-S
+   - Test Driver M (usr_pk=17) admin USR (kind=32) -- Phantom Token Relay (RFC 8693), backs esq-hauberk-M
+   - all three under Test House with SUPERVIZOR + TREE realm roles; auth + person rows added
+
 04/20/2026 ESQ_ACCT_TRANSACTION — transfer PK and conversion rate columns; log filename updates
 create\tables.tab
   - ESQ_ACCT_TRANSACTION: ATR_PK VARCHAR(64) (was BIGINT); string ID from generateTransId()

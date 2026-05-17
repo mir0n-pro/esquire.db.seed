@@ -1,3 +1,6 @@
+05/14/2026 v1.2.4 hauberk harness identity: Test House + 3 Test Drivers (one per non-browser auth pattern)
+   - erd/ESQ.2026.ERD.vsdx up-to-date
+
 04/20/2026 ESQ_ACCT_TRANSACTION — transfer PK and conversion rate columns; log filename updates
    - Applies to both Oracle and Postgres branches
    - up-to-date erd\ESQ.2026.ERD.vsdx
