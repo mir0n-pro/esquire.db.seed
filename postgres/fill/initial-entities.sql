@@ -12,6 +12,11 @@
 -- 02/28/2026 mir0n esq_person inserts added for all seed users
 --                  esq_address inserts added for merchant and client
 -- 03/08/2026 mir0n personal custom parameter test case
+-- 05/14/2026 mir0n v1.2.4 hauberk env: Test House org (org_pk=14, ep_path='1.14.') under root;
+--                  Test Driver (usr_pk=15) -- Plain JWT, backs esq-hauberk KC service account;
+--                  Test Driver S (usr_pk=16) -- Vanilla Token Relay, backs esq-hauberk-S;
+--                  Test Driver M (usr_pk=17) -- Phantom Token Relay, backs esq-hauberk-M;
+--                  all kind=32 admin USRs under Test House with SUPERVIZOR + TREE roles;
 
 \echo -n 'Inital organizations\n'
 \qecho -n 'Inital organizations\n'
@@ -30,6 +35,11 @@ BEGIN
        VALUES           (2,         'Example',     20,            'Example for Company Esquire');
 	INSERT INTO esq_org_par (opr_org_pk, opr_par_name, opr_par_et_pk, opr_value) 
        VALUES           (3,         'Example',     20,            'Example for Company Esquire');
+-- hauberk env
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (14, 20, '1.14.');
+	INSERT INTO esq_org (org_pk, org_et_pk,     org_name, org_full_name,   org_org_pk,     org_desc)
+       VALUES                (14,        20,    'Test House', 'Test environment root house', 1,  'Test environment root. Do not delete!!!');
+
 	COMMIT;
 END $$;
 
@@ -210,6 +220,62 @@ BEGIN
                           VALUES(13,        54,  '10013',        0.00,   'USD',         'O',         10,   'Paper Client account');
 	COMMIT;
 END $$;
+
+
+\echo -n 'Test Drives\n'
+\qecho -n 'Test Drives\n'
+DO $$
+BEGIN
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (15, 32, '1.14.');
+	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
+       VALUES                 (15,        32,        'Test Driver',           'na',          14,             'N',    'Test driver : esq-hauberk IAS client : Do not touch!!!');
+	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email) 
+       VALUES(15, 'N', 'N',      'esq-hauberk@mir0n.pro',   'esq-hauberk@mir0n.pro');
+	INSERT INTO esq_person (pe_usr_pk, pe_kind, pe_first_name, pe_last_name, pe_email) 
+       VALUES( 15, 992, 'Test','Driver', 'esq-hauberk@mir0n.pro');
+    -- SUPERVIZOR
+    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK) 
+           VALUES            (        15,  2);
+    -- TREE
+    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK) 
+           VALUES            (        15,  8);
+	COMMIT;
+
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (16, 32, '1.14.');
+	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
+       VALUES                 (16,        32,        'Test Driver S',           'na',          14,             'N', 'Test driver : esq-hauberk-S IAS client : Do not touch!!!');
+	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email)
+       VALUES(16, 'N', 'N',      'esq-hauberk-S@mir0n.pro',   'esq-hauberk-S@mir0n.pro');
+	INSERT INTO esq_person (pe_usr_pk, pe_kind, pe_first_name, pe_last_name, pe_email)
+       VALUES( 16, 992, 'Test','Driver S', 'esq-hauberk-S@mir0n.pro');
+    -- SUPERVIZOR
+    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
+           VALUES            (        16,  2);
+    -- TREE
+    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
+           VALUES            (        16,  8);
+	COMMIT;
+
+	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (17, 32, '1.14.');
+	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
+       VALUES                 (17,        32,        'Test Driver M',           'na',          14,             'N', 'Test driver : esq-hauberk-M IAS client (Phantom Token / RFC 8693) : Do not touch!!!');
+	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email)
+       VALUES(17, 'N', 'N',      'esq-hauberk-M@mir0n.pro',   'esq-hauberk-M@mir0n.pro');
+	INSERT INTO esq_person (pe_usr_pk, pe_kind, pe_first_name, pe_last_name, pe_email)
+       VALUES( 17, 992, 'Test','Driver M', 'esq-hauberk-M@mir0n.pro');
+    -- SUPERVIZOR
+    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
+           VALUES            (        17,  2);
+    -- TREE
+    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
+           VALUES            (        17,  8);
+	COMMIT;
+
+
+
+END $$;
+
+
 
 \echo -n 'Done\n'
 \qecho -n 'Done\n'
