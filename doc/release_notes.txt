@@ -1,3 +1,6 @@
+06/03/2026 v1.2.7 audit-log triggers made OPTIONAL -- base seed is trigger-free
+   - Applies to both Oracle and Postgres branches
+
 05/14/2026 v1.2.4 hauberk harness identity: Test House + 3 Test Drivers (one per non-browser auth pattern)
    - erd/ESQ.2026.ERD.vsdx up-to-date
 

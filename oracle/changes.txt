@@ -1,5 +1,13 @@
 oracle seed changes
 
+06/03/2026 v1.2.7 audit-log triggers made OPTIONAL -- base seed is trigger-free
+create\all.sql
+   - removed the `@@../triggers/all.sql` include from the create sequence; the base seed now
+     creates NO audit triggers (default). triggers/all.sql kept as the opt-in overlay (option a).
+triggers\drop.sql (new)
+   - opt-out: drops every ESQ_ trigger by name mask (PL/SQL loop over user_triggers,
+     LIKE 'ESQ\_%' ESCAPE '\'); idempotent. Doubles as the drop-on-existing-DBs migration.
+
 05/14/2026 v1.2.4 hauberk harness identity: Test House + Test Drivers
 fill\initial-entities.sql
    - Test House org (org_pk=14, ep_path='1.14.') under root

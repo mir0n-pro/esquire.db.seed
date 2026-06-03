@@ -9,6 +9,7 @@
 -----------------------------------
 -- History:
 -- 02/28/2026 mir0n Triggers creation section added
+-- 06/03/2026 mir0n Triggers include removed -- base seed trigger-free (opt-in triggers/all.sql, opt-out triggers/drop.sql)
 
 SPOOL esq2025-create.log
 -- Deletion
@@ -23,7 +24,8 @@ SPOOL esq2025-create.log
 @@tables.sqs
 -- Views creation
 -- @@views.sql
--- Triggers creation
-@@../triggers/all.sql
+-- Triggers: OPTIONAL overlay -- base seed is trigger-free (audit logging is a pluggable concern).
+-- To opt into in-database audit triggers (option a), run AFTER this seed:  @@../triggers/all.sql
+-- To remove them again:                                                    @@../triggers/drop.sql
 
 SPOOL OFF

@@ -9,6 +9,7 @@
 -----------------------------------
 -- History:
 -- 02/24/2026 mir0n Triggers creation section added
+-- 06/03/2026 mir0n Triggers include removed -- base seed trigger-free (opt-in triggers/all.sql, opt-out triggers/drop.sql)
 
 \set QUIET 1
 \set VERBOSITY terse
@@ -39,9 +40,9 @@ SET client_min_messages = 'info';
 \qecho -n '----- Sequencies creation ----- \n'
 \i tables.sqs
 
-\echo -n '----- Triggers creation ----- \n'
-\qecho -n '----- Triggers creation ----- \n'
-\i ../triggers/all.sql
+-- ----- Triggers: OPTIONAL overlay -- base seed is trigger-free (audit logging is a pluggable concern) -----
+-- To opt into in-database audit triggers (option a), run AFTER this seed:  \i ../triggers/all.sql
+-- To remove them again:                                                    \i ../triggers/drop.sql
 
 --\w buffer.list
 \o
