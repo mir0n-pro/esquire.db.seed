@@ -22,6 +22,8 @@ SPOOL esq2025-create.log
 @@tables.cc
 -- Sequencies creation
 @@tables.sqs
+-- Audit-log schema (create.log)
+@@../create.log/all.sql
 -- Views creation
 -- @@views.sql
 -- Triggers: OPTIONAL overlay -- base seed is trigger-free (audit logging is a pluggable concern).

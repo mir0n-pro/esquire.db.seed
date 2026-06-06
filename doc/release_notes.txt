@@ -1,3 +1,8 @@
+06/05/2026 v1.2.7 audit-log schema isolated (create.log) + *_log data columns nullable
+   - *_log tables moved to a separate audit-log schema (create.log), deployable standalone or included from create/
+   - *_log data columns made nullable so empty-body DELETE audit rows insert
+   - Applies to both Oracle and Postgres branches
+
 06/03/2026 v1.2.7 audit-log triggers made OPTIONAL -- base seed is trigger-free
    - Applies to both Oracle and Postgres branches
 

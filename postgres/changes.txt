@@ -1,5 +1,17 @@
 postgres seed changes
 
+06/05/2026 v1.2.7 audit-log schema isolated into create.log/; *_log data columns nullable
+create.log\all.sql, delete.sql, tables.tab, tables.pfi (new)
+   - the 9 ESQ_*_LOG tables (+ indexes) moved out of create/ into a separate audit-log schema,
+     deployable standalone (esquire_log) or included from create/all.sql for the single-DB demo
+create\tables.tab
+   - the ESQ_*_LOG CREATE TABLE statements removed (relocated to create.log/tables.tab)
+create\all.sql
+   - includes `\i ../create.log/all.sql` after the base schema
+create.log\tables.tab
+   - *_log data columns made nullable (kept DEFAULTs) so an empty-body DELETE audit row inserts
+     (DELETE writes only action + pk + et_pk + crl/req/uid + action_ts)
+
 06/03/2026 v1.2.7 audit-log triggers made OPTIONAL -- base seed is trigger-free
 create\all.sql
    - removed the `\i ../triggers/all.sql` include from the create sequence; the base seed now

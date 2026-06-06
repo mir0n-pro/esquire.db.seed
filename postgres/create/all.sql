@@ -40,6 +40,10 @@ SET client_min_messages = 'info';
 \qecho -n '----- Sequencies creation ----- \n'
 \i tables.sqs
 
+\echo -n '----- Audit-log schema (create.log) ----- \n'
+\qecho -n '----- Audit-log schema (create.log) ----- \n'
+\i ../create.log/all.sql
+
 -- ----- Triggers: OPTIONAL overlay -- base seed is trigger-free (audit logging is a pluggable concern) -----
 -- To opt into in-database audit triggers (option a), run AFTER this seed:  \i ../triggers/all.sql
 -- To remove them again:                                                    \i ../triggers/drop.sql

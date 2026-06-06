@@ -1,0 +1,15 @@
+-----------------------------------
+-- project:	Esquire
+-- version:	2.0
+-- Copyright (c) mir0n 2000, 2001, 2025
+--
+-- file :	create.log/tables.pfi
+-- desc:	Primary and foreign keys, indeces for the audit-log tables
+--
+-- 06/04/2026 mir0n created: placeholder for audit-log indexes
+-----------------------------------
+
+-- Placeholder. The audit-log dedup unique indexes
+--   (*_crl_id, *_pk[, *_sub_id])
+-- per the (entity_id, kind, sub_id) identity / crl_id+entity_id+kind+sub_id dedup rule
+-- will be added here. No index DDL yet.
