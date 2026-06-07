@@ -1,3 +1,7 @@
+06/06/2026 v1.2.7 audit-log dedup unique indexes added (x-Rod option c)
+   - the 9 ESQ_*_LOG tables get a UNIQUE index on their dedup key (crl_id + the row's own pk [, kind / sub])
+   -  both Oracle and Postgres branches
+
 06/05/2026 v1.2.7 audit-log schema isolated (create.log) + *_log data columns nullable
    - *_log tables moved to a separate audit-log schema (create.log), deployable standalone or included from create/
    - *_log data columns made nullable so empty-body DELETE audit rows insert

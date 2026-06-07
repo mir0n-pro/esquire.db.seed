@@ -1,5 +1,11 @@
 oracle seed changes
 
+06/06/2026 v1.2.7 audit-log dedup unique indexes (x-Rod option c)
+create.log\tables.pfi
+   - UNIQUE indexes on the 9 ESQ_*_LOG dedup keys (account / org / user / address on (*_crl_id, *_pk),
+     org_par (oprl_crl_id, oprl_org_pk, oprl_par_name), usr_par, person (pel_crl_id, pel_usr_pk, pel_kind),
+     auth (aul_crl_id, aul_usr_pk)); the consumer MERGE dedups redelivered bus messages on this key
+
 06/05/2026 v1.2.7 audit-log schema isolated into create.log/; *_log data columns nullable
 create.log\all.sql, delete.sql, tables.tab, tables.pfi (new)
    - the 9 ESQ_*_LOG tables (+ indexes) moved out of create/ into a separate audit-log schema,
