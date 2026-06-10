@@ -8,6 +8,18 @@ user profile maintenance, permissions, authorization, accounting.
 ## esquire.db.seed
 Part of Esquire frameworks. Set of database seed scripts
 
+## v1.2.7 — complete (06/10/2026)
+
+Seed-side support for the backend **audit-logging** sprint, across both the Oracle and Postgres branches.
+The audit schema is fully decoupled from the base seed, so a fresh database is trigger-free and audits
+nothing unless a deployment opts in:
+
+- **trigger-free base seed** -- the audit / computed-column triggers are lifted out of the base schema into a `triggers/drop.sql` overlay (both vendors); the funded-date and the audit writes move to the service tier, so a fresh seed carries no triggers (the in-database option-a topology re-applies them on demand)
+- **audit-log schema isolated into a `create.log/` overlay** -- the nine `esq_*_log` tables are extracted out of the base `create/tables.tab` into a separate `create.log/` folder (`tables.tab` / `tables.pfi` / `all.sql` / `delete.sql`); the base `create/all.sql` chains it only as an opt-in step, so a setup that does not need audit simply omits the overlay -- no schema change
+- **`*_log` data columns made nullable** -- a DELETE audit row can persist carrying only its identity keys
+- **dedup unique index on each `*_log` table** -- backs the option (c) bus path's `INSERT .. ON CONFLICT DO NOTHING` idempotent fan-out from the xx-Rod consumer
+- ERD refreshed for the audit tables
+
 ## v1.2.4 — complete (05/14/2026)
 
 Test House subtree seeded for the v1.2.4 hauberk harness: Test House org (pk=14, ep_path='1.14.') under root, with three admin USRs (kind=32) -- one per non-browser auth pattern in the gateway:
