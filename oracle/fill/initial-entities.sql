@@ -17,6 +17,7 @@
 --                  Test Driver S (usr_pk=16) -- Vanilla Token Relay, backs esq-hauberk-S;
 --                  Test Driver M (usr_pk=17) -- Phantom Token Relay, backs esq-hauberk-M;
 --                  all kind=32 admin USRs under Test House with SUPERVIZOR + TREE roles;
+-- 06/12/2026 mir0n v1.2.8 system entity flags: org_pk (1,14) + usr_pk (4,5,15,16,17) set 'Y' (DB-set only, anti-delete)
 --
 
 PROMPT Inital organizations
@@ -240,5 +241,15 @@ BEGIN
     INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
            VALUES            (        17,  8);
 	COMMIT;
+END;
+/
+
+PROMPT System entity flags
+BEGIN
+    -- Protected from deletion (DB-set ONLY, never via the app, not shown on the GUI).
+    -- Root system office + its users, and the Test House office + its users.
+    UPDATE esq_org  SET org_system_flg = 'Y' WHERE org_pk IN (1, 14);
+    UPDATE esq_user SET usr_system_flg = 'Y' WHERE usr_pk IN (4, 5, 15, 16, 17);
+    COMMIT;
 END;
 /

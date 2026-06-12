@@ -1,5 +1,13 @@
 oracle seed changes
 
+06/12/2026 v1.2.8 system entity flag (anti-deletion)
+create\tables.tab
+   - ESQ_ORG.ORG_SYSTEM_FLG, ESQ_USER.USR_SYSTEM_FLG VARCHAR2(1) DEFAULT 'N' NOT NULL + column comments
+create\tables.cc
+   - ESQ_ORG_SYSTEM_FLG_CC / ESQ_USR_SYSTEM_FLG_CC CHECK (... IN ('Y','N'))
+fill\initial-entities.sql
+   - System entity flags block sets 'Y' on org_pk (1,14) and usr_pk (4,5,15,16,17); DB-set only
+
 06/06/2026 v1.2.7 audit-log dedup unique indexes (x-Rod option c)
 create.log\tables.pfi
    - UNIQUE indexes on the 9 ESQ_*_LOG dedup keys (account / org / user / address on (*_crl_id, *_pk),
