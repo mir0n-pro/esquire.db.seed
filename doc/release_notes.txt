@@ -1,3 +1,8 @@
+06/12/2026 v1.2.8 system entity flag (anti-deletion) on ESQ_ORG / ESQ_USER
+   - ORG_SYSTEM_FLG / USR_SYSTEM_FLG VARCHAR(1) DEFAULT 'N' NOT NULL + Y/N check; DB-set only, not GUI-visible
+   - seed flags the protected set 'Y': org 1 (root) + 14 (Test House); users 4, 5, 15, 16, 17
+   - both Oracle and Postgres branches
+
 06/06/2026 v1.2.7 audit-log dedup unique indexes added (x-Rod option c)
    - the 9 ESQ_*_LOG tables get a UNIQUE index on their dedup key (crl_id + the row's own pk [, kind / sub])
    -  both Oracle and Postgres branches

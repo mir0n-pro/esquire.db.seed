@@ -7,41 +7,11 @@
 -- desc:	Primary and foreign keys, indeces for the audit-log tables
 --
 -- 06/04/2026 mir0n created: placeholder for audit-log indexes
--- 06/06/2026 mir0n  esq_account_log dedup unique index added (x-Rod option c: at-least-once redelivery
---                   is settled by MERGE .. WHEN NOT MATCHED on this key). Other *_log tables get their
---                   dedup index as each producer moves onto the bus.
+-- 06/06/2026 mir0n  esq_account_log dedup unique index added (x-Rod option c)
+-- 06/19/2026 mir0n  dedup unique indexes MOVED OUT to the optional ../dedup/ overlay -- the base seed is
+--                   dedup-free. The dedup index is mutually exclusive with the DB-trigger audit (option a)
+--                   and only needed for bus-audit idempotency, so it is applied on demand, not at seed
+--                   time. This file is reserved for any MANDATORY *_log primary/foreign-key indexes.
 -----------------------------------
 
--- Audit-log dedup unique indexes: the (crl_id + the row's own pk[, kind, sub_id]) identity. A redelivered
--- message collides on this key so the MERGE WHEN NOT MATCHED inserts exactly one log row per (op, row).
-PROMPT Creating unique index 'ESQ_ACCOUNT_LOG_DEDUP_UK'
-CREATE UNIQUE INDEX esq_account_log_dedup_uk ON esq_account_log (accl_crl_id, accl_pk)
-/
-
-PROMPT Creating unique index 'ESQ_ORG_LOG_DEDUP_UK'
-CREATE UNIQUE INDEX esq_org_log_dedup_uk ON esq_org_log (orgl_crl_id, orgl_pk)
-/
-
-PROMPT Creating unique index 'ESQ_USER_LOG_DEDUP_UK'
-CREATE UNIQUE INDEX esq_user_log_dedup_uk ON esq_user_log (usrl_crl_id, usrl_pk)
-/
-
-PROMPT Creating unique index 'ESQ_ORG_PAR_LOG_DEDUP_UK'
-CREATE UNIQUE INDEX esq_org_par_log_dedup_uk ON esq_org_par_log (oprl_crl_id, oprl_org_pk, oprl_par_name)
-/
-
-PROMPT Creating unique index 'ESQ_USR_PAR_LOG_DEDUP_UK'
-CREATE UNIQUE INDEX esq_usr_par_log_dedup_uk ON esq_usr_par_log (uprl_crl_id, uprl_usr_pk, uprl_par_name)
-/
-
-PROMPT Creating unique index 'ESQ_PERSON_LOG_DEDUP_UK'
-CREATE UNIQUE INDEX esq_person_log_dedup_uk ON esq_person_log (pel_crl_id, pel_usr_pk, pel_kind)
-/
-
-PROMPT Creating unique index 'ESQ_ADDRESS_LOG_DEDUP_UK'
-CREATE UNIQUE INDEX esq_address_log_dedup_uk ON esq_address_log (adl_crl_id, adl_pk)
-/
-
-PROMPT Creating unique index 'ESQ_AUTH_LOG_DEDUP_UK'
-CREATE UNIQUE INDEX esq_auth_log_dedup_uk ON esq_auth_log (aul_crl_id, aul_usr_pk)
-/
+-- (no mandatory audit-log indexes at present; dedup indexes live in ../dedup/all.sql)

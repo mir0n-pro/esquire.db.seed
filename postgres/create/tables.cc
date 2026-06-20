@@ -10,13 +10,20 @@
 -- 02/28/2026 mir0n ESQ_PE_KIND_CC check constraint on ESQ_PERSON commented out
 --                  (PE_KIND changed to numeric type)
 -- 03/03/2026 mir0n ESQ_PAR_TYPE_CC: 'integer' removed; 'text', 'date' added
+-- 06/12/2026 mir0n v1.2.8 ESQ_USR_SYSTEM_FLG_CC / ESQ_ORG_SYSTEM_FLG_CC check constraints (Y/N)
 -----------------------------------
 
 
 \echo -n Creating Check Constraint on 'ESQ_USER\n'
 ALTER TABLE ESQ_USER
  ADD CONSTRAINT ESQ_USR_DELETED_FLG_CC CHECK (USR_DELETED_FLG IN ('Y','N'));
- 
+ALTER TABLE ESQ_USER
+ ADD CONSTRAINT ESQ_USR_SYSTEM_FLG_CC CHECK (USR_SYSTEM_FLG IN ('Y','N'));
+
+\echo -n Creating Check Constraint on 'ESQ_ORG\n'
+ALTER TABLE ESQ_ORG
+ ADD CONSTRAINT ESQ_ORG_SYSTEM_FLG_CC CHECK (ORG_SYSTEM_FLG IN ('Y','N'));
+
 \echo -n Creating Check Constraint on 'ESQ_AUTH\n'
 ALTER TABLE ESQ_AUTH
  ADD CONSTRAINT ESQ_AU_CONNECT_FLG_CC CHECK (AU_CONNECT_FLG IN ('Y','N'));
