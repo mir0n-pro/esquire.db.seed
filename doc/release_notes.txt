@@ -1,3 +1,12 @@
+06/21/2026 v1.2.9 entity created-timestamp columns (Postgres); path + optional audit time-range indexes
+   - Postgres gains the three "entity created" timestamps Oracle already had (offices, users, accounts),
+     filled automatically the moment the row is created
+   - both branches get an index on the entity path so moving a branch of the tree, and reading a user's
+     own scoped area, no longer scan the whole path table
+   - an optional, off-by-default index for date-range audit queries -- one per audit-log table, applied by
+     hand when wanted, never loaded by the seed (create.log/recommended.pfi)
+   - both Oracle and Postgres branches
+
 06/12/2026 v1.2.8 system entity flag (anti-deletion) on ESQ_ORG / ESQ_USER
    - ORG_SYSTEM_FLG / USR_SYSTEM_FLG VARCHAR(1) DEFAULT 'N' NOT NULL + Y/N check; DB-set only, not GUI-visible
    - seed flags the protected set 'Y': org 1 (root) + 14 (Test House); users 4, 5, 15, 16, 17

@@ -12,12 +12,19 @@
 --                  ESQ_ROLE table added with many-to-many references
 -- 03/03/2026 mir0n ESQ_ROLE_PT_FK added (ROLE_PT_PK -> ESQ_PERMISSION_TYPE)
 --                  ESQ_ROLE_PT_FK_I index added
+-- 06/21/2026 mir0n v1.2.9 ESQ_EP_PATH_I index on ESQ_ENTITY_PATH (EP_PATH) -- serves the ep_path
+--                  LIKE-prefix scans (move + rootPath reads); plain index, left-anchored LIKE uses it under BINARY sort
 -----------------------------------
   
 PROMPT Creating Primary Key on 'ESQ_ENTITY_PATH'
 ALTER TABLE ESQ_ENTITY_PATH
  ADD (CONSTRAINT ESQ_EP_PK PRIMARY KEY
   (EP_PK))
+/
+
+PROMPT Creating Index 'ESQ_EP_PATH_I'
+CREATE INDEX ESQ_EP_PATH_I ON ESQ_ENTITY_PATH
+  (EP_PATH)
 /
 
 PROMPT Creating Primary Key on 'ESQ_ADDRESS'

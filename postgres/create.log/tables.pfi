@@ -12,6 +12,8 @@
 --                   dedup-free. The dedup index is mutually exclusive with the DB-trigger audit (option a)
 --                   and only needed for bus-audit idempotency, so it is applied on demand, not at seed
 --                   time. This file is reserved for any MANDATORY *_log primary/foreign-key indexes.
+-- 06/21/2026 mir0n  v1.2.9 pointer to the optional ./recommended.pfi (*_ACTION_TS time-range overlay) added
 -----------------------------------
 
--- (no mandatory audit-log indexes at present; dedup indexes live in ../dedup/all.sql)
+-- (no mandatory audit-log indexes at present. Two optional overlays, applied on demand, NOT at seed time:
+--  dedup unique indexes in ../dedup/all.sql; recommended *_ACTION_TS time-range indexes in ./recommended.pfi)

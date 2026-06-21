@@ -1,0 +1,49 @@
+-----------------------------------
+-- project:	Esquire
+-- version:	2.0
+-- Copyright (c) mir0n 2000, 2001, 2025
+--
+-- file :	create.log/recommended.pfi
+-- desc:	RECOMMENDED (optional) audit-log indexes -- NOT part of the base seed.
+--          create.log/all.sql does NOT include this file, so the seed stays flat. Apply ON DEMAND
+--          (@create.log/recommended.pfi) where audit time-range queries matter at scale:
+--          one btree index per *_log table on its *_ACTION_TS column (range scans by action time).
+--
+-- 06/21/2026 mir0n v1.2.9 created: per-*_log *_ACTION_TS indexes, kept out of the base seed (optional overlay)
+-----------------------------------
+
+PROMPT Creating Index 'ADL_ACTION_TS_I'
+CREATE INDEX ADL_ACTION_TS_I ON ESQ_ADDRESS_LOG (ADL_ACTION_TS)
+/
+
+PROMPT Creating Index 'BIL_ACTION_TS_I'
+CREATE INDEX BIL_ACTION_TS_I ON ESQ_BANK_INFO_LOG (BIL_ACTION_TS)
+/
+
+PROMPT Creating Index 'PEL_ACTION_TS_I'
+CREATE INDEX PEL_ACTION_TS_I ON ESQ_PERSON_LOG (PEL_ACTION_TS)
+/
+
+PROMPT Creating Index 'USRL_ACTION_TS_I'
+CREATE INDEX USRL_ACTION_TS_I ON ESQ_USER_LOG (USRL_ACTION_TS)
+/
+
+PROMPT Creating Index 'AUL_ACTION_TS_I'
+CREATE INDEX AUL_ACTION_TS_I ON ESQ_AUTH_LOG (AUL_ACTION_TS)
+/
+
+PROMPT Creating Index 'ORGL_ACTION_TS_I'
+CREATE INDEX ORGL_ACTION_TS_I ON ESQ_ORG_LOG (ORGL_ACTION_TS)
+/
+
+PROMPT Creating Index 'ACCL_ACTION_TS_I'
+CREATE INDEX ACCL_ACTION_TS_I ON ESQ_ACCOUNT_LOG (ACCL_ACTION_TS)
+/
+
+PROMPT Creating Index 'UPRL_ACTION_TS_I'
+CREATE INDEX UPRL_ACTION_TS_I ON ESQ_USR_PAR_LOG (UPRL_ACTION_TS)
+/
+
+PROMPT Creating Index 'OPRL_ACTION_TS_I'
+CREATE INDEX OPRL_ACTION_TS_I ON ESQ_ORG_PAR_LOG (OPRL_ACTION_TS)
+/
