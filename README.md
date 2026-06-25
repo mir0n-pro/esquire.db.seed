@@ -7,15 +7,21 @@ user profile maintenance, permissions, authorization, accounting.
 ## esquire.db.seed
 Part of Esquire frameworks. Set of database seed scripts
 
+## v1.2.9 — complete (06/24/2026)
+
+The seed-side change for the v1.2.9 **hardening** sprint brings the Postgres branch in line with Oracle and
+speeds up the most common tree reads. Across both the Oracle and Postgres branches:
+
+- **entity created-timestamps on Postgres** -- the three "when this entity was created" columns Oracle already carried are added to offices, users and accounts, filled automatically the moment the row is created
+- **entity-path index** -- an index on the entity path, so moving a branch of the tree and reading a user's own scoped area no longer scan the whole path table
+- **optional audit time-range index** -- an off-by-default index for date-range audit-log queries, one per audit-log table, applied by hand when wanted and never loaded by the seed
+
 ## v1.2.8 — complete (06/19/2026)
 
-The seed-side change for the v1.2.8 sprint is a **system-entity flag** (anti-deletion): the framework's own
-foundational entities are marked at the database level so they cannot be deleted through the application.
-Across both the Oracle and Postgres branches:
-
-- **`ORG_SYSTEM_FLG` / `USR_SYSTEM_FLG` columns** -- a one-character `Y`/`N` flag (default `'N'`, NOT NULL) added to `ESQ_ORG` and `ESQ_USER`; `'Y'` marks a system entity protected from deletion, with matching column comments
-- **seeded on the core entities** -- set `'Y'` on the root and Test House orgs (`org_pk` 1, 14) and the system / admin / test-harness users (`usr_pk` 4, 5, 15, 16, 17), so a fresh seed comes up already protected
-- **DB-set only** -- the flag is set in the seed and never written through the app or shown on the GUI; it is a database-level guard enforced underneath the service tier
+The seed-side **system-entity flag** (anti-deletion): a one-character `Y`/`N` column (default `'N'`, NOT NULL)
+on `ESQ_ORG` and `ESQ_USER`, seeded `'Y'` on the root / Test House orgs and the core users so the framework's
+foundational entities cannot be deleted through the app -- DB-set only, across both Oracle and Postgres.<br>
+[More Details: v1.2.8 README](https://github.com/mir0n-pro/esquire.db.seed/tree/release/v1.2.8?tab=readme-ov-file)
 
 ## v1.2.7 — complete (06/10/2026)
 
