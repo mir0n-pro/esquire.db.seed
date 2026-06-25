@@ -1,5 +1,14 @@
 oracle seed changes
 
+06/21/2026 v1.2.9 ep_path + optional audit-log time-range indexes
+create\tables.pfi
+   - ESQ_EP_PATH_I index on ESQ_ENTITY_PATH (EP_PATH)
+create.log\recommended.pfi (new)
+   - optional overlay (NOT included by create.log/all.sql): one index per ESQ_*_LOG on its
+     *_ACTION_TS (ADL_/BIL_/PEL_/USRL_/AUL_/ORGL_/ACCL_/UPRL_/OPRL_ACTION_TS; named <prefix>_ACTION_TS_I)
+create.log\tables.pfi
+   - pointer to the optional ./recommended.pfi overlay added (no DDL change)
+
 06/12/2026 v1.2.8 system entity flag (anti-deletion)
 create\tables.tab
    - ESQ_ORG.ORG_SYSTEM_FLG, ESQ_USER.USR_SYSTEM_FLG VARCHAR2(1) DEFAULT 'N' NOT NULL + column comments

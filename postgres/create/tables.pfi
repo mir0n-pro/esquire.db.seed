@@ -12,12 +12,18 @@
 --                  ESQ_ROLE table added with many-to-many references
 -- 03/03/2026 mir0n ESQ_ROLE_PT_FK added (ROLE_PT_PK -> ESQ_PERMISSION_TYPE)
 --                  ESQ_ROLE_PT_FK_I index added
+-- 06/21/2026 mir0n v1.2.9 ESQ_EP_PATH_I index on ESQ_ENTITY_PATH (EP_PATH text_pattern_ops) -- serves the
+--                  ep_path LIKE-prefix scans (move + rootPath reads); text_pattern_ops required for LIKE under non-C collation
 -----------------------------------
   
 \echo -n Creating Primary Key on 'ESQ_ENTITY_PATH\n'
 ALTER TABLE ESQ_ENTITY_PATH
  ADD CONSTRAINT ESQ_EP_PK PRIMARY KEY
   (EP_PK);
+
+\echo -n Creating Index 'ESQ_EP_PATH_I\n'
+CREATE INDEX ESQ_EP_PATH_I ON ESQ_ENTITY_PATH
+  (EP_PATH text_pattern_ops);
 
 \echo -n Creating Primary Key on 'ESQ_ADDRESS\n'
 ALTER TABLE ESQ_ADDRESS
