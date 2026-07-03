@@ -1,3 +1,9 @@
+07/03/2026 v1.2.10 collected-backlog fixes
+   - ESQ_ENTITY_PATH.EP_PATH validate/recover utility (data-fix; validate + optional fix)
+   - postgres seed aggregator all.sql corrected to psql-native (was Oracle SQL*Plus @@/PROMPT)
+   - DB_VERSION parameter bumped to 1.2.10 (both branches)
+   - the recover utility lands on both Oracle and Postgres branches; the all.sql fix is Postgres-only
+
 06/21/2026 v1.2.9 entity created-timestamp columns (Postgres); path + optional audit time-range indexes
    - Postgres gains the three "entity created" timestamps Oracle already had (offices, users, accounts),
      filled automatically the moment the row is created

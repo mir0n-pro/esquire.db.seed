@@ -1,5 +1,13 @@
 oracle seed changes
 
+07/03/2026 v1.2.10 EP_PATH validate/recover utility; DB_VERSION -> 1.2.10
+fill\root.sql
+   - DB_VERSION parameter bumped 1.2.9 -> 1.2.10
+patch\v1.2.10\forward.sql  (new)
+   - forward migration for an already-created DB: DB_VERSION 1.2.9 -> 1.2.10 only (no schema change this release)
+data-fix\fix-path.sql  (new)
+   - validate/recover ESQ_ENTITY_PATH.EP_PATH from the FK hierarchy (office/user/account) via a PL/SQL loop; DBMS_OUTPUT report, 'fix' mode UPDATEs to the canonical path
+
 06/21/2026 v1.2.9 ep_path + optional audit-log time-range indexes
 create\tables.pfi
    - ESQ_EP_PATH_I index on ESQ_ENTITY_PATH (EP_PATH)

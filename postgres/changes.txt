@@ -1,5 +1,15 @@
 postgres seed changes
 
+07/03/2026 v1.2.10 EP_PATH validate/recover utility; all.sql aggregator rewritten psql-native; DB_VERSION -> 1.2.10
+fill\root.sql
+   - DB_VERSION parameter bumped 1.2.9 -> 1.2.10
+patch\v1.2.10\forward.sql  (new)
+   - forward migration for an already-seeded DB: DB_VERSION 1.2.9 -> 1.2.10 only (no schema change this release)
+data-fix\fix-path.sql  (new)
+   - validate/recover ESQ_ENTITY_PATH.EP_PATH from the FK hierarchy (office/user/account); reports mismatches + orphans; apply=on UPDATEs to the canonical path
+all.sql
+   - rewritten psql-native (\cd + \i, mirroring services/postgres/initdb/init.sh: create/all.sql then fill/all.sql); was Oracle SQL*Plus @@/PROMPT
+
 06/21/2026 v1.2.9 entity created-timestamp columns; ep_path + optional audit-log time-range indexes
 create\tables.tab
    - ESQ_USER.USR_CREATED_TS, ESQ_ORG.ORG_CREATED_TS, ESQ_ACCOUNT.ACC_CREATED_TS
