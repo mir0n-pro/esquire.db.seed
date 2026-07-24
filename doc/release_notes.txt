@@ -1,3 +1,10 @@
+07/23/2026 v1.2.11 schema-definition corrections
+   - ESQ_ACCT_TRANSACTION.ATR_TS gains a server-side "now (UTC)" default -- a ledger row is stamped even when the caller omits it
+   - ESQ_PARAMETER.PAR_TYPE default corrected to lower-case 'string' so it matches its own allowed-values check
+   - the ESQ_USR_ROLE foreign-key index renamed to the intended UR_ROLE_FK_I (a double-_FK name typo)
+   - a Postgres forward-migration patch applies the above to an already-seeded database and bumps DB_VERSION to 1.2.11
+   - both Oracle and Postgres branches (the forward-migration patch is Postgres-only)
+
 07/03/2026 v1.2.10 collected-backlog fixes
    - ESQ_ENTITY_PATH.EP_PATH validate/recover utility (data-fix; validate + optional fix)
    - postgres seed aggregator all.sql corrected to psql-native (was Oracle SQL*Plus @@/PROMPT)

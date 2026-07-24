@@ -14,6 +14,8 @@
 --                  ESQ_ROLE_PT_FK_I index added
 -- 06/21/2026 mir0n v1.2.9 ESQ_EP_PATH_I index on ESQ_ENTITY_PATH (EP_PATH) -- serves the ep_path
 --                  LIKE-prefix scans (move + rootPath reads); plain index, left-anchored LIKE uses it under BINARY sort
+-- 07/23/2026 mir0n v1.2.11 FK index on ESQ_USR_ROLE(UR_ROLE_PK) renamed UR_ROLE_FK_FK_I -> UR_ROLE_FK_I
+--                  (double-_FK typo; matches the prompt and the UR_USR_FK_I sibling)
 -----------------------------------
   
 PROMPT Creating Primary Key on 'ESQ_ENTITY_PATH'
@@ -454,7 +456,7 @@ ALTER TABLE ESQ_USR_ROLE ADD (CONSTRAINT
 /
 
 PROMPT Creating Index 'UR_ROLE_FK_I'
-CREATE INDEX UR_ROLE_FK_FK_I ON ESQ_USR_ROLE
+CREATE INDEX UR_ROLE_FK_I ON ESQ_USR_ROLE
   (UR_ROLE_PK)
 /
 PROMPT Creating Index 'UR_USR_FK_I'
