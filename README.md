@@ -7,12 +7,19 @@ user profile maintenance, permissions, authorization, accounting.
 ## esquire.db.seed
 Part of Esquire frameworks. Set of database seed scripts
 
+## v1.2.11 — complete (07/25/2026)
+
+The seed-side change for the v1.2.11 **Observability** sprint is a set of schema-definition corrections, on both Oracle and Postgres:
+
+- **ledger timestamp default** -- `ESQ_ACCT_TRANSACTION.ATR_TS` gains a server-side "now (UTC)" default, so a ledger row is stamped even when the caller omits the time
+- **parameter-type default corrected** -- `ESQ_PARAMETER.PAR_TYPE` now defaults to lower-case `string`, matching its own allowed-values check
+- **index name fixed** -- the `ESQ_USR_ROLE` foreign-key index renamed to the intended `UR_ROLE_FK_I` (a double-`_FK` typo)
+- **forward-migration patch** -- a Postgres patch applies the above to an already-seeded database and bumps `DB_VERSION` to 1.2.11 (Postgres only; the base seed carries the corrections on both branches)
+
 ## v1.2.10 — complete (07/04/2026)
 
-The seed-side change for the v1.2.10 **Resilience / Durability** sprint adds a hand-run data-repair tool and tidies the Postgres build:
-
-- **entity-path validate / recover utility** -- a stand-alone check that finds any stored entity-path that has drifted out of step with the tree and, on request, repairs it; run by hand, never loaded by the seed (both Oracle and Postgres)
-- **Postgres build script corrected** -- the Postgres all-in-one seed runner is rewritten in native Postgres form instead of the inherited Oracle-style commands, so it runs cleanly on its own branch (Postgres only)
+The seed-side change for the v1.2.10 **Resilience / Durability** sprint: a hand-run entity-path validate / recover utility (finds and, on request, repairs a stored path that has drifted out of step with the tree; both branches), and the Postgres all-in-one seed runner rewritten in native Postgres form (Postgres only).<br>
+[More Details: v1.2.10 README](https://github.com/mir0n-pro/esquire.db.seed/tree/release/v1.2.10?tab=readme-ov-file)
 
 ## v1.2.9 — complete (06/24/2026)
 

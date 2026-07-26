@@ -1,5 +1,16 @@
 postgres seed changes
 
+07/23/2026 v1.2.11 ATR_TS + PAR_TYPE defaults; UR_ROLE_FK_I index rename; DB_VERSION -> 1.2.11
+create\tables.tab
+   - ESQ_ACCT_TRANSACTION.ATR_TS TIMESTAMP DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'UTC') (server-side default)
+   - ESQ_PARAMETER.PAR_TYPE default 'STRING' -> 'string' (matches the ESQ_PAR_TYPE_CC check)
+create\tables.pfi
+   - FK index on ESQ_USR_ROLE(UR_ROLE_PK) renamed UR_ROLE_FK_FK_I -> UR_ROLE_FK_I (double-_FK typo)
+fill\root.sql
+   - DB_VERSION parameter bumped 1.2.10 -> 1.2.11
+patch\v1.2.11\forward.sql  (new)
+   - forward migration for an already-seeded DB: ATR_TS default, PAR_TYPE default, UR_ROLE_FK_I rename, DB_VERSION 1.2.10 -> 1.2.11
+
 07/03/2026 v1.2.10 EP_PATH validate/recover utility; all.sql aggregator rewritten psql-native; DB_VERSION -> 1.2.10
 fill\root.sql
    - DB_VERSION parameter bumped 1.2.9 -> 1.2.10
