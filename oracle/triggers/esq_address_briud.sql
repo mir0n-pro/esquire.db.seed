@@ -22,6 +22,7 @@ BEGIN
          ,adl_province
          ,adl_title
          ,adl_url
+         ,adl_change_no
          ,adl_crl_id
          ,adl_req_id
          ,adl_uid
@@ -40,6 +41,7 @@ BEGIN
          ,:OLD.ad_province
          ,:OLD.ad_title
          ,:OLD.ad_url
+         ,:OLD.ad_change_no + 1
          ,:OLD.ad_crl_id
          ,:OLD.ad_req_id
          ,:OLD.ad_uid
@@ -65,6 +67,7 @@ BEGIN
          ,adl_province
          ,adl_title
          ,adl_url
+         ,adl_change_no
          ,adl_crl_id
          ,adl_req_id
          ,adl_uid
@@ -83,6 +86,7 @@ BEGIN
          ,:NEW.ad_province
          ,:NEW.ad_title
          ,:NEW.ad_url
+         ,:NEW.ad_change_no
          ,:NEW.ad_crl_id
          ,:NEW.ad_req_id
          ,:NEW.ad_uid

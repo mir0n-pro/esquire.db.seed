@@ -9,15 +9,7 @@
 -----------------------------------
 -- History:
 -- 04/20/2026 mir0n ESQ_ATR_SEQ removed (transaction PK is now a string ID)
-
-\echo -n Creating Sequence 'ESQ_ENTITY_SEQ\n'
-CREATE SEQUENCE ESQ_ENTITY_SEQ
- INCREMENT BY 1 
- START WITH 100 
- MINVALUE 100
- MAXVALUE 9999999999999999
- NO CYCLE
- CACHE 1;
+-- 08/11/2026 mir0n v1.2.12 ESQ_ENTITY_SEQ removed -- entity keys are minted by the application; ESQ_REF_SEQ stays
 
 \echo -n Creating Sequence 'ESQ_REF_SEQ\n'
 CREATE SEQUENCE ESQ_REF_SEQ

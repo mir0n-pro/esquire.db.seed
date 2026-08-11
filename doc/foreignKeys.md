@@ -27,6 +27,20 @@ Self-referential org hierarchy and the three main entity tiers are all RESTRICT:
 
 ---
 
+## Path satellite (RESTRICT)
+
+| Constraint | Child table | Child column(s) | Parent table | Parent column |
+|---|---|---|---|---|
+| ESQ_ORG_EP_FK | ESQ_ORG | ORG_PK | ESQ_ENTITY_PATH | EP_PK |
+| ESQ_USR_EP_FK | ESQ_USER | USR_PK | ESQ_ENTITY_PATH | EP_PK |
+| ESQ_ACC_EP_FK | ESQ_ACCOUNT | ACC_PK | ESQ_ENTITY_PATH | EP_PK |
+
+Each entity shares its key with a row in `ESQ_ENTITY_PATH`, which records where that entity sits in the
+tree. The key is the same value on both sides, and entity keys are unique across all three tables, so one
+key is enough to find the path without knowing which table the entity is in.
+
+---
+
 ## Auth (CASCADE from user)
 
 | Constraint | Child table | Child column(s) | Parent table | Parent column | ON DELETE |
@@ -35,17 +49,16 @@ Self-referential org hierarchy and the three main entity tiers are all RESTRICT:
 
 ---
 
-## Person — cascade from user, nullable links to address / bank info
+## Person — cascade from user, nullable links to address
 
 | Constraint | Child table | Child column(s) | Parent table | Parent column | ON DELETE |
 |---|---|---|---|---|---|
 | ESQ_PE_USR_FK | ESQ_PERSON | PE_USR_PK | ESQ_USER | USR_PK | CASCADE |
 | ESQ_PE_AD_FK | ESQ_PERSON | PE_AD_PK | ESQ_ADDRESS | AD_PK | SET NULL |
 | ESQ_PE_AD_BIZ_FK | ESQ_PERSON | PE_AD_PK_BIZ | ESQ_ADDRESS | AD_PK | SET NULL |
-| ESQ_PE_BI_FK | ESQ_PERSON | PE_BI_PK | ESQ_BANK_INFO | BI_PK | SET NULL |
 
 Person record is owned by the user — deleted automatically with the user.
-Address and bank info are shared references — unlinked (SET NULL) when the referenced record is deleted.
+Address is a shared reference — unlinked (SET NULL) when the referenced record is deleted.
 
 ---
 
@@ -117,14 +130,13 @@ Pre-condition check (application level — `deleteUsr()` in `UsrService`):
 
 Explicit deletes (must run before the user row is removed, while `ESQ_PERSON` still exists):
 1. `ESQ_ADDRESS` — delete rows referenced by `pe_ad_pk` and `pe_ad_pk_biz` in `ESQ_PERSON` (subquery on `pe_usr_pk`).
-2. `ESQ_BANK_INFO` — delete rows referenced by `pe_bi_pk` in `ESQ_PERSON` (subquery on `pe_usr_pk`).
-3. `ESQ_AUTH` — explicit delete (redundant with CASCADE but kept for clarity).
+2. `ESQ_AUTH` — explicit delete (redundant with CASCADE but kept for clarity).
 
 Cascaded automatically on `DELETE FROM ESQ_USER`:
-4. `ESQ_AUTH` — CASCADE (`ESQ_AU_USR_FK`)
-5. `ESQ_USR_ROLE` — CASCADE (`UR_USR_FK`)
-6. `ESQ_USR_PAR` — CASCADE (`ESQ_UPR_USR_FK`)
-7. `ESQ_PERSON` — CASCADE (`ESQ_PE_USR_FK`) — address/bank_info FKs on person are SET NULL (irrelevant, person row is being deleted)
+3. `ESQ_AUTH` — CASCADE (`ESQ_AU_USR_FK`)
+4. `ESQ_USR_ROLE` — CASCADE (`UR_USR_FK`)
+5. `ESQ_USR_PAR` — CASCADE (`ESQ_UPR_USR_FK`)
+6. `ESQ_PERSON` — CASCADE (`ESQ_PE_USR_FK`) — the address FKs on person are SET NULL (irrelevant, person row is being deleted)
 
 ### Org delete
 

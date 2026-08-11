@@ -1,3 +1,16 @@
+08/11/2026 v1.2.12 entity change number
+   - every entity and sub-entity table gains a change number that goes up by one each time the row is written -- offices, users, accounts, sign-in details, personal details, addresses and the custom-parameter rows
+   - the table that records where each entity sits in the tree gets a counter of its own, because moving a branch rewrites where everything under it sits without changing any of those records
+   - every change-log table records the number alongside the change, so one record's history reads back in the order it really happened
+   - the ledger records which version of the account a money movement produced
+   - the optional repeat-protection rule on the change-log tables is keyed on the record and its change number instead of on the request that caused the change, so that rule and the database's own change-recording triggers can be used together
+   - the stored path dropped from the change log -- it was filled by the trigger route alone
+   - the bank-details table removed, with the person column and foreign key that pointed at it
+   - the entity-key sequence removed; the one that hands out address keys stays
+   - a Postgres forward-migration patch applies all of the above to an already-seeded database and bumps DB_VERSION to 1.2.12
+   - doc: the entity-relationship diagram redrawn; the foreign-key list corrected (the bank-details link removed, the three entity-path links added); the README gains a Deployment section -- how a database is brought up, that patches are written for Postgres and Oracle is seeded fresh, and that no schema-migration tool takes part
+   - both Oracle and Postgres branches (the forward-migration patch is Postgres-only)
+
 07/23/2026 v1.2.11 schema-definition corrections
    - ESQ_ACCT_TRANSACTION.ATR_TS gains a server-side "now (UTC)" default -- a ledger row is stamped even when the caller omits it
    - ESQ_PARAMETER.PAR_TYPE default corrected to lower-case 'string' so it matches its own allowed-values check
