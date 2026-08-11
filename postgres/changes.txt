@@ -43,10 +43,15 @@ dedup\all.sql
      the key
 fill\root.sql
    - DB_VERSION parameter bumped 1.2.11 -> 1.2.12
-patch\v1.2.12\forward.sql  (new)
-   - forward migration for an already-seeded DB: the *_CHANGE_NO columns added and the *_log columns
-     back-filled, ESQ_BANK_INFO / ESQ_BANK_INFO_LOG / PE_BI_PK / PEL_BI_PK and ESQ_ENTITY_SEQ dropped, the
-     audit triggers re-created where they are already installed, DB_VERSION 1.2.11 -> 1.2.12
+patch\v1.2.12\forward.1st.sql  (new)
+   - forward migration for an already-seeded DB, part 1 of 2, ADDITIVE ONLY -- run while the previous release
+     is still serving: the *_CHANGE_NO columns added (nullable on the *_log tables) plus ATR_ACC_CHANGE_NO.
+     Nothing dropped, no trigger and no index touched, DB_VERSION left at 1.2.11
+patch\v1.2.12\forward.2nd.sql  (new)
+   - part 2 of 2, run once the v1.2.12 services are serving: the *_log change numbers back-filled and set
+     NOT NULL, USRL_PATH / ORGL_PATH / ACCL_PATH dropped, ESQ_BANK_INFO / ESQ_BANK_INFO_LOG / PE_BI_PK /
+     PEL_BI_PK / ESQ_ENTITY_SEQ dropped, the audit triggers and the dedup indexes each re-created only where
+     they are already installed, DB_VERSION 1.2.11 -> 1.2.12
 
 07/23/2026 v1.2.11 ATR_TS + PAR_TYPE defaults; UR_ROLE_FK_I index rename; DB_VERSION -> 1.2.11
 create\tables.tab

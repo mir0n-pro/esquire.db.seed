@@ -7,7 +7,7 @@
    - the stored path dropped from the change log -- it was filled by the trigger route alone
    - the bank-details table removed, with the person column and foreign key that pointed at it
    - the entity-key sequence removed; the one that hands out address keys stays
-   - a Postgres forward-migration patch applies all of the above to an already-seeded database and bumps DB_VERSION to 1.2.12
+   - the Postgres forward migration comes in two parts, so a running deployment is never left with a database the code cannot use: part 1 only adds the new columns and is applied while the previous release is still serving; part 2 removes the dead columns and refreshes the triggers and the dedup indexes, and is applied once the new release has taken over. DB_VERSION moves to 1.2.12 in part 2
    - doc: the entity-relationship diagram redrawn; the foreign-key list corrected (the bank-details link removed, the three entity-path links added); the README gains a Deployment section -- how a database is brought up, that patches are written for Postgres and Oracle is seeded fresh, and that no schema-migration tool takes part
    - both Oracle and Postgres branches (the forward-migration patch is Postgres-only)
 

@@ -21,11 +21,17 @@ The seed builds the same schema on **Postgres** and **Oracle**, and every releas
 A new database is created by running the seed -- a developer's stack, a test run, a new environment. The
 Postgres container image carries the seed inside it.
 
-A database that is already live and holding data is moved forward by a patch instead: one script per release
-that changes the schema in place and leaves the data where it is. It is run on demand against that database,
-and each patch file carries its exact command in its own header. **Patches are written for Postgres.** An
-Oracle database is created from the seed whenever a new version is wanted, so it starts with that version
-already in it and has nothing to migrate.
+A database that is already live and holding data is moved forward by a patch instead: a script that changes
+the schema in place and leaves the data where it is. It is run on demand against that database, and each
+patch file carries its exact command in its own header. **Patches are written for Postgres.** An Oracle
+database is created from the seed whenever a new version is wanted, so it starts with that version already
+in it and has nothing to migrate.
+
+A release that both adds and removes comes as **two patches, run either side of the deployment**. The first
+one only adds -- new columns the running release does not know about and does not have to. The services are
+then updated, and the second patch removes what the old release needed and refreshes anything built on top of
+the old shape. Splitting it this way is what lets the database move forward while the site stays up: a single
+script would take away, from a release still serving, something it is still using.
 
 No schema-migration tool takes part in any of this, and the framework does not impose one. Esquire ships a
 foundation schema that an adopter extends with their own domain, so that choice stays theirs. The reasoning
