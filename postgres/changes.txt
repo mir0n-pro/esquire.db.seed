@@ -1,5 +1,58 @@
 postgres seed changes
 
+08/11/2026 v1.2.12 entity change number; bank info + ESQ_ENTITY_SEQ removed; DB_VERSION -> 1.2.12
+create\tables.tab
+   - *_CHANGE_NO BIGINT NOT NULL DEFAULT 1 on ESQ_ORG, ESQ_USER, ESQ_ACCOUNT, ESQ_AUTH, ESQ_PERSON,
+     ESQ_ADDRESS, ESQ_USR_PAR, ESQ_ORG_PAR and ESQ_ENTITY_PATH
+   - ESQ_ACCT_TRANSACTION.ATR_ACC_CHANGE_NO BIGINT (nullable) -- the account change number the transaction
+     produced
+   - ESQ_BANK_INFO removed, with ESQ_PERSON.PE_BI_PK
+create\tables.pfi
+   - ESQ_BI_PK, ESQ_PE_BI_FK and ESQ_PE_BI_FK_I removed with the bank-info table
+create\tables.sqs
+   - ESQ_ENTITY_SEQ removed (entity keys are minted by the application); ESQ_REF_SEQ stays
+create.log\tables.tab
+   - *_CHANGE_NO BIGINT NOT NULL on the eight *_log tables
+   - ESQ_BANK_INFO_LOG removed; ACCL_PATH, ORGL_PATH and USRL_PATH removed
+create.log\delete.sql
+   - ESQ_BANK_INFO_LOG dropped from the drop list
+create.log\recommended.pfi
+   - BIL_ACTION_TS_I removed with the bank-info log table
+triggers\all.sql
+   - esq_bank_info_briud removed from the include list
+triggers\esq_org_briud.sql
+   - the log insert carries ORGL_CHANGE_NO: NEW on insert/update, OLD + 1 on delete
+triggers\esq_user_briud.sql
+   - the log insert carries USRL_CHANGE_NO: NEW on insert/update, OLD + 1 on delete; USRL_PATH dropped
+triggers\esq_account_briud.sql
+   - the log insert carries ACCL_CHANGE_NO: NEW on insert/update, OLD + 1 on delete; ACCL_PATH dropped
+triggers\esq_auth_briud.sql
+   - the log insert carries AUL_CHANGE_NO: NEW on insert/update, OLD + 1 on delete
+triggers\esq_person_briud.sql
+   - the log insert carries PEL_CHANGE_NO: NEW on insert/update, OLD + 1 on delete; PEL_BI_PK dropped
+triggers\esq_address_briud.sql
+   - the log insert carries ADL_CHANGE_NO: NEW on insert/update, OLD + 1 on delete
+triggers\esq_usr_par_briud.sql
+   - the log insert carries UPRL_CHANGE_NO: NEW on insert/update, OLD + 1 on delete
+triggers\esq_org_par_briud.sql
+   - the log insert carries OPRL_CHANGE_NO: NEW on insert/update, OLD + 1 on delete
+triggers\esq_bank_info_briud.sql  (removed)
+   - removed with the bank-info table
+dedup\all.sql
+   - the eight dedup unique indexes rekeyed to the row plus its *_CHANGE_NO, with the correlation id out of
+     the key
+fill\root.sql
+   - DB_VERSION parameter bumped 1.2.11 -> 1.2.12
+patch\v1.2.12\forward.1st.sql  (new)
+   - forward migration for an already-seeded DB, part 1 of 2, ADDITIVE ONLY -- run while the previous release
+     is still serving: the *_CHANGE_NO columns added (nullable on the *_log tables) plus ATR_ACC_CHANGE_NO.
+     Nothing dropped, no trigger and no index touched, DB_VERSION left at 1.2.11
+patch\v1.2.12\forward.2nd.sql  (new)
+   - part 2 of 2, run once the v1.2.12 services are serving: the *_log change numbers back-filled and set
+     NOT NULL, USRL_PATH / ORGL_PATH / ACCL_PATH dropped, ESQ_BANK_INFO / ESQ_BANK_INFO_LOG / PE_BI_PK /
+     PEL_BI_PK / ESQ_ENTITY_SEQ dropped, the audit triggers and the dedup indexes each re-created only where
+     they are already installed, DB_VERSION 1.2.11 -> 1.2.12
+
 07/23/2026 v1.2.11 ATR_TS + PAR_TYPE defaults; UR_ROLE_FK_I index rename; DB_VERSION -> 1.2.11
 create\tables.tab
    - ESQ_ACCT_TRANSACTION.ATR_TS TIMESTAMP DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'UTC') (server-side default)

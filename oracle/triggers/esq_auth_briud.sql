@@ -17,6 +17,7 @@ BEGIN
          ,aul_force_change_flg
          ,aul_security_question
          ,aul_security_answer
+         ,aul_change_no
          ,aul_crl_id
          ,aul_req_id
          ,aul_uid
@@ -30,6 +31,7 @@ BEGIN
          ,:OLD.au_force_change_flg
          ,:OLD.au_security_question
          ,:OLD.au_security_answer
+         ,:OLD.au_change_no + 1
          ,:OLD.au_crl_id
          ,:OLD.au_req_id
          ,:OLD.au_uid
@@ -50,6 +52,7 @@ BEGIN
          ,aul_force_change_flg
          ,aul_security_question
          ,aul_security_answer
+         ,aul_change_no
          ,aul_crl_id
          ,aul_req_id
          ,aul_uid
@@ -63,6 +66,7 @@ BEGIN
          ,:NEW.au_force_change_flg
          ,:NEW.au_security_question
          ,:NEW.au_security_answer
+         ,:NEW.au_change_no
          ,:NEW.au_crl_id
          ,:NEW.au_req_id
          ,:NEW.au_uid

@@ -6,6 +6,17 @@ RETURNS TRIGGER AS $$
 DECLARE
     oper CHAR(1) := 'D';
 BEGIN
+    -- Deleting an address unlinks it here through the FK's ON DELETE SET NULL, which the DATABASE issues
+    -- as an UPDATE on this row. That is not a business change to the person -- nothing raised the change
+    -- number -- so it is not logged. Without this skip the row would be logged again under the SAME
+    -- change number and collide with the dedup unique index.
+    IF (TG_OP = 'UPDATE'
+        AND NEW.pe_change_no = OLD.pe_change_no
+        AND ((OLD.pe_ad_pk     IS NOT NULL AND NEW.pe_ad_pk     IS NULL)
+          OR (OLD.pe_ad_pk_biz IS NOT NULL AND NEW.pe_ad_pk_biz IS NULL))) THEN
+        RETURN NEW;
+    END IF;
+
     IF (TG_OP = 'DELETE') THEN
         INSERT INTO esq_person_log (
           pel_action
@@ -26,9 +37,9 @@ BEGIN
          ,pel_email
          ,pel_phone
          ,pel_phone2
-         ,pel_bi_pk
          ,pel_ad_pk
          ,pel_ad_pk_biz
+         ,pel_change_no
          ,pel_crl_id
          ,pel_req_id
          ,pel_uid
@@ -51,9 +62,9 @@ BEGIN
          ,OLD.pe_email
          ,OLD.pe_phone
          ,OLD.pe_phone2
-         ,OLD.pe_bi_pk
          ,OLD.pe_ad_pk
          ,OLD.pe_ad_pk_biz
+         ,OLD.pe_change_no + 1
          ,OLD.pe_crl_id
          ,OLD.pe_req_id
          ,OLD.pe_uid
@@ -84,9 +95,9 @@ BEGIN
          ,pel_email
          ,pel_phone
          ,pel_phone2
-         ,pel_bi_pk
          ,pel_ad_pk
          ,pel_ad_pk_biz
+         ,pel_change_no
          ,pel_crl_id
          ,pel_req_id
          ,pel_uid
@@ -109,9 +120,9 @@ BEGIN
          ,NEW.pe_email
          ,NEW.pe_phone
          ,NEW.pe_phone2
-         ,NEW.pe_bi_pk
          ,NEW.pe_ad_pk
          ,NEW.pe_ad_pk_biz
+         ,NEW.pe_change_no
          ,NEW.pe_crl_id
          ,NEW.pe_req_id
          ,NEW.pe_uid

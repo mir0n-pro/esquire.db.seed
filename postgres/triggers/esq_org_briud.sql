@@ -12,10 +12,10 @@ BEGIN
          ,orgl_pk
          ,orgl_et_pk
          ,orgl_name
-         ,orgl_path
          ,orgl_full_name
          ,orgl_org_pk
          ,orgl_desc
+         ,orgl_change_no
          ,orgl_crl_id
          ,orgl_req_id
          ,orgl_uid
@@ -24,10 +24,10 @@ BEGIN
          ,OLD.org_pk
          ,OLD.org_et_pk
          ,OLD.org_name
-         ,(SELECT ep_path FROM esq_entity_path WHERE ep_pk = OLD.org_pk)
          ,OLD.org_full_name
          ,OLD.org_org_pk
          ,OLD.org_desc
+         ,OLD.org_change_no + 1
          ,OLD.org_crl_id
          ,OLD.org_req_id
          ,OLD.org_uid
@@ -44,10 +44,10 @@ BEGIN
          ,orgl_pk
          ,orgl_et_pk
          ,orgl_name
-         ,orgl_path
          ,orgl_full_name
          ,orgl_org_pk
          ,orgl_desc
+         ,orgl_change_no
          ,orgl_crl_id
          ,orgl_req_id
          ,orgl_uid
@@ -56,10 +56,10 @@ BEGIN
          ,NEW.org_pk
          ,NEW.org_et_pk
          ,NEW.org_name
-         ,(SELECT ep_path FROM esq_entity_path WHERE ep_pk = NEW.org_pk)
          ,NEW.org_full_name
          ,NEW.org_org_pk
          ,NEW.org_desc
+         ,NEW.org_change_no
          ,NEW.org_crl_id
          ,NEW.org_req_id
          ,NEW.org_uid

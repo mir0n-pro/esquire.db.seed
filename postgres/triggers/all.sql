@@ -9,11 +9,10 @@
 -----------------------------------
 -- History:
 -- 02/24/2026 mir0n Created
+-- 08/11/2026 mir0n v1.2.12 esq_bank_info_briud removed from the include list
 
 -- ESQ_ADDRESS
 \i ../triggers/esq_address_briud.sql
--- ESQ_BANK_INFO
-\i ../triggers/esq_bank_info_briud.sql
 -- ESQ_PERSON
 \i ../triggers/esq_person_briud.sql
 -- ESQ_USR

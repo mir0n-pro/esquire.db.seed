@@ -13,6 +13,7 @@ BEGIN
          ,uprl_par_name
          ,uprl_par_et_pk
          ,uprl_value
+         ,uprl_change_no
          ,uprl_crl_id
          ,uprl_req_id
          ,uprl_uid
@@ -22,6 +23,7 @@ BEGIN
          ,:OLD.upr_par_name
          ,:OLD.upr_par_et_pk
          ,:OLD.upr_value
+         ,:OLD.upr_change_no + 1
          ,:OLD.upr_crl_id
          ,:OLD.upr_req_id
          ,:OLD.upr_uid
@@ -38,6 +40,7 @@ BEGIN
          ,uprl_par_name
          ,uprl_par_et_pk
          ,uprl_value
+         ,uprl_change_no
          ,uprl_crl_id
          ,uprl_req_id
          ,uprl_uid
@@ -47,6 +50,7 @@ BEGIN
          ,:NEW.upr_par_name
          ,:NEW.upr_par_et_pk
          ,:NEW.upr_value
+         ,:NEW.upr_change_no
          ,:NEW.upr_crl_id
          ,:NEW.upr_req_id
          ,:NEW.upr_uid

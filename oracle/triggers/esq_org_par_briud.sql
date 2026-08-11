@@ -13,6 +13,7 @@ BEGIN
          ,oprl_par_name
          ,oprl_par_et_pk
          ,oprl_value
+         ,oprl_change_no
          ,oprl_crl_id
          ,oprl_req_id
          ,oprl_uid
@@ -22,6 +23,7 @@ BEGIN
          ,:OLD.opr_par_name
          ,:OLD.opr_par_et_pk
          ,:OLD.opr_value
+         ,:OLD.opr_change_no + 1
          ,:OLD.opr_crl_id
          ,:OLD.opr_req_id
          ,:OLD.opr_uid
@@ -38,6 +40,7 @@ BEGIN
          ,oprl_par_name
          ,oprl_par_et_pk
          ,oprl_value
+         ,oprl_change_no
          ,oprl_crl_id
          ,oprl_req_id
          ,oprl_uid
@@ -47,6 +50,7 @@ BEGIN
          ,:NEW.opr_par_name
          ,:NEW.opr_par_et_pk
          ,:NEW.opr_value
+         ,:NEW.opr_change_no
          ,:NEW.opr_crl_id
          ,:NEW.opr_req_id
          ,:NEW.opr_uid

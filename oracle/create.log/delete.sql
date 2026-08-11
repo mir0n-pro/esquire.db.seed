@@ -9,6 +9,7 @@
 -----------------------------------
 -- History:
 -- 06/04/2026 mir0n created: drops the *_log audit tables
+-- 08/11/2026 mir0n v1.2.12 ESQ_BANK_INFO_LOG dropped from the drop list
 
 SET SERVEROUTPUT ON SIZE 200000
 declare
@@ -16,7 +17,6 @@ declare
   TYPE t_names IS TABLE OF VARCHAR2(30);
   c_obj t_names := t_names(
      'ESQ_ADDRESS_LOG'
-    ,'ESQ_BANK_INFO_LOG'
     ,'ESQ_PERSON_LOG'
     ,'ESQ_USER_LOG'
     ,'ESQ_AUTH_LOG'
