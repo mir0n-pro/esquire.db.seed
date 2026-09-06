@@ -9,6 +9,7 @@
 -----------------------------------
 -- History:
 -- 03/03/2026 mir0n role_admin_flg -> role_pt_pk (980: Admin, 982: Tools)
+-- 09/06/2026 mir0n v1.2.15 VAS-VAS (role_pk=9) and SAV-SAV (role_pk=10) removed
 
 -----------------------------------
 \echo -n 'SYSADMIN \n'
@@ -22,7 +23,7 @@ BEGIN
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         1,        30);
     
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- System
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         1,         0, 'N,Y,');
@@ -68,7 +69,7 @@ BEGIN
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         2,        32);
     
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         2,        20, 'Y,Y,Y,');
@@ -105,7 +106,7 @@ BEGIN
            VALUES        (      3,    'MANAGER', 980, 'Office manager role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         3,        32);
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         3,        20, 'Y,Y,Y,');
@@ -140,7 +141,7 @@ BEGIN
            VALUES        (      4,    'OPERATOR', 980, 'Office operator role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         4,        32);
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         4,        20, 'N,N,N,');
@@ -175,7 +176,7 @@ BEGIN
            VALUES       (      5,     'SUPPORT',  980, 'Customer support role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         5,        32);
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         5,        20, 'N,N,N,');
@@ -252,30 +253,6 @@ BEGIN
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         8,       100, 'Y,');
     COMMIT;
-
--- dummy roles --
-    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
-           VALUES       (      9,        'VAS-VAS', 982, 'Dummy role');
-    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
-           VALUES           (         9,        30);
-    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
-           VALUES           (         9,        32);
-    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
-           VALUES           (         9,        34);
-    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
-           VALUES           (         9,        36);
-
-    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc) 
-           VALUES       (      10,        'SAV-SAV', 982, 'Dummy role');
-    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
-           VALUES           (         10,        30);
-    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
-           VALUES           (         10,        32);
-    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
-           VALUES           (         10,        34);
-    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
-           VALUES           (         10,        36);
-
 
 END $$;
 

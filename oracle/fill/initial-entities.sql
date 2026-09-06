@@ -18,6 +18,7 @@
 --                  Test Driver M (usr_pk=17) -- Phantom Token Relay, backs esq-hauberk-M;
 --                  all kind=32 admin USRs under Test House with SUPERVIZOR + TREE roles;
 -- 06/12/2026 mir0n v1.2.8 system entity flags: org_pk (1,14) + usr_pk (4,5,15,16,17) set 'Y' (DB-set only, anti-delete)
+-- 09/06/2026 mir0n v1.2.15 client (usr_pk=10) au_connect_flg 'N' -> 'Y' 
 --
 
 PROMPT Inital organizations
@@ -158,7 +159,7 @@ BEGIN
 	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
                        VALUES(10,        34,            'Cli Ent',           'na',          3,             'N',     NULL);
 	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email)
-       VALUES(10, 'N', 'N',        'client', 'mir0n.the.programmer.10@gmail.com');
+       VALUES(10, 'Y', 'N',        'client', 'mir0n.the.programmer.10@gmail.com');
 	INSERT INTO esq_usr_par (upr_usr_pk, upr_par_name, upr_par_et_pk, upr_value)
        VALUES           (10,         'Example',     34,           'Non-personal example');
 	INSERT INTO esq_usr_par (upr_usr_pk, upr_par_name, upr_par_et_pk, upr_value)

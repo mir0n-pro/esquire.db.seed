@@ -19,7 +19,7 @@ PROMPT SYSADMIN
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         1,        30);
     
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- System
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         1,         0, 'N,Y,');
@@ -61,7 +61,7 @@ PROMPT SUPERVIZOR
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         2,        32);
     
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         2,        20, 'Y,Y,Y,');
@@ -95,7 +95,7 @@ PROMPT MANAGER
            VALUES        (      3,    'MANAGER', 980, 'Office manager role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         3,        32);
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         3,        20, 'Y,Y,Y,');
@@ -126,7 +126,7 @@ PROMPT OPERATOR
            VALUES        (      4,    'OPERATOR', 980, 'Office operator role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         4,        32);
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         4,        20, 'N,N,N,');
@@ -157,7 +157,7 @@ PROMPT SUPPORT
            VALUES       (      5,     'SUPPORT', 980, 'Customer support role');
     INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk) 
            VALUES           (         5,        32);
-    -- update, create, delete, security,accounting
+    -- create, update, delete, security,accounting
     -- Orgranization
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         5,        20, 'N,N,N,');

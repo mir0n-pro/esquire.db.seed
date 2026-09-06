@@ -10,7 +10,7 @@ BEGIN
        VALUES           (1,         'DB_NAME',     0,            'Esquire');
        
 	INSERT INTO esq_org_par (opr_org_pk, opr_par_name, opr_par_et_pk, opr_value) 
-       VALUES           (1,          'DB_VERSION', 0,             '1.2.12');
+       VALUES           (1,          'DB_VERSION', 0,             '1.2.15');
 
 	COMMIT;
 END $$;

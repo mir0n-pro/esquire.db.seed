@@ -1,5 +1,11 @@
 oracle seed changes
 
+09/06/2026 v1.2.15 the seeded client is an activated login
+fill\initial-entities.sql
+   - client (usr_pk=10) au_connect_flg 'N' -> 'Y' 
+fill\root.sql
+   - DB_VERSION 1.2.12 -> 1.2.15
+
 08/11/2026 v1.2.12 entity change number; bank info + ESQ_ENTITY_SEQ removed; DB_VERSION -> 1.2.12
 create\tables.tab
    - *_CHANGE_NO NUMBER(16,0) DEFAULT 1 NOT NULL on ESQ_ORG, ESQ_USER, ESQ_ACCOUNT, ESQ_AUTH, ESQ_PERSON,

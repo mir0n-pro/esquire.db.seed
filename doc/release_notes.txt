@@ -1,3 +1,9 @@
+09/06/2026 v1.2.15 the seeded client is an activated login
+   - the seeded client can sign in, matching the account the sign-in server's realm import already carries for it
+   - two unused practice roles dropped from the Postgres branch, which the Oracle branch never had, so the two now seed the same set
+   - the recorded database version moves to 1.2.15
+   - both Oracle and Postgres branches (the practice roles existed only in Postgres)
+
 08/11/2026 v1.2.12 entity change number
    - every entity and sub-entity table gains a change number that goes up by one each time the row is written -- offices, users, accounts, sign-in details, personal details, addresses and the custom-parameter rows
    - the table that records where each entity sits in the tree gets a counter of its own, because moving a branch rewrites where everything under it sits without changing any of those records

@@ -37,34 +37,22 @@ No schema-migration tool takes part in any of this, and the framework does not i
 foundation schema that an adopter extends with their own domain, so that choice stays theirs. The reasoning
 is written out in [Database schema and migrations](https://github.com/mir0n-pro/esquire.services/blob/develop/doc/Esquire.Q%26A.md#database-schema-and-migrations).
 
+## v1.2.15 — complete (09/06/2026)
+
+The seed-side change for the v1.2.15 **user activation** sprint. A fresh install now starts with the seed
+and the sign-in server saying the same thing about the same people:
+
+- **the demonstration client can sign in** -- the seeded client is marked as an activated login, matching
+  the account the sign-in server has always carried for it. The two sides of a fresh install agree from the
+  start, and the check that compares them reports nothing to fix
+- **the two branches seed the same roles** -- two practice roles that existed only in the Postgres branch
+  are gone, so Oracle and Postgres now hand out the same set
+- **the recorded database version reads 1.2.15**
+
 ## v1.2.12 — complete (08/11/2026)
 
-The seed-side work for the v1.2.12 **entity change number** sprint. Every entity and sub-entity gains a
-counter that goes up by one each time its row is written, so a change can be put back in the order it really
-happened, and a message that arrives twice can be recognised and dropped. On both Oracle and Postgres:
-
-- **the counter itself** -- a change-number column on offices, users, accounts, sign-in details, personal
-  details, addresses, and the custom-parameter rows; it starts at 1 and never goes backwards
-- **placement counts separately** -- the table that records where each entity sits in the tree gets a counter
-  of its own, because moving a branch rewrites where everything under it sits without changing any of those
-  records
-- **the change history carries it** -- every change-log table records the number alongside the change, so the
-  history of one record reads back in true order
-- **repeat protection reworked** -- the optional uniqueness rule on the change-log tables now keys on the
-  record and its change number, instead of on the request that caused the change. Because every write to a
-  row has its own number, that rule and the database's own change-recording triggers can now be used
-  together
-- **the ledger points at the account's history** -- a money movement records which version of the account it
-  produced, so the two can be checked against each other by number rather than by time
-- **the stored path dropped from the change log** -- where a record sat was copied into the change history by
-  the trigger route only, and it cannot be filled honestly by the others, which record after the fact
-- **bank details table removed** -- nothing in the framework ever read or wrote it; it can come back with a
-  real domain implementation when one needs it
-- **the old entity key generator removed** -- entity keys have been built by the application itself since
-  v1.2.6, from the time plus the instance plus a small counter, so the database counter they used to come
-  from has been unused ever since. The one that hands out address keys stays.
-- **forward-migration patch** -- Postgres gets a patch that applies all of the above to a database that is
-  already seeded.
+The seed-side work for the v1.2.12 **entity change number** sprint: a change number on every entity and sub-entity, a counter of its own on the table that records where each entity sits, the change history and the ledger both carrying that number, repeat protection rekeyed on the record and its number, the unused bank-details table and the old entity-key generator removed, and a Postgres patch that applies all of it to an already-seeded database. Across both Oracle and Postgres.<br>
+[More Details: v1.2.12 README](https://github.com/mir0n-pro/esquire.db.seed/tree/release/v1.2.12?tab=readme-ov-file)
 
 ## v1.2.11 — complete (07/25/2026)
 
