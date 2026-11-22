@@ -1,3 +1,11 @@
+11/22/2026 v2.0.2 login ids in lower case
+   - the 2.0 line of the seed begins; Esquire 2.0 builds read it, and 1.2 keeps its own
+   - every login id is kept in lower case, the way the sign-in server keeps its user names; the two load-test users are seeded that way
+   - a Postgres forward migration lower-cases the login ids of a database that is already seeded
+   - the recorded database version moves to 2.0.2
+   - doc: the README carries one note for this release in place of the 1.2 release notes, which stay with the 1.2 line, and a Release History section; its schema-and-migrations link goes to the 2.0 services
+   - both Oracle and Postgres branches (the forward-migration patch is Postgres-only)
+
 09/06/2026 v1.2.15 the seeded client is an activated login
    - the seeded client can sign in, matching the account the sign-in server's realm import already carries for it
    - two unused practice roles dropped from the Postgres branch, which the Oracle branch never had, so the two now seed the same set

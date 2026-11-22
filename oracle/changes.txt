@@ -1,5 +1,11 @@
 oracle seed changes
 
+11/22/2026 v2.0.2 login ids in lower case; DB_VERSION -> 2.0.2
+fill\initial-entities.sql
+   - Test Drivers S and M (usr_pk=16,17) au_login_id in lower case: esq-hauberk-s, esq-hauberk-m
+fill\root.sql
+   - DB_VERSION 1.2.15 -> 2.0.2
+
 09/06/2026 v1.2.15 the seeded client is an activated login
 fill\initial-entities.sql
    - client (usr_pk=10) au_connect_flg 'N' -> 'Y' 
