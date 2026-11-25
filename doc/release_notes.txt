@@ -1,3 +1,9 @@
+11/24/2026 v2.0.3 the token relay test drivers removed
+   - the two load-test users kept only for the retired token relay sign-ins are no longer seeded
+   - a Postgres forward migration removes them from a database that is already seeded
+   - the recorded database version moves to 2.0.3
+   - both Oracle and Postgres branches (the forward-migration patch is Postgres-only)
+
 11/22/2026 v2.0.2 login ids in lower case
    - the 2.0 line of the seed begins; Esquire 2.0 builds read it, and 1.2 keeps its own
    - every login id is kept in lower case, the way the sign-in server keeps its user names; the two load-test users are seeded that way

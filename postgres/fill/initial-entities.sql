@@ -20,6 +20,7 @@
 -- 06/12/2026 mir0n v1.2.8 system entity flags: org_pk (1,14) + usr_pk (4,5,15,16,17) set 'Y' (DB-set only, anti-delete)
 -- 09/06/2026 mir0n v1.2.15 client (usr_pk=10) au_connect_flg 'N' -> 'Y'
 -- 11/21/2026 mir0n v2.0.2 Test Drivers S and M (usr_pk=16,17) au_login_id in lower case: esq-hauberk-s, esq-hauberk-m
+-- 11/24/2026 mir0n v2.0.3 Test Drivers S and M (usr_pk=16,17) removed; system entity flags usr_pk (4,5,15)
 
 \echo -n 'Inital organizations\n'
 \qecho -n 'Inital organizations\n'
@@ -244,36 +245,6 @@ BEGIN
            VALUES            (        15,  8);
 	COMMIT;
 
-	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (16, 32, '1.14.');
-	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
-       VALUES                 (16,        32,        'Test Driver S',           'na',          14,             'N', 'Test driver : esq-hauberk-S IAS client : Do not touch!!!');
-	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email)
-       VALUES(16, 'N', 'N',      'esq-hauberk-s@mir0n.pro',   'esq-hauberk-S@mir0n.pro');
-	INSERT INTO esq_person (pe_usr_pk, pe_kind, pe_first_name, pe_last_name, pe_email)
-       VALUES( 16, 992, 'Test','Driver S', 'esq-hauberk-S@mir0n.pro');
-    -- SUPERVIZOR
-    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
-           VALUES            (        16,  2);
-    -- TREE
-    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
-           VALUES            (        16,  8);
-	COMMIT;
-
-	INSERT INTO esq_entity_path (ep_pk, ep_et_pk, ep_path) VALUES (17, 32, '1.14.');
-	INSERT INTO esq_user (usr_pk, usr_et_pk,             usr_name, usr_reg_option, usr_org_pk, usr_deleted_flg, usr_desc)
-       VALUES                 (17,        32,        'Test Driver M',           'na',          14,             'N', 'Test driver : esq-hauberk-M IAS client (Phantom Token / RFC 8693) : Do not touch!!!');
-	INSERT INTO esq_auth (au_usr_pk, au_connect_flg, au_tfa_method, au_login_id, au_email)
-       VALUES(17, 'N', 'N',      'esq-hauberk-m@mir0n.pro',   'esq-hauberk-M@mir0n.pro');
-	INSERT INTO esq_person (pe_usr_pk, pe_kind, pe_first_name, pe_last_name, pe_email)
-       VALUES( 17, 992, 'Test','Driver M', 'esq-hauberk-M@mir0n.pro');
-    -- SUPERVIZOR
-    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
-           VALUES            (        17,  2);
-    -- TREE
-    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK)
-           VALUES            (        17,  8);
-	COMMIT;
-
 
 
 END $$;
@@ -286,7 +257,7 @@ BEGIN
     -- Protected from deletion (DB-set ONLY, never via the app, not shown on the GUI).
     -- Root system office + its users, and the Test House office + its users.
     UPDATE esq_org  SET org_system_flg = 'Y' WHERE org_pk IN (1, 14);
-    UPDATE esq_user SET usr_system_flg = 'Y' WHERE usr_pk IN (4, 5, 15, 16, 17);
+    UPDATE esq_user SET usr_system_flg = 'Y' WHERE usr_pk IN (4, 5, 15);
     COMMIT;
 END $$;
 
