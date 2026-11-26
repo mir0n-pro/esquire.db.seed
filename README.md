@@ -18,9 +18,10 @@ The seed builds the same schema on **Postgres** and **Oracle**, and every releas
 
 ---
 > 
-> **v2.0.2 -- login ids in lower case.** The first release of the seed's 2.0 line, the one Esquire 2.0
-> builds read. Every login id is kept in lower case, the way the sign-in server keeps its user names, and
-> a Postgres patch lower-cases the login ids of a database that is already seeded.
+> **v2.0.3 -- one test driver for the load harness.** Esquire 2.0.3 has one kind of sign-in, so the two
+> test drivers that backed the token relay clients, Test Drivers S and M, leave the seed, on both Postgres
+> and Oracle. The load harness signs in as the one Test Driver that is left. A Postgres patch removes the
+> two from a database that is already seeded and sets its version to 2.0.3.
 > 
 > The 1.2 line goes on in parallel. Its last release is
 > [v1.2.15](https://github.com/mir0n-pro/esquire.db.seed/tree/release/v1.2.15?tab=readme-ov-file).
@@ -53,4 +54,4 @@ is written out in [Database schema and migrations](https://github.com/mir0n-pro/
 
 **[release_notes.txt](doc/release_notes.txt)** -- the release notes, newest first.
 
-**[report_v2.0.2.md](doc/reports/report_v2.0.2.md)** -- the report of this release.
+**[report_v2.0.3.md](doc/reports/report_v2.0.3.md)** -- the report of this release.
