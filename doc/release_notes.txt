@@ -1,3 +1,10 @@
+11/27/2026 v2.0.4 the BLINKY role
+   - a new permission to run the Esquire socket interface, and a new app role, BLINKY, that grants it
+   - the main admin and the Test Driver get BLINKY
+   - a Postgres forward migration adds them to a database that is already seeded
+   - the recorded database version moves to 2.0.4
+   - both Oracle and Postgres branches (the forward-migration patch is Postgres-only)
+
 11/24/2026 v2.0.3 the token relay test drivers removed
    - the two load-test users kept only for the retired token relay sign-ins are no longer seeded
    - a Postgres forward migration removes them from a database that is already seeded

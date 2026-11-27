@@ -1,5 +1,15 @@
 oracle seed changes
 
+11/27/2026 v2.0.4 the BLINKY role; DB_VERSION -> 2.0.4
+fill\esq_permission.sql
+   - permission 110 'Esquire Socket' (type 984, Apps)
+fill\esq_role.sql
+   - role BLINKY (role_pk=11, type 984) for user kinds 30, 32, 34, 36, with permission 110
+fill\initial-entities.sql
+   - BLINKY (role_pk=11) for mainadmin (usr_pk=5) and the Test Driver (usr_pk=15)
+fill\root.sql
+   - DB_VERSION 2.0.3 -> 2.0.4
+
 11/24/2026 v2.0.3 the token relay test drivers removed; DB_VERSION -> 2.0.3
 fill\initial-entities.sql
    - Test Drivers S and M (usr_pk=16,17) removed; system entity flags usr_pk (4,5,15)

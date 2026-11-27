@@ -1,0 +1,8 @@
+----- Deletion -----
+Drop tables
+Drop sequences
+----- Tables creation ----- 
+----- Primary, foreign key indeces ----- 
+----- Check constraints ----- 
+----- Sequencies creation ----- 
+----- Triggers creation ----- 

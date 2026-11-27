@@ -9,6 +9,7 @@
 -----------------------------------
 -- History:
 -- 03/03/2026 mir0n role_admin_flg -> role_pt_pk (980: Admin, 982: Tools)
+-- 11/26/2026 mir0n v2.0.4 role BLINKY (role_pk=11, type 984) for user kinds 30, 32, 34, 36, with permission 110
 
 -----------------------------------
 PROMPT SYSADMIN
@@ -221,6 +222,24 @@ PROMPT TREE
     -- Esqurie API
     INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs) 
            VALUES            (         8,       100, 'Y,');
+    COMMIT;
+
+-----------------------------------
+PROMPT BLINKY
+-----------------------------------
+    INSERT INTO esq_role (role_pk,    role_name, role_pt_pk, role_desc)
+           VALUES       (     11,      'BLINKY', 984, 'Use of Esquire socket interface');
+    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk)
+           VALUES           (        11,        30);
+    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk)
+           VALUES           (        11,        32);
+    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk)
+           VALUES           (        11,        34);
+    INSERT INTO esq_role_et (rt_role_pk,  rt_et_pk)
+           VALUES           (        11,        36);
+    -- Esquire socket
+    INSERT INTO esq_role_prm (rp_role_pk, rp_prm_pk, rp_allowed_flgs)
+           VALUES            (        11,       110, 'Y,');
     COMMIT;
 
 

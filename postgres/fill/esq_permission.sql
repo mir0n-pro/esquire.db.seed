@@ -12,6 +12,7 @@
 -- 01/14/2026 mir0n ESQ_PERMISSION.PRM_ET_PK_USR removed
 --                  generalized format of permission id
 -- 03/03/2026 mir0n permission type refs updated: 0->980 (Admin), 1->982 (Tools)
+-- 11/26/2026 mir0n v2.0.4 permission 110 'Esquire Socket' (type 984, Apps)
 
 CREATE OR REPLACE PROCEDURE temp_permission (
 		aID 				IN integer,
@@ -51,6 +52,7 @@ BEGIN
     CALL temp_permission (  52,   980,          52,  'Merchant Account',             'Admin: Merchant Account functions');
     CALL temp_permission (  54,   980,          54,  'Paper Client Account',         'Admin: Paper Client Account functions');
     CALL temp_permission ( 100,   982,        NULL,  'Esquire Tree',                 'Runs Esquire tree interface');
+    CALL temp_permission ( 110,   984,        NULL,  'Esquire Socket',               'Runs Esquire socket interface');
 
     
     

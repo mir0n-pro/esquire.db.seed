@@ -21,6 +21,7 @@
 -- 09/06/2026 mir0n v1.2.15 client (usr_pk=10) au_connect_flg 'N' -> 'Y' 
 -- 11/21/2026 mir0n v2.0.2 Test Drivers S and M (usr_pk=16,17) au_login_id in lower case: esq-hauberk-s, esq-hauberk-m
 -- 11/24/2026 mir0n v2.0.3 Test Drivers S and M (usr_pk=16,17) removed; system entity flags usr_pk (4,5,15)
+-- 11/26/2026 mir0n v2.0.4 BLINKY (role_pk=11) for mainadmin (usr_pk=5) and the Test Driver (usr_pk=15)
 --
 
 PROMPT Inital organizations
@@ -74,6 +75,9 @@ PROMPT Supervizor
 -- TREE
     INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK) 
            VALUES            (        5,  8);
+-- BLINKY
+    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK) 
+           VALUES            (        5, 11);
 	COMMIT;
 
 PROMPT Support
@@ -213,6 +217,9 @@ BEGIN
     -- TREE
     INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK) 
            VALUES            (        15,  8);
+    -- BLINKY
+    INSERT INTO esq_usr_role (UR_USR_PK, UR_ROLE_PK) 
+           VALUES            (        15, 11);
 	COMMIT;
 END;
 /

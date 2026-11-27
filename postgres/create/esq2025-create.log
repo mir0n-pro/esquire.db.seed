@@ -1,0 +1,12 @@
+----- Deletion -----
+Drop tables
+Drop sequences
+----- Tables creation ----- 
+----- Primary, foreign key indeces ----- 
+----- Check constraints ----- 
+----- Sequencies creation ----- 
+----- Audit-log schema (create.log) ----- 
+----- Audit-log: Deletion -----
+Drop audit-log tables
+----- Audit-log: Tables creation ----- 
+----- Audit-log: Primary, foreign key indeces ----- 
